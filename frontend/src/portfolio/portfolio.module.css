@@ -1,0 +1,66 @@
+.heroSection {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.heroImage {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid red;
+    z-index: 0;
+}
+
+.whiteCover {
+    position: absolute;
+    top: 7%;
+    left: 0;
+    width: 100%;
+    height: auto;
+    background-color: ghostwhite;
+    z-index: 10;
+}
+
+.temp{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 50px;
+    margin-bottom: 10%;
+}
+
+.portfolioFirstSection{
+    width: 100%;
+    height: 200px;
+    margin-bottom: 6%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 1%;
+}
+
+.myPortfolioText{
+    color: #302D2D;
+    font-size: 60px;
+    font-family: 'Lora', serif;
+    width: fit-content;
+    height: fit-content;
+    padding: 0;
+    margin: 0 0 2%;
+}
+
+.myPortfolioSubText{
+    color: #302D2D;
+    font-size: 20px;
+    font-family: 'Lora', serif;
+    width: fit-content;
+    height: fit-content;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}

@@ -1,0 +1,62 @@
+.navbarContainer {
+    height: 10vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid ghostwhite;
+}
+
+.middleLine{
+    border: 1px solid ghostwhite;
+    height: 60%;
+}
+
+.homeTextContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    height: 100%;
+}
+
+.homeTextLink{
+    color: ghostwhite;
+    font-family: 'Lora', serif;
+    font-weight: 400;
+    text-decoration: none;
+    margin-left: 30%;
+    transition: all 0.3s ease;
+}
+
+.homeTextLink:hover {
+    transform: scale(1.2);
+}
+
+.portfolioTextContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    height: 100%;
+}
+
+.portfolioTextLink{
+    color: ghostwhite;
+    font-family: 'Lora', serif;
+    font-weight: 400;
+    text-decoration: none;
+    margin-right: 30%;
+    transition: all 0.3s ease;
+}
+
+.portfolioTextLink:hover {
+    transform: scale(1.2);
+}
+
