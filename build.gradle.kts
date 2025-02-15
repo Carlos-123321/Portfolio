@@ -28,6 +28,7 @@ dependencies {
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 	implementation("org.projectlombok:lombok:1.18.30")
 	annotationProcessor("org.projectlombok:lombok:1.18.30")
+	implementation ("javax.annotation:javax.annotation-api:1.3.2")
 }
 
 tasks.withType<Test> {
