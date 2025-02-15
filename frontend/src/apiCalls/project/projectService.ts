@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:8080/api/v1/projects';
+// const API_BASE_URL = 'http://localhost:8080/api/v1/projects';
+const API_BASE_URL = 'https://peaceful-sierra-10013-245dc32f5bfd.herokuapp.com/api/v1/projects';
 
 export const getProjects = async () => {
     try {
