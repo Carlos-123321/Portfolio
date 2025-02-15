@@ -1,9 +1,8 @@
 {
-  "builds": [
+  "rewrites": [
     {
-      "src": "frontend/package.json",
-      "use": "@vercel/node"
+      "source": "/:path*",
+      "destination": "/index.html"
     }
-  ],
-  "buildCommand": "npm install && npm run build"
+  ]
 }
