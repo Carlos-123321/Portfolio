@@ -37,7 +37,7 @@ const Portfolio: React.FC = () => {
                 <div className={portfolioStyles.whiteCover}>
                     <div className={portfolioStyles.portfolioFirstSection}>
                         <p className={portfolioStyles.myPortfolioText}>
-                            {t("My Projects")}asdsa
+                            {t("My Projects")}
                         </p>
                         <button className={portfolioStyles.createProjectButton} onClick={() => setIsModalOpen(true)}>Create Project</button>
                         <p className={portfolioStyles.myPortfolioSubText}>

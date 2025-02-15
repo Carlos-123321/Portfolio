@@ -55,5 +55,16 @@ public class Project {
     @Column(columnDefinition = "JSON")
     private List<String> techStack;
 
+    @Convert(converter = StringListConverter.class)
+    @Column(columnDefinition = "JSON")
+    private List<String> features;
+
+    @Convert(converter = StringListConverter.class)
+    @Column(columnDefinition = "JSON")
+    private List<String> knowledge;
+
+    @Convert(converter = StringListConverter.class)
+    @Column(columnDefinition = "JSON")
+    private List<String> summary;
 
 }

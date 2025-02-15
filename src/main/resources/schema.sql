@@ -19,5 +19,8 @@ CREATE TABLE project (
                       start_Date DATE,
                       end_Date DATE,
                       images JSON,
-                      tech_Stack JSON
+                      tech_Stack JSON,
+                      features JSON,
+                      knowledge JSON,
+                      summary JSON
 );

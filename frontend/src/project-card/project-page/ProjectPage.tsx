@@ -137,23 +137,49 @@ const ProjectPage: React.FC = () => {
 
                 <div className={projectPageStyles.projectPageThirdSectionFeatureKnowledgeSection}>
                     <div className={projectPageStyles.projectPageThirdSectionFKleft}>
+                        <div className={projectPageStyles.projectPageThirdSectionTitleContainer}>
                         <p className={projectPageStyles.projectPageThirdSectionTitle}>Features</p>
+                        </div>
 
-
+                        {project.features && project.features.length > 0 ? (
+                            project.features.map((feature, index) => (
+                                <p key={index} className={projectPageStyles.projectPageFeatureText}>
+                                    • {feature}
+                                </p>
+                            ))
+                        ) : (
+                            <p className={projectPageStyles.projectPageFeatureText}>No features available.</p>
+                        )}
                     </div>
+
+
                     <div className={projectPageStyles.projectPageThirdSectionFKright}>
-                        <p className={projectPageStyles.projectPageThirdSectionTitle}>Knowledge Applied</p>
+                        <div className={projectPageStyles.projectPageThirdSectionTitleContainer}>
+                            <p className={projectPageStyles.projectPageThirdSectionTitle}>Knowledge Applied</p>
+                        </div>
+                        {project.knowledge && project.features.length > 0 ? (
+                            project.knowledge.map((knowledge, index) => (
+                                <p key={index} className={projectPageStyles.projectPageFeatureText}>
+                                    • {knowledge}
+                                </p>
+                            ))
+                        ) : (
+                            <p className={projectPageStyles.projectPageFeatureText}>No features available.</p>
+                        )}
                     </div>
                 </div>
 
 
                 <div className={projectPageStyles.projectPageThirdSectionInDepthSummary}>
-                    <p className={projectPageStyles.projectPageThirdSectionTitle}>In Depth Summary</p>
+                    <div className={projectPageStyles.projectPageThirdSectionTitleContainer}>
+                        <p className={projectPageStyles.projectPageThirdSectionTitle}>In Depth Summary</p>
                     </div>
+                        <p className={projectPageStyles.projectPageFeatureText}>{project.summary}</p>
                 </div>
+            </div>
 
-            </>
-            );
+        </>
+    );
 };
 
 export default ProjectPage;

@@ -10,4 +10,7 @@ export default interface Project {
     endDate: string;
     images: string[];
     techStack: string[];
+    features: string[];
+    knowledge: string[];
+    summary: string[];
 }
