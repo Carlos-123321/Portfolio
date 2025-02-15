@@ -1,50 +1,32 @@
-// import React from "react";
-// import NavBar from "../navbar/NavBar.tsx";
-// import portfolioBackground from "../assets/portfoliobackground.png";
-// import homepageStyles from "./homepage.module.css";
-// import Footer from "../footer/Footer.tsx";
-//
-// const Homepage: React.FC = () => {
-//     return (
-//         <>
-//             <NavBar/>
-//
-//             <img
-//                 src={portfolioBackground}
-//                 alt="portfolio background"
-//                 className={homepageStyles.heroImage}
-//             />
-//
-//             <div>
-//                 <p className={homepageStyles.temp1title}>
-//                     Hi, I'm Carlos Alvarado
-//                 </p>
-//                 <p className={homepageStyles.temp2title}>
-//                     A passionate developer from Canada
-//                 </p>
-//                 <p className={homepageStyles.temp3title}>
-//                     "The journey of a thousand miles begins with a single step."
-//                 </p>
-//             </div>
-//
-//             <Footer/>
-//
-//         </>
-//     );
-// };
-//
-// export default Homepage;
-
-import React from "react";
+import React, {useEffect, useState} from "react";
 import NavBar from "../navbar/NavBar.tsx";
-import portfolioBackground from "../assets/portfoliobackground.png";
+import portfolioBackground from "../../public/assets/portfoliobackground.png";
 import homepageStyles from "./homepage.module.css";
 import Footer from "../footer/Footer.tsx";
+import {useTranslation} from "react-i18next";
 
 const Homepage: React.FC = () => {
+
+    const { t } = useTranslation();
+
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const reviews = [
+        {title: "Review 1", content: "Carlos is a very good software developer!"},
+        {title: "Review 2", content: "Helped me out a lot in pet clinic project"},
+        {title: "Review 3", content: "Did the translation and authentication for our external client project. Would Recommend"},
+    ];
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentIndex((prevIndex) => (prevIndex + 1) % reviews.length);
+        }, 3000); // Change slide every 3 seconds
+        return () => clearInterval(interval);
+    }, [reviews.length]);
+
+
     return (
         <>
-            <NavBar />
+            <NavBar/>
 
             <div className={homepageStyles.heroContainer}>
                 <img
@@ -54,19 +36,51 @@ const Homepage: React.FC = () => {
                 />
 
                 <div className={homepageStyles.textContainer}>
+                    <div className={homepageStyles.profileSectionContainer}>
+                        <div className={homepageStyles.profile}>
+
+                        </div>
+                    </div>
                     <p className={homepageStyles.temp1title}>
-                        Hi, I'm Carlos Alvarado
+                        {t("introLine")}
                     </p>
                     <p className={homepageStyles.temp2title}>
-                        A passionate developer from Canada
+                        {t("introSecondLine")}
                     </p>
                     <p className={homepageStyles.temp3title}>
-                        "The journey of a thousand miles begins with a single step."
+                        {t("introThirdLine")}
                     </p>
                 </div>
             </div>
 
-            <Footer />
+            <div className={homepageStyles.nextPage}>
+
+                <div className={homepageStyles.rightSide}>
+                    <p>
+                        {t("longText")}
+                    </p>
+                </div>
+            </div>
+
+            <div className={homepageStyles.reviewSection}>
+                <div className={homepageStyles.reviewsTitle}>Reviews</div>
+                <div className={homepageStyles.carousel}>
+                    <div
+                        className={homepageStyles.carouselTrack}
+                        style={{transform: `translateX(-${currentIndex * 100}%)`}}
+                    >
+                        {reviews.map((review, index) => (
+                            <div key={index} className={homepageStyles.reviewItem}>
+                                <h3>{review.title}</h3>
+                                <p>{review.content}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+
+
+            <Footer/>
         </>
     );
 };

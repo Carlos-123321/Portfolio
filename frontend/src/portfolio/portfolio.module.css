@@ -10,7 +10,6 @@
     width: 100%;
     height: auto;
     border-radius: 8px;
-    border: 1px solid red;
     z-index: 0;
 }
 
@@ -20,8 +19,11 @@
     left: 0;
     width: 100%;
     height: auto;
-    background-color: ghostwhite;
+    background-color: #b7f3b5;
     z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .temp{
@@ -34,7 +36,7 @@
 }
 
 .portfolioFirstSection{
-    width: 100%;
+    width: 50%;
     height: 200px;
     margin-bottom: 6%;
     display: flex;
@@ -63,4 +65,14 @@
     margin: 0;
     padding: 0;
     text-align: center;
+}
+
+.createProjectButton{
+    width: 120px;
+    height: 30px;
+    color: white;
+    background-color: burlywood;
+    border: 1px solid black;
+    border-radius: 10px;
+    cursor: pointer;
 }

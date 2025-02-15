@@ -1,0 +1,100 @@
+.loginContainer {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #d2b48c, #e7d2c2);
+}
+
+.loginBox {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h2 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.inputContainer {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.inputContainer label {
+    display: block;
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 5px;
+}
+
+.inputContainer input {
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.inputContainer input:focus {
+    border-color: #49c8ff;
+}
+
+.loginBtn {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    background-color: #ab7844;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: 'Lora', serif;
+}
+
+.loginBtn:hover {
+    color: #ab7844;
+    background-color: white;
+    border: 1px solid #ab7844;
+}
+
+.forgotPassword {
+    margin-top: 15px;
+}
+
+.forgotPassword a {
+    text-decoration: none;
+    color: #777;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.forgotPassword a:hover {
+    color: #49c8ff;
+}
+
+.fontFamily{
+    font-family: 'Lora', serif;
+}

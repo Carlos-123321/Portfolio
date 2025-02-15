@@ -1,5 +1,64 @@
-.footerContainer{
+.footerContainer {
     width: 100%;
-    height: 20vh;
-    border: 1px solid red;
+    background: linear-gradient(135deg, #3a3631, #bc8f68);
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footerContent {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 20px;
+    font-family: 'Lora', serif;
+}
+
+.contactInfo,
+.socialMedia {
+    flex: 1;
+    min-width: 250px;
+    margin: 10px;
+}
+
+h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 1rem;
+    margin: 5px 0;
+}
+
+.socialIcons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    font-size: 1.5rem;
+}
+
+.socialIcons a {
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+.socialIcons a:hover {
+    color: #007bff;
+}
+
+.footerBottom {
+    border-top: 1px solid #444;
+    padding-top: 10px;
+    font-size: 0.9rem;
+}
+
+.contactLink {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contactLink:hover {
+    text-decoration: underline;
 }

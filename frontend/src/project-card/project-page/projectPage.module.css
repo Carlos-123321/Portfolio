@@ -1,15 +1,13 @@
 .projectPageFirstSection{
-    border: 1px solid green;
     width: 100%;
-    height: 44vh;
+    height: 47vh;
     margin-top: 8%;
     display: flex;
 }
 
 .projectPageFirstSectionLeft{
-    width: 50%;
+    width: 57%;
     height: 100%;
-    border: 1px solid red;
     padding-left: 3%;
     display: flex;
     flex-direction: column;
@@ -42,9 +40,11 @@
 .projectPageFirstSectionRight{
     width: 50%;
     height: 100%;
-    border: 1px solid blue;
     padding-left: 2%;
     padding-right: 4%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .projectPageFirstSectionRightText{
@@ -52,4 +52,123 @@
     font-size: 20px;
     font-family: 'Lora', serif;
     padding: 0;
+}
+
+.projectPageSecondSection{
+    height: 65vh;
+    width: 100%;
+    display: flex;
+}
+
+.projectPageSecondSectionLeftSide{
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.projectPageSecondSectionRightSide{
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.Arrow{
+    transform: scale(2.7);
+    display: inline-block;
+    cursor: pointer;
+}
+
+.Arrow:hover {
+    color: sandybrown;
+}
+
+.projectPageSecondSectionMiddleSection{
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.projectPageSecondSectionMiddleSectionInner{
+    width: 80%;
+    height: 95%;
+    transition: transform 0.3s ease-in-out;
+    will-change: transform;
+    display: flex;
+    flex-direction: row;
+}
+
+.carousselImage{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.projectPageThirdSection{
+    width: 100%;
+    height: 40vh;
+    padding-top: 8%;
+}
+
+.projectPageThirdSectionTechnologySection{
+    width: 100%;
+    height: 25vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 10%;
+}
+
+.projectPageThirdSectionTitle{
+    color: #302D2D;
+    font-size: 50px;
+    font-family: 'Lora', serif;
+    padding: 0;
+    margin-bottom: 30px;
+}
+
+.projectPageThirdSectionIcons{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+}
+
+.projectPageThirdSectionFeatureKnowledgeSection{
+    display: flex;
+    flex-direction: row;
+    border: 1px solid green;
+    height: 70vh;
+}
+
+.projectPageThirdSectionFKleft{
+    border: 1px solid yellow;
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 100%;
+}
+
+.projectPageThirdSectionFKright{
+    border: 1px solid blue;
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.projectPageThirdSectionInDepthSummary{
+    border: 1px solid blue;
+    width: 100%;
+    height: 70vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }

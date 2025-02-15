@@ -1,0 +1,80 @@
+/* Button to Open Modal */
+.openCVButton {
+    padding: 10px 15px;
+    background-color: #ab7844;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.openCVButton:hover {
+    background-color: white;
+    color: #ab7844;
+}
+
+/* Modal Overlay (Hidden by Default) */
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Show Modal */
+.showModal {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Modal Content Box */
+.modalContent {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    min-width: 300px;
+}
+
+/* Download CV Button */
+.downloadCVButton {
+    display: inline-block;
+    padding: 10px 15px;
+    margin-top: 10px;
+    background-color: #28a745;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.downloadCVButton:hover {
+    background-color: #218838;
+}
+
+/* Close Button */
+.closeModalButton {
+    display: block;
+    margin: 15px auto 0;
+    padding: 8px 12px;
+    background: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.closeModalButton:hover {
+    background: #c82333;
+}

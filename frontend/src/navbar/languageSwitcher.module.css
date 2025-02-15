@@ -1,0 +1,13 @@
+.languageContainer{
+    margin-right: auto;
+}
+
+.languageButton{
+    border-radius: 10px;
+    border: none;
+    height: 30px;
+    width: fit-content;
+    margin-right: 10px;
+    font-family: 'Lora', serif;
+    cursor: pointer;
+}

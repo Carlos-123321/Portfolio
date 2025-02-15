@@ -11,7 +11,6 @@ public class UserService {
 
     private final UserRepository userRepository;
 
-    // Constructor injection for UserRepository
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }

@@ -1,0 +1,58 @@
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modalContent {
+    background: beige;
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+    text-align: center;
+    position: relative;
+    border: 1px solid green;
+}
+
+.closeButton {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.modalImage {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.modalForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.modalInput{
+    border-radius: 10px;
+    border: 2px solid burlywood;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 5vh;
+}
+
+.modalButton{
+    background-color: burlywood;
+    color: white;
+    height: 5vh;
+    width: 30%;
+    cursor: pointer;
+}
