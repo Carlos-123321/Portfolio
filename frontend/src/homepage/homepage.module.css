@@ -77,10 +77,13 @@
 .reviewSection {
     border: 1px solid #8e7d5b;
     width: 100%;
-    height: 100vh;
+    height: fit-content;
     background: linear-gradient(135deg, #d6c29f, #8e7d5b);
-    padding: 2rem;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 2rem 10%;
 }
 
 .reviewsTitle {
@@ -123,4 +126,39 @@
 .reviewItem p {
     font-size: 1.2rem;
     color: #555;
+}
+
+.reviewCard {
+    background-color: #f9f9f9;
+    border: 2px solid ghostwhite;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    height: 150px;
+    transition: transform 0.3s ease;
+    text-align: center;
+}
+
+.reviewsContainer {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.reviewCard:hover {
+    transform: translateY(-10px);
+}
+
+.reviewCardTitle{
+    font-family: 'Lora', serif;
+    font-size: 25px;
+    margin-bottom: 50px;
+}
+
+.reviewCardSubText{
+    font-family: 'Lora', serif;
+    font-size: 15px;
 }
