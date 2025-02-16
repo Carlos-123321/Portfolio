@@ -1,10 +1,10 @@
+DROP TABLE IF EXISTS comment;
 DROP TABLE IF EXISTS user;
 
 CREATE TABLE user (
                           id BIGINT AUTO_INCREMENT PRIMARY KEY,
                           name VARCHAR(255),
                           email VARCHAR(255),
-                          comment JSON,
                           password VARCHAR(255),
                           role VARCHAR(15)
 );
@@ -26,4 +26,13 @@ CREATE TABLE project (
                       features JSON,
                       knowledge JSON,
                       summary JSON
+);
+
+
+CREATE TABLE comment (
+                      id INT AUTO_INCREMENT PRIMARY KEY,
+                      user_id BIGINT,
+                      comment TEXT,
+                      approved BOOLEAN,
+                      FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE
 );

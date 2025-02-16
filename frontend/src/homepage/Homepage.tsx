@@ -118,10 +118,12 @@ const Homepage: React.FC = () => {
             try {
                 const users: User[] = await getUsers(); // Fetch users with comments
                 const comments = users.flatMap((user) =>
-                    user.comment?.map((comment) => ({
-                        title: user.name, // Display the user's name as the title
-                        content: comment, // Display the comment as content
-                    })) || []
+                    user.comments // Corrected here: use 'comments' instead of 'comment'
+                        .filter((comment) => comment.approved) // Filter only approved comments
+                        .map((comment) => ({
+                            title: user.name, // Display the user's name as the title
+                            content: comment.comment, // Corrected here: access comment.comment
+                        })) || []
                 );
                 setReviews(comments);
             } catch (error) {

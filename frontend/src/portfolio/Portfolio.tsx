@@ -41,7 +41,7 @@ const Portfolio: React.FC = () => {
                         <p className={portfolioStyles.myPortfolioText}>
                             {t("My Projects")}
                         </p>
-                        {userRole === "admin" && (
+                        {userRole === "Admin" && (
                             <button className={portfolioStyles.createProjectButton} onClick={() => setIsModalOpen(true)}>
                                 {t("Create Project")}
                             </button>

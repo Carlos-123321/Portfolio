@@ -52,7 +52,7 @@
     border-radius: 10px;
     border: 2px solid ghostwhite;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 240px;
+    width: 250px;
     height: auto;
     display: flex;
     flex-direction: column;
@@ -60,16 +60,6 @@
     font-family: 'Lora', serif;
     font-weight: 400;
     text-align: center;
-}
-
-.userCard h4 {
-    font-size: 18px;
-    color: #333;
-}
-
-.userCard p {
-    font-size: 14px;
-    color: #666;
 }
 
 .myTitleText{
@@ -92,4 +82,56 @@
     padding: 0;
     margin-bottom: 2%;
     margin-left: 2%;
+}
+
+.userCardName{
+    font-size: 25px;
+    margin-bottom: 15%;
+}
+
+.approvedContainer{
+    padding: 4px 14px;
+    width: fit-content;
+    color: ghostwhite;
+    border: 1px solid ghostwhite;
+    border-radius: 10px;
+}
+
+.approvedYes {
+    background-color: mediumseagreen;
+}
+
+
+.approvedNo {
+    background-color: #ee6363;
+}
+
+.bottomCardRowContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    padding-top: 10px;
+}
+
+.deleteCardIcon {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.deleteCardIcon:hover {
+    transform: scale(1.2);
+}
+
+.editCardIcon{
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.editCardIcon:hover {
+    transform: scale(1.2);
 }

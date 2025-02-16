@@ -4,7 +4,7 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:8080
 
 export const getProjects = async () => {
     try {
-        const response = await axios.get(`${API_BASE_URL}/api/v1/projects`);;
+        const response = await axios.get(`${API_BASE_URL}/api/v1/projects`);
         return response.data;
     } catch (error) {
         console.error("There was an error fetching the projects!", error);
@@ -50,7 +50,11 @@ export const createProject = async (project: {
     }
 };
 
-export const updateProject = async (id: number, updatedProject: { name: string; description: string; image: string; reviews: number; type: string }) => {
+export const updateProject = async (id: number, updatedProject: {
+    name: string; description:
+        string; image: string;
+        reviews: number;
+        type: string }) => {
     try {
         const response = await axios.put(`${API_BASE_URL}/api/v1/projects/${id}`, updatedProject);
         console.log("Project updated successfully:", response.data);

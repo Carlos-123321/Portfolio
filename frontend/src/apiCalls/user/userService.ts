@@ -48,11 +48,35 @@ export const createUser = async (user: {
     }
 };
 
-export const updateUser = async (id: number, updatedUser: { name: string;
+export const updateUser = async (id: number, updatedUser: {
+    name: string;
     email: string;
-    comment: string[];
     password: string;
-    role: string;}) => {
+    role: string;
+    comments: {
+        id: number;
+        comment: string;
+        approved: boolean;
+    }[];}) => {
+    try {
+        const response = await axios.put(`${API_BASE_URL}/api/v1/users/${id}`, updatedUser);
+        console.log("User updated successfully:", response.data);
+        return response.data;
+    } catch (error) {
+        console.error("Error updating user:", error);
+        return null;
+    }
+};
+
+export const updateComment = async (id: number, updatedUser: {
+    name: string;
+    email: string;
+    password: string;
+    role: string;
+    comments: {
+        comment: string;
+        approved: boolean;
+    }[];}) => {
     try {
         const response = await axios.put(`${API_BASE_URL}/api/v1/users/${id}`, updatedUser);
         console.log("User updated successfully:", response.data);

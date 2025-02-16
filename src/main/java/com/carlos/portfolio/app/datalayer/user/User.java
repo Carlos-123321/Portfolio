@@ -1,6 +1,6 @@
 package com.carlos.portfolio.app.datalayer.user;
 
-import com.carlos.portfolio.app.util.StringListConverter;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -21,14 +21,14 @@ public class User {
     @JsonProperty("email")
     private String email;
 
-    @Convert(converter = StringListConverter.class)
-    @Column(columnDefinition = "JSON")
-    private List<String> comment;
-
     @JsonProperty("password")
     private String password;
 
     @JsonProperty("role")
     private String role;
+
+    @JsonManagedReference
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Comment> comments;
 
 }

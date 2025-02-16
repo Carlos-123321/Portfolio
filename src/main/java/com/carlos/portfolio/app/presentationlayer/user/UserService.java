@@ -1,6 +1,6 @@
 package com.carlos.portfolio.app.presentationlayer.user;
 
-import com.carlos.portfolio.app.datalayer.project.Project;
+import com.carlos.portfolio.app.datalayer.user.Comment;
 import com.carlos.portfolio.app.datalayer.user.User;
 import com.carlos.portfolio.app.datalayer.user.UserRepository;
 import org.springframework.stereotype.Service;
@@ -30,20 +30,32 @@ public class UserService {
     }
 
     public User saveUser(User user) {
+        if (user.getComments() != null) {
+            for (Comment comment : user.getComments()) {
+                comment.setUser(user);
+            }
+        }
         return userRepository.save(user);
     }
+
 
     public Optional<User> updateUser(Long id, User updatedUser) {
         return userRepository.findById(id).map(existingUser -> {
             existingUser.setName(updatedUser.getName());
             existingUser.setEmail(updatedUser.getEmail());
             existingUser.setPassword(updatedUser.getPassword());
-            existingUser.setComment(updatedUser.getComment());
             existingUser.setRole(updatedUser.getRole());
+
+            if (updatedUser.getComments() != null) {
+                existingUser.getComments().clear();
+                existingUser.getComments().addAll(updatedUser.getComments());
+            }
 
             return userRepository.save(existingUser);
         });
     }
+
+
 
 
 }

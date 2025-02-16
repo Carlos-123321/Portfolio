@@ -1,13 +1,63 @@
-INSERT INTO user (name, email, comment, password, role) VALUES ('Carlos Alvarado', 'carlos@gmail.com', '["Carlos is commenting."]', 'password123', 'Admin');
-INSERT INTO user (name, email, comment, password, role) VALUES ('Jane Smith', 'jane.smith@example.com', '["Jane Smith is commenting."]', 'securePass456', 'User');
-INSERT INTO user (name, email, comment, password, role) VALUES ('Alice Johnson', 'alice.johnson@example.com', '["Alice Johnson is commenting."]', 'alicePass789', 'User');
-INSERT INTO user (name, email, comment, password, role) VALUES ('Bob Brown', 'bob.brown@example.com', '["Bob Brown is commenting."]', 'bobSecure@123', 'User');
-INSERT INTO user (name, email, comment, password, role) VALUES ('Charlie Wilson', 'charlie.wilson@example.com', '["Charlie Wilson is commenting."]', 'charlieStrong456', 'User');
-INSERT INTO user (name, email, comment, password, role) VALUES ('Diana Prince', 'diana.prince@example.com', '["Diana Prince is commenting."]', 'wonderWomanPass!', 'User');
-INSERT INTO user (name, email, comment, password, role) VALUES ('Ethan Clark', 'ethan.clark@example.com', '["Ethan Clark is commenting."]', 'ethanCode987', 'User');
-INSERT INTO user (name, email, comment, password, role) VALUES ('Fiona Adams', 'fiona.adams@example.com', '["Fiona Adams is commenting."]', 'fionaSuper321', 'User');
-INSERT INTO user (name, email, comment, password, role) VALUES ('George Miller', 'george.miller@example.com', '["George Miller is commenting."]', 'georgeTech654', 'User');
-INSERT INTO user (name, email, comment, password, role) VALUES ('Hannah Lee', 'hannah.lee@example.com', '["Hannah Lee is commenting."]', 'hannahSecret789', 'User');
+INSERT INTO user (name, email, password, role) VALUES ('Carlos Alvarado', 'carlos@gmail.com','password123', 'Admin');
+INSERT INTO comment (user_id, comment, approved)
+VALUES
+    (LAST_INSERT_ID(), 'Carlos is commenting.', true),
+    (LAST_INSERT_ID(), 'This is another comment.', false);
+
+INSERT INTO user (name, email, password, role) VALUES ('Jane Smith', 'jane.smith@example.com','securePass456', 'User');
+INSERT INTO comment (user_id, comment, approved)
+VALUES
+    (LAST_INSERT_ID(), 'Jane is commenting.', true),
+    (LAST_INSERT_ID(), 'This is another comment.', false);
+
+INSERT INTO user (name, email, password, role) VALUES ('Alice Johnson', 'alice.johnson@example.com', 'alicePass789', 'User');
+INSERT INTO comment (user_id, comment, approved)
+VALUES
+    (LAST_INSERT_ID(), 'Alice is commenting.', true),
+    (LAST_INSERT_ID(), 'This is another comment.', false);
+
+INSERT INTO user (name, email, password, role) VALUES ('Bob Brown', 'bob.brown@example.com','bobSecure@123', 'User');
+INSERT INTO comment (user_id, comment, approved)
+VALUES
+    (LAST_INSERT_ID(), 'Bob is commenting.', true),
+    (LAST_INSERT_ID(), 'This is another comment.', false);
+
+INSERT INTO user (name, email, password, role) VALUES ('Charlie Wilson', 'charlie.wilson@example.com', 'charlieStrong456', 'User');
+INSERT INTO comment (user_id, comment, approved)
+VALUES
+    (LAST_INSERT_ID(), 'Charlie is commenting.', true),
+    (LAST_INSERT_ID(), 'This is another comment.', false);
+
+INSERT INTO user (name, email, password, role) VALUES ('Diana Prince', 'diana.prince@example.com', 'wonderWomanPass!', 'User');
+INSERT INTO comment (user_id, comment, approved)
+VALUES
+    (LAST_INSERT_ID(), 'Diana Prince is commenting', true),
+    (LAST_INSERT_ID(), 'This is another comment.', false);
+
+INSERT INTO user (name, email, password, role) VALUES ('Ethan Clark', 'ethan.clark@example.com','ethanCode987', 'User');
+INSERT INTO comment (user_id, comment, approved)
+VALUES
+    (LAST_INSERT_ID(), 'Ethan Clark is commenting', true),
+    (LAST_INSERT_ID(), 'Ethan Clark is commenting', false);
+
+INSERT INTO user (name, email, password, role) VALUES ('Fiona Adams', 'fiona.adams@example.com','fionaSuper321', 'User');
+INSERT INTO comment (user_id, comment, approved)
+VALUES
+    (LAST_INSERT_ID(), 'Fiona Adams is commenting', true),
+    (LAST_INSERT_ID(), 'Fiona Aasdasd', false);
+
+INSERT INTO user (name, email, password, role) VALUES ('George Miller', 'george.miller@example.com','georgeTech654', 'User');
+INSERT INTO comment (user_id, comment, approved)
+VALUES
+    (LAST_INSERT_ID(), 'George Miller is commenting', true),
+    (LAST_INSERT_ID(), 'Georgeadasdasdsa', false);
+
+INSERT INTO user (name, email, password, role) VALUES ('Hannah Lee', 'hannah.lee@example.com', 'hannahSecret789', 'User');
+INSERT INTO comment (user_id, comment, approved)
+VALUES
+    (LAST_INSERT_ID(), 'Hannah Lee is commenting', true),
+    (LAST_INSERT_ID(), 'Hannah Lee isadadsa', false);
+
 
 INSERT INTO project (name, description, cover_Image, reviews, type, github_Link, start_Date, end_Date, images, tech_Stack, features, knowledge, summary)
 VALUES (

@@ -2,7 +2,11 @@ export default interface User{
     id: number;
     name: string;
     email: string;
-    comment: string[];
+    comments: {
+        id?: number;
+        comment: string;
+        approved: boolean;
+    }[];
     password: string;
     role: string;
 }
