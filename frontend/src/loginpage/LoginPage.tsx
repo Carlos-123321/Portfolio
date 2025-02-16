@@ -1,28 +1,43 @@
-import React, { useState } from "react";
-import {Link, useNavigate} from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./loginPage.module.css";
 import { useTranslation } from "react-i18next";
+import { getUsers } from "../apiCalls/user/userService.ts";
+import User from "../apiCalls/user/User.ts";
 
 const LoginPage: React.FC = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [users, setUsers] = useState<User[]>([]);
     const navigate = useNavigate();
     const { t } = useTranslation();
 
-    const handleSubmit = (e: React.FormEvent) => {
+    useEffect(() => {
+        const fetchUsers = async () => {
+            const data = await getUsers();
+            setUsers(data);
+        };
+        fetchUsers();
+    }, []);
+
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        if (email === "admin@gmail.com" && password === "password123") {
+        const user = users.find(
+            (user) => user.email === email && user.password === password
+        );
 
+        if (user) {
             localStorage.setItem("isAuthenticated", "true");
-            localStorage.setItem("userRole", "admin");
-            localStorage.setItem("username", "Carlos");
+            localStorage.setItem("username", user.name);
+            localStorage.setItem("userEmail", user.email);
+            localStorage.setItem("userRole", user.role);
+            localStorage.setItem("userId", String(user.id));
 
-            alert("Admin is logged in");
-
+            alert("Login successful");
             navigate("/");
         } else {
-            console.log("Invalid credentials");
+            alert("Invalid credentials");
         }
     };
 
@@ -55,7 +70,9 @@ const LoginPage: React.FC = () => {
                             required
                         />
                     </div>
-                    <button type="submit" className={styles.loginBtn}>{t("Login")}</button>
+                    <button type="submit" className={styles.loginBtn}>
+                        {t("Login")}
+                    </button>
                 </form>
                 <div className={styles.forgotPassword}>
                     <a href="#">{t("Forgot Password?")}</a>

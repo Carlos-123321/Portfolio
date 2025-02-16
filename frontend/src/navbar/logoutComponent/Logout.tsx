@@ -10,8 +10,10 @@ const Logout: React.FC = () => {
         localStorage.removeItem("userRole");
         localStorage.removeItem("username");
         localStorage.removeItem("i18nextLng");
+        localStorage.removeItem("userEmail");
+        localStorage.removeItem(("userId"));
 
-        navigate("/login");
+        navigate("/");
     };
 
     if (!isAuthenticated) {

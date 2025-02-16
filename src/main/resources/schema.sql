@@ -5,7 +5,8 @@ CREATE TABLE user (
                           name VARCHAR(255),
                           email VARCHAR(255),
                           comment JSON,
-                          password VARCHAR(255)
+                          password VARCHAR(255),
+                          role VARCHAR(15)
 );
 
 DROP TABLE IF EXISTS project;

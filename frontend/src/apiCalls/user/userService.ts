@@ -48,13 +48,17 @@ export const createUser = async (user: {
     }
 };
 
-// export const updateProject = async (id: number, updatedProject: { name: string; description: string; image: string; reviews: number; type: string }) => {
-//     try {
-//         const response = await axios.put(`${API_BASE_URL}/${id}`, updatedProject);
-//         console.log("Project updated successfully:", response.data);
-//         return response.data;
-//     } catch (error) {
-//         console.error("Error updating project:", error);
-//         return null;
-//     }
-// };
+export const updateUser = async (id: number, updatedUser: { name: string;
+    email: string;
+    comment: string[];
+    password: string;
+    role: string;}) => {
+    try {
+        const response = await axios.put(`${API_BASE_URL}/api/v1/users/${id}`, updatedUser);
+        console.log("User updated successfully:", response.data);
+        return response.data;
+    } catch (error) {
+        console.error("Error updating user:", error);
+        return null;
+    }
+};

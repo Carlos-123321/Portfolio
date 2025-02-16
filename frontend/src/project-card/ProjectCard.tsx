@@ -82,7 +82,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ id, name, description, coverI
                         </svg>
 
 
-                        {userRole === "admin" && (
+                        {userRole === "Admin" && (
 
                         <svg onClick={handleDeleteClick} xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                              fill="currentColor"
@@ -103,7 +103,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ id, name, description, coverI
                             </a>
                         )}
 
-                        {userRole === "admin" && (
+                        {userRole === "Admin" && (
                         <svg onClick={() => {
                             setIsUpdateModalOpen(true);
                         }} xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
