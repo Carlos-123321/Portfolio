@@ -5,9 +5,13 @@ import navbarStyles from "./navbar.module.css";
 import {useTranslation} from "react-i18next";
 import LanguageSwitcher from "./LanguageSwitcher.tsx";
 import CVComponent from "./cvComponent/CVComponent.tsx";
+import Logout from "./logoutComponent/Logout.tsx";
 
 const Navbar: React.FC = () => {
     const { t } = useTranslation();
+
+    const isAuthenticated = localStorage.getItem("isAuthenticated");
+    const username = localStorage.getItem("username");
 
     return (
         <>
@@ -30,9 +34,16 @@ const Navbar: React.FC = () => {
                     <Link to="/academicJourney" className={navbarStyles.portfolioTextLink}>
                         {t("Academic Journey")}
                     </Link>
-                    <Link to="/login" className={navbarStyles.portfolioTextLink}>
-                        {t("Login")}
-                    </Link>
+                    {isAuthenticated === "true" ? (
+                        <div className={navbarStyles.usernameDisplay}>
+                            Welcome, {username}!
+                        </div>
+                    ) : (
+                        <Link to="/login" className={navbarStyles.portfolioTextLink}>
+                            {t("Login")}
+                        </Link>
+                    )}
+                    <Logout/>
                 </div>
             </div>
 

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./loginPage.module.css";
-import {useTranslation} from "react-i18next";
+import { useTranslation } from "react-i18next";
 
 const LoginPage: React.FC = () => {
     const [email, setEmail] = useState("");
@@ -13,6 +13,13 @@ const LoginPage: React.FC = () => {
         e.preventDefault();
 
         if (email === "admin@gmail.com" && password === "password123") {
+
+            localStorage.setItem("isAuthenticated", "true");
+            localStorage.setItem("userRole", "admin");
+            localStorage.setItem("username", "Carlos");
+
+            alert("Admin is logged in");
+
             navigate("/");
         } else {
             console.log("Invalid credentials");

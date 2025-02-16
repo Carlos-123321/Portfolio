@@ -9,7 +9,8 @@ public class SecurityConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("https://carlos-portfolio-orcin.vercel.app")
+//                .allowedOrigins("https://carlos-portfolio-orcin.vercel.app")
+                .allowedOrigins("http://localhost:5174", "https://carlos-portfolio-orcin.vercel.app")
                 .allowedMethods("GET", "POST", "PUT", "DELETE")
                 .allowCredentials(true)
                 .maxAge(3600);
