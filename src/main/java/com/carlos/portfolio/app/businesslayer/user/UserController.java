@@ -1,13 +1,13 @@
 package com.carlos.portfolio.app.businesslayer.user;
 
+import com.carlos.portfolio.app.datalayer.project.Project;
 import com.carlos.portfolio.app.datalayer.user.User;
 import com.carlos.portfolio.app.presentationlayer.user.UserService;  // Import the service class
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin(origins = "http://localhost:5173")
 @RestController
@@ -25,11 +25,32 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-//@GetMapping("/users")
-//public List<User> getAllUsers() {
-//    List<User> users = userService.getAllUsers();
-//    System.out.println("Fetched users: " + users);
-//    return users;
-//}
+    @GetMapping("/users/{id}")
+    public ResponseEntity<User> getUserById(@PathVariable Long id) {
+        return userService.getUserById(id)
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    @DeleteMapping("/users/{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
+        Optional<User> existingUserOpt = userService.getUserById(id);
+
+        if (existingUserOpt.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        userService.deleteUser(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/users")
+    public ResponseEntity<User> createUser(@RequestBody User user) {
+        // Save the new project
+        User createdUser = userService.saveUser(user);
+
+        // Return a response with the created project and a 201 Created status
+        return ResponseEntity.status(201).body(createdUser);
+    }
 
 }

@@ -1,11 +1,10 @@
 import axios from 'axios';
 
-// const API_BASE_URL = 'https://peaceful-sierra-10013-245dc32f5bfd.herokuapp.com/api/v1/projects';
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080/api/v1/projects';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:8080";
 
 export const getProjects = async () => {
     try {
-        const response = await axios.get(API_BASE_URL);
+        const response = await axios.get(`${API_BASE_URL}/api/v1/projects`);;
         return response.data;
     } catch (error) {
         console.error("There was an error fetching the projects!", error);
@@ -15,7 +14,7 @@ export const getProjects = async () => {
 
 export const getProjectById = async (id: number) => {
     try {
-        const response = await axios.get(`${API_BASE_URL}/${id}`);
+        const response = await axios.get(`${API_BASE_URL}/api/v1/projects/${id}`);
         return response.data;
     } catch (error) {
         console.error(`There was an error fetching the project with ID: ${id}`, error);
@@ -25,7 +24,7 @@ export const getProjectById = async (id: number) => {
 
 export const deleteProject = async (id: number) => {
     try {
-        const response = await axios.delete(`${API_BASE_URL}/${id}`);
+        const response = await axios.delete(`${API_BASE_URL}/api/v1/projects/${id}`);
         console.log(`Project with ID ${id} deleted successfully`);
         return response.data;
     } catch (error) {
@@ -42,7 +41,7 @@ export const createProject = async (project: {
     type: string;
 }) => {
     try {
-        const response = await axios.post(API_BASE_URL, project);
+        const response = await axios.post(API_BASE_URL + "/api/v1/projects", project);
         console.log("Project created successfully:", response.data);
         return response.data;
     } catch (error) {
@@ -53,7 +52,7 @@ export const createProject = async (project: {
 
 export const updateProject = async (id: number, updatedProject: { name: string; description: string; image: string; reviews: number; type: string }) => {
     try {
-        const response = await axios.put(`${API_BASE_URL}/${id}`, updatedProject);
+        const response = await axios.put(`${API_BASE_URL}/api/v1/projects/${id}`, updatedProject);
         console.log("Project updated successfully:", response.data);
         return response.data;
     } catch (error) {

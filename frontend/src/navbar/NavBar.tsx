@@ -23,6 +23,9 @@ const Navbar: React.FC = () => {
                     <Link to="/" className={navbarStyles.homeTextLink}>
                         {t("Home")}
                     </Link>
+                    <Link to="/comment" className={navbarStyles.homeTextLink}>
+                        {t("Leave a comment")}
+                    </Link>
                 </div>
 
                 <div className={navbarStyles.middleLine}/>

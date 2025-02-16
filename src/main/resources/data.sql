@@ -1,13 +1,13 @@
-INSERT INTO user (name, email) VALUES ('John Doe', 'john.doe@example.com');
-INSERT INTO user (name, email) VALUES ('Jane Smith', 'jane.smith@example.com');
-INSERT INTO user (name, email) VALUES ('Alice Johnson', 'alice.johnson@example.com');
-INSERT INTO user (name, email) VALUES ('Bob Brown', 'bob.brown@example.com');
-INSERT INTO user (name, email) VALUES ('Charlie Wilson', 'charlie.wilson@example.com');
-INSERT INTO user (name, email) VALUES ('Diana Prince', 'diana.prince@example.com');
-INSERT INTO user (name, email) VALUES ('Ethan Clark', 'ethan.clark@example.com');
-INSERT INTO user (name, email) VALUES ('Fiona Adams', 'fiona.adams@example.com');
-INSERT INTO user (name, email) VALUES ('George Miller', 'george.miller@example.com');
-INSERT INTO user (name, email) VALUES ('Hannah Lee', 'hannah.lee@example.com');
+INSERT INTO user (name, email, comment, password) VALUES ('John Doe', 'john.doe@example.com', '["John Doe is commenting."]', 'password123');
+INSERT INTO user (name, email, comment, password) VALUES ('Jane Smith', 'jane.smith@example.com', '["Jane Smith is commenting."]', 'securePass456');
+INSERT INTO user (name, email, comment, password) VALUES ('Alice Johnson', 'alice.johnson@example.com', '["Alice Johnson is commenting."]', 'alicePass789');
+INSERT INTO user (name, email, comment, password) VALUES ('Bob Brown', 'bob.brown@example.com', '["Bob Brown is commenting."]', 'bobSecure@123');
+INSERT INTO user (name, email, comment, password) VALUES ('Charlie Wilson', 'charlie.wilson@example.com', '["Charlie Wilson is commenting."]', 'charlieStrong456');
+INSERT INTO user (name, email, comment, password) VALUES ('Diana Prince', 'diana.prince@example.com', '["Diana Prince is commenting."]', 'wonderWomanPass!');
+INSERT INTO user (name, email, comment, password) VALUES ('Ethan Clark', 'ethan.clark@example.com', '["Ethan Clark is commenting."]', 'ethanCode987');
+INSERT INTO user (name, email, comment, password) VALUES ('Fiona Adams', 'fiona.adams@example.com', '["Fiona Adams is commenting."]', 'fionaSuper321');
+INSERT INTO user (name, email, comment, password) VALUES ('George Miller', 'george.miller@example.com', '["George Miller is commenting."]', 'georgeTech654');
+INSERT INTO user (name, email, comment, password) VALUES ('Hannah Lee', 'hannah.lee@example.com', '["Hannah Lee is commenting."]', 'hannahSecret789');
 
 INSERT INTO project (name, description, cover_Image, reviews, type, github_Link, start_Date, end_Date, images, tech_Stack, features, knowledge, summary)
 VALUES (

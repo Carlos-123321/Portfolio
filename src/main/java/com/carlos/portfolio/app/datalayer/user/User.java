@@ -1,11 +1,11 @@
 package com.carlos.portfolio.app.datalayer.user;
 
+import com.carlos.portfolio.app.util.StringListConverter;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
+
+import java.util.List;
 
 @Entity
 @Data
@@ -20,5 +20,12 @@ public class User {
 
     @JsonProperty("email")
     private String email;
+
+    @Convert(converter = StringListConverter.class)
+    @Column(columnDefinition = "JSON")
+    private List<String> comment;
+
+    @JsonProperty("password")
+    private String password;
 
 }

@@ -24,6 +24,8 @@ const Portfolio: React.FC = () => {
 
     const { t } = useTranslation();
 
+    const userRole = localStorage.getItem("userRole");
+
     return (
         <>
             <NavBar />
@@ -39,7 +41,11 @@ const Portfolio: React.FC = () => {
                         <p className={portfolioStyles.myPortfolioText}>
                             {t("My Projects")}
                         </p>
-                        <button className={portfolioStyles.createProjectButton} onClick={() => setIsModalOpen(true)}>Create Project</button>
+                        {userRole === "admin" && (
+                            <button className={portfolioStyles.createProjectButton} onClick={() => setIsModalOpen(true)}>
+                                {t("Create Project")}
+                            </button>
+                        )}
                         <p className={portfolioStyles.myPortfolioSubText}>
                             {t("portfolioText")}
                         </p>

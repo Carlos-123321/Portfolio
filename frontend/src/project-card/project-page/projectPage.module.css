@@ -83,7 +83,7 @@
 }
 
 .Arrow:hover {
-    color: sandybrown;
+    color: #b7f3b5;
 }
 
 .projectPageSecondSectionMiddleSection{
@@ -167,7 +167,6 @@
 }
 
 .projectPageThirdSectionInDepthSummary{
-    border: 1px solid blue;
     width: 100%;
     height: 70vh;
     display: flex;

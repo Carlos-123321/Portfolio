@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import styles from "./loginPage.module.css";
 import { useTranslation } from "react-i18next";
 
@@ -60,6 +60,12 @@ const LoginPage: React.FC = () => {
                 <div className={styles.forgotPassword}>
                     <a href="#">{t("Forgot Password?")}</a>
                 </div>
+
+                <Link to="/sign-up">
+                    <div>
+                        <p>Don't have an account? Sign up!</p>
+                    </div>
+                </Link>
             </div>
         </div>
     );

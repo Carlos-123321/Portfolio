@@ -5,6 +5,8 @@ import Portfolio from "./portfolio/Portfolio.tsx";
 import ProjectPage from "./project-card/project-page/ProjectPage.tsx";
 import LoginPage from "./loginpage/LoginPage.tsx";
 import AcademicJourney from "./academicJourney/AcademicJourney.tsx";
+import Comment from "./commentPage/Comment.tsx";
+import Sign from "./loginpage/Sign.tsx";
 
 const App: React.FC = () => {
     return (
@@ -15,6 +17,8 @@ const App: React.FC = () => {
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/project/:id" element={<ProjectPage />} />
                 <Route path="/academicJourney" element={<AcademicJourney />} />
+                <Route path="/comment" element={<Comment />} />
+                <Route path="/sign-up" element={<Sign />} />
             </Routes>
         </Router>
     );
