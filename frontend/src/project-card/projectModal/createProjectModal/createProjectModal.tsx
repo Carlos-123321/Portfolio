@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import modalStyles from "./createProjectModal.module.css";
 import { createProject } from "../../../apiCalls/project/projectService.ts";
 import Project from "../../../apiCalls/project/Project.ts";
+import CreateProject from "../../../apiCalls/project/CreateProject.ts";
 
 interface CreateProjectModalProps {
     onClose: () => void;
 }
 
 const CreateProjectModal: React.FC<CreateProjectModalProps> = ({ onClose }) => {
-    const [formData, setFormData] = useState<Project>({
+    const [formData, setFormData] = useState<CreateProject>({
         id: null,
         name: "",
         description: "",
