@@ -95,7 +95,18 @@ const Homepage: React.FC = () => {
 
                 <div className={homepageStyles.legendSection}>
                     <div className={homepageStyles.legendContainer}>
-                        Lenge
+                        <p className={homepageStyles.legendTitle}>Expertise Legend</p>
+                        <div className={homepageStyles.legendTitleFirstRow}>
+                            <div className={homepageStyles.legendTitleBeginnerRow}>
+                                1 = Beginner 🤓
+                            </div>
+                            <div className={homepageStyles.legendTitleIntermediateRow}>
+                                5 = Intermediate 📈
+                            </div>
+                        </div>
+                        <div className={homepageStyles.legendTitleExpertRow}>
+                            10 = Expert 🚀
+                        </div>
                     </div>
                 </div>
 
@@ -108,29 +119,78 @@ const Homepage: React.FC = () => {
                         </div>
 
                         <div className={homepageStyles.skillsLeftIcons}>
-                            <img
-                                src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg"
-                                alt="html5" width="40" height="40"/>
-                            <img
-                                src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg"
-                                alt="css3" width="40" height="40"/>
-                            <img
-                                src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg"
-                                alt="javascript" width="40" height="40"/>
-                            <img
-                                src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg"
-                                alt="typescript" width="40" height="40"/>
-                            <img
-                                src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg"
-                                alt="react" width="40" height="40"/>
-                            <img
-                                src="https://raw.githubusercontent.com/devicons/devicon/master/icons/bootstrap/bootstrap-plain-wordmark.svg"
-                                alt="bootstrap" width="40" height="40"/>
-                            <img src="https://www.vectorlogo.zone/logos/figma/figma-icon.svg" alt="figma" width="40"
-                                 height="40"/>
-                            <img
-                                src="https://raw.githubusercontent.com/devicons/devicon/master/icons/photoshop/photoshop-line.svg"
-                                alt="photoshop" width="40" height="40"/>
+
+                            <div className={homepageStyles.skillsLeftIconsContainer}>
+                                <img
+                                    src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg"
+                                    alt="html5" width="40" height="40"/>
+                                <div className={homepageStyles.skillsLeftIconsContainerNumericalValue}>
+                                    9
+                                </div>
+                            </div>
+
+                            <div className={homepageStyles.skillsLeftIconsContainer}>
+                                <img
+                                    src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg"
+                                    alt="css3" width="40" height="40"/>
+                                <div className={homepageStyles.skillsLeftIconsContainerNumericalValue}>
+                                    9
+                                </div>
+                            </div>
+
+                            <div className={homepageStyles.skillsLeftIconsContainer}>
+                                <img
+                                    src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg"
+                                    alt="javascript" width="40" height="40"/>
+                                <div className={homepageStyles.skillsLeftIconsContainerNumericalValue}>
+                                    8
+                                </div>
+                            </div>
+
+                            <div className={homepageStyles.skillsLeftIconsContainer}>
+                                <img
+                                    src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg"
+                                    alt="typescript" width="40" height="40"/>
+                                <div className={homepageStyles.skillsLeftIconsContainerNumericalValue}>
+                                    7
+                                </div>
+                            </div>
+
+                            <div className={homepageStyles.skillsLeftIconsContainer}>
+                                <img
+                                    src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg"
+                                    alt="react" width="40" height="40"/>
+                                <div className={homepageStyles.skillsLeftIconsContainerNumericalValue}>
+                                    8
+                                </div>
+                            </div>
+
+                            <div className={homepageStyles.skillsLeftIconsContainer}>
+                                <img
+                                    src="https://raw.githubusercontent.com/devicons/devicon/master/icons/bootstrap/bootstrap-plain-wordmark.svg"
+                                    alt="bootstrap" width="40" height="40"/>
+                                <div className={homepageStyles.skillsLeftIconsContainerNumericalValue}>
+                                    8
+                                </div>
+                            </div>
+
+                            <div className={homepageStyles.skillsLeftIconsContainer}>
+                                <img src="https://www.vectorlogo.zone/logos/figma/figma-icon.svg" alt="figma" width="40"
+                                     height="40"/>
+                                <div className={homepageStyles.skillsLeftIconsContainerNumericalValue}>
+                                    6
+                                </div>
+                            </div>
+
+                            <div className={homepageStyles.skillsLeftIconsContainer}>
+                                <img
+                                    src="https://raw.githubusercontent.com/devicons/devicon/master/icons/photoshop/photoshop-line.svg"
+                                    alt="photoshop" width="40" height="40"/>
+                                <div className={homepageStyles.skillsLeftIconsContainerNumericalValue}>
+                                    5
+                                </div>
+                            </div>
+
                         </div>
                     </div>
 
@@ -140,25 +200,64 @@ const Homepage: React.FC = () => {
                         </div>
 
                         <div className={homepageStyles.skillsLeftIcons}>
-                            <img
-                                src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg"
-                                alt="java" width="40" height="40"/>
-                            <img
-                                src="https://raw.githubusercontent.com/devicons/devicon/master/icons/csharp/csharp-original.svg"
-                                alt="csharp" width="40" height="40"/>
-                            <img
-                                src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg"
-                                alt="python" width="40" height="40"/>
-                            <img
-                                src="https://raw.githubusercontent.com/devicons/devicon/master/icons/dot-net/dot-net-original-wordmark.svg"
-                                alt=".NET" width="40" height="40"/>
-                            <img src="https://www.vectorlogo.zone/logos/springio/springio-icon.svg" alt="Spring Boot"
-                                 width="40" height="40"/>
-                            <img
-                                src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg"
-                                alt="MySQL" width="40" height="40"/>
-                            <img src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" alt="Postman"
-                                 width="40" height="40"/>
+                            <div className={homepageStyles.skillsLeftIconsContainer}>
+                                <img
+                                    src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg"
+                                    alt="java" width="40" height="40"/>
+                                <div className={homepageStyles.skillsLeftIconsContainerNumericalValue}>
+                                    8
+                                </div>
+                            </div>
+
+                            <div className={homepageStyles.skillsLeftIconsContainer}>
+                                <img
+                                    src="https://raw.githubusercontent.com/devicons/devicon/master/icons/csharp/csharp-original.svg"
+                                    alt="csharp" width="40" height="40"/>
+                                <div className={homepageStyles.skillsLeftIconsContainerNumericalValue}>
+                                    6
+                                </div>
+                            </div>
+
+                            <div className={homepageStyles.skillsLeftIconsContainer}>
+                                <img
+                                    src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg"
+                                    alt="python" width="40" height="40"/>
+                                <div className={homepageStyles.skillsLeftIconsContainerNumericalValue}>
+                                    6
+                                </div>
+                            </div>
+                            <div className={homepageStyles.skillsLeftIconsContainer}>
+                                <img
+                                    src="https://raw.githubusercontent.com/devicons/devicon/master/icons/dot-net/dot-net-original-wordmark.svg"
+                                    alt=".NET" width="40" height="40"/>
+                                <div className={homepageStyles.skillsLeftIconsContainerNumericalValue}>
+                                    8
+                                </div>
+                            </div>
+                            <div className={homepageStyles.skillsLeftIconsContainer}>
+                                <img src="https://www.vectorlogo.zone/logos/springio/springio-icon.svg"
+                                     alt="Spring Boot"
+                                     width="40" height="40"/>
+                                <div className={homepageStyles.skillsLeftIconsContainerNumericalValue}>
+                                    8
+                                </div>
+                            </div>
+                            <div className={homepageStyles.skillsLeftIconsContainer}>
+                                <img
+                                    src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg"
+                                    alt="MySQL" width="40" height="40"/>
+                                <div className={homepageStyles.skillsLeftIconsContainerNumericalValue}>
+                                    8
+                                </div>
+                            </div>
+                            <div className={homepageStyles.skillsLeftIconsContainer}>
+                                <img src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg"
+                                     alt="Postman"
+                                     width="40" height="40"/>
+                                <div className={homepageStyles.skillsLeftIconsContainerNumericalValue}>
+                                    9
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -171,15 +270,15 @@ const Homepage: React.FC = () => {
                     </div>
 
                     <div className={homepageStyles.softSkillsContainer}>
-                        <p className={homepageStyles.softSkillsTextStyle}>• Communication to Detail</p>
-                        <p className={homepageStyles.softSkillsTextStyle}>• Problem-solving</p>
-                        <p className={homepageStyles.softSkillsTextStyle}>• Time Management</p>
-                        <p className={homepageStyles.softSkillsTextStyle}>• Adaptability</p>
-                        <p className={homepageStyles.softSkillsTextStyle}>• Collaboration</p>
-                        <p className={homepageStyles.softSkillsTextStyle}>• Attention to Detail</p>
-                        <p className={homepageStyles.softSkillsTextStyle}>• Leadership</p>
-                        <p className={homepageStyles.softSkillsTextStyle}>• Creative Thinking</p>
-                        <p className={homepageStyles.softSkillsTextStyle}>• Customer Focus</p>
+                        <div className={homepageStyles.softSkillsTextStyleContainer}><p className={homepageStyles.softSkillsTextStyle}>• Communication</p></div>
+                        <div className={homepageStyles.softSkillsTextStyleContainer}><p className={homepageStyles.softSkillsTextStyle}>• Problem-solving</p></div>
+                        <div className={homepageStyles.softSkillsTextStyleContainer}><p className={homepageStyles.softSkillsTextStyle}>• Time Management</p></div>
+                        <div className={homepageStyles.softSkillsTextStyleContainer}><p className={homepageStyles.softSkillsTextStyle}>• Adaptability</p></div>
+                        <div className={homepageStyles.softSkillsTextStyleContainer}><p className={homepageStyles.softSkillsTextStyle}>• Collaboration</p></div>
+                        <div className={homepageStyles.softSkillsTextStyleContainer}><p className={homepageStyles.softSkillsTextStyle}>• Attention to Detail</p></div>
+                        <div className={homepageStyles.softSkillsTextStyleContainer}><p className={homepageStyles.softSkillsTextStyle}>• Leadership</p></div>
+                        <div className={homepageStyles.softSkillsTextStyleContainer}><p className={homepageStyles.softSkillsTextStyle}>• Creative Thinking</p></div>
+                        <div className={homepageStyles.softSkillsTextStyleContainer}><p className={homepageStyles.softSkillsTextStyle}>• Customer Focus</p></div>
                     </div>
 
                 </div>

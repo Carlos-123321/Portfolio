@@ -16,8 +16,11 @@
     padding: 20px;
     border-radius: 8px;
     position: relative;
-    width: 300px;
+    width: 600px; /* Adjusted width for more space */
     max-width: 90%;
+    border: 1px solid #ccc;
+    display: flex;
+    flex-direction: column; /* Keep the modal content vertically aligned */
 }
 
 .closeButton {
@@ -31,6 +34,57 @@
 }
 
 .modalBody {
-    margin-top: 20px;
-    text-align: center;
+    display: flex;
+    flex-wrap: wrap; /* Allows wrapping elements into rows */
+    gap: 20px; /* Space between items */
+    padding-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    width: 100%; /* Full width for the label */
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* Make every fourth item wrap into a new row */
+.modalBody > div {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 calc(25% - 20px); /* 4 items per row */
+}
+
+/* Adjusting inputs for better spacing */
+input[type="text"] {
+    padding: 8px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #45a049;
 }

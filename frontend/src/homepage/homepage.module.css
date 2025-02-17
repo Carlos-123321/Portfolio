@@ -54,7 +54,6 @@
 }
 
 .nextPage {
-    border: 1px solid #8e7d5b;
     width: 100%;
     height: 100vh;
     background: linear-gradient(135deg, #d6c29f, #8e7d5b);
@@ -71,7 +70,6 @@
     margin-left: auto;
     margin-top: 2%;
     font-family: 'Lora', serif;
-    border: 1px solid red;
 }
 
 .reviewSection {
@@ -98,14 +96,13 @@
 
 .skillSection{
     width: 100%;
-    height: 120vh;
+    height: fit-content;
     background: linear-gradient(135deg, #b7f3b5, #faf2e5);
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 2rem 2rem 10%;
-    border: 1px solid red;
 }
 
 .aboutMeSection{
@@ -117,7 +114,6 @@
     flex-direction: column;
     align-items: center;
     padding: 2rem 2rem 10%;
-    border: 1px solid green;
 }
 
 
@@ -224,7 +220,6 @@
 }
 
 .innerAboutSection{
-    border: 2px solid yellow;
     display: flex;
     flex-direction: row;
     padding-top: 5%;
@@ -252,7 +247,6 @@
 }
 
 .skillsFirstRow{
-    border: 1px solid blue;
     display: flex;
     width: 100%;
     height: 50%;
@@ -261,14 +255,12 @@
 }
 
 .skillsFirstRowLeft{
-    border:1px solid red;
     width: 50%;
     display: flex;
     flex-direction: column;
 }
 
 .skillsFirstRowRight{
-    border:1px solid red;
     width: 50%;
     display: flex;
    flex-direction: column;
@@ -281,7 +273,6 @@
 }
 
 .skillsLeftIcons{
-    border: 1px solid red;
     display: flex;
     height: 60%;
     justify-content: space-around;
@@ -298,10 +289,9 @@
 }
 
 .skillsSecondRow{
-    border: 1px solid blue;
     display: flex;
     width: 100%;
-    height: fit-content;
+    height: 250px;
     justify-content: center;
     flex-direction: column;
     align-items: center;
@@ -309,27 +299,94 @@
 }
 
 .legendSection{
-    border: 1px solid red;
-    height: 25vh;
+    height: 150px;
     width: 100%;
 }
 
-.softSkillsContainer{
-    border: 1px solid yellow;
+.softSkillsContainer {
     display: flex;
-    flex-direction: row;
+    flex-wrap: wrap;
     width: 80%;
-    height: 100%;
+    gap: 10px;
+    justify-content: center;
 }
 
+
 .softSkillsTextStyle{
-    color: #007bff;
+    color: #302D2D;
     margin-left: 20px;
     margin-right: 20px;
+    font-family: 'Lora', serif;
+}
+
+.softSkillsTextStyleContainer{
+   background-color: white;
+    border-radius: 10px;
+}
+
+.softSkillsTextStyleContainer:hover {
+    transform: scale(1.2);
 }
 
 .legendContainer{
-    border: 1px solid yellow;
-    width: 20%;
-    height: 200px;
+    border: 2px solid ghostwhite;
+    width: 30%;
+    height: 150px;
+    margin-left: auto;
+    margin-right: 5%;
+    background-color: white;
+    border-radius: 10px;
+    position: relative;
+    top: -30%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.legendTitle{
+    height: fit-content;
+    font-family: 'Lora', serif;
+    color: #302D2D;
+    font-size: 20px;
+    margin-top: 3%;
+}
+
+.skillsLeftIconsContainer{
+    padding: 3px;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+
+.skillsLeftIconsContainerNumericalValue{
+    top: -27%;
+    right: -20%;
+    position: absolute;
+    background-color: white;
+    padding: 4px;
+    border-radius: 10px;
+    font-family: 'Lora', serif;
+}
+
+.legendTitleFirstRow{
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    margin-top: 5%;
+}
+
+.legendTitleBeginnerRow{
+    font-family: 'Lora', serif;
+}
+
+.legendTitleIntermediateRow{
+    font-family: 'Lora', serif;
+}
+
+.legendTitleExpertRow{
+    font-family: 'Lora', serif;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 5%;
 }

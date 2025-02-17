@@ -53,7 +53,7 @@ const ContactForm: React.FC = () => {
 
             <div className={styles.marginSpace}/>
         <div className={styles.formContainer}>
-            <h2>Contact Me</h2>
+            <h2>Send me an email</h2>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="name">Name:</label>
                 <input
