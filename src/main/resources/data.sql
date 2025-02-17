@@ -1,63 +1,37 @@
 INSERT INTO user (name, email, password, role) VALUES ('Carlos Alvarado', 'carlos@gmail.com','password123', 'Admin');
 INSERT INTO comment (user_id, comment, approved)
 VALUES
-    (LAST_INSERT_ID(), 'Carlos is commenting.', true),
-    (LAST_INSERT_ID(), 'This is another comment.', false);
+    (LAST_INSERT_ID(), 'Good portfolio design', true),
+    (LAST_INSERT_ID(), 'User interface experience is amazing', false);
 
-INSERT INTO user (name, email, password, role) VALUES ('Jane Smith', 'jane.smith@example.com','securePass456', 'User');
+INSERT INTO user (name, email, password, role) VALUES ('Andrew Badea', 'andrewbadea1996@gmail.com','securePass456', 'User');
 INSERT INTO comment (user_id, comment, approved)
 VALUES
-    (LAST_INSERT_ID(), 'Jane is commenting.', true),
-    (LAST_INSERT_ID(), 'This is another comment.', false);
-
-INSERT INTO user (name, email, password, role) VALUES ('Alice Johnson', 'alice.johnson@example.com', 'alicePass789', 'User');
-INSERT INTO comment (user_id, comment, approved)
-VALUES
-    (LAST_INSERT_ID(), 'Alice is commenting.', true),
-    (LAST_INSERT_ID(), 'This is another comment.', false);
-
-INSERT INTO user (name, email, password, role) VALUES ('Bob Brown', 'bob.brown@example.com','bobSecure@123', 'User');
-INSERT INTO comment (user_id, comment, approved)
-VALUES
-    (LAST_INSERT_ID(), 'Bob is commenting.', true),
-    (LAST_INSERT_ID(), 'This is another comment.', false);
-
-INSERT INTO user (name, email, password, role) VALUES ('Charlie Wilson', 'charlie.wilson@example.com', 'charlieStrong456', 'User');
-INSERT INTO comment (user_id, comment, approved)
-VALUES
-    (LAST_INSERT_ID(), 'Charlie is commenting.', true),
-    (LAST_INSERT_ID(), 'This is another comment.', false);
-
-INSERT INTO user (name, email, password, role) VALUES ('Diana Prince', 'diana.prince@example.com', 'wonderWomanPass!', 'User');
-INSERT INTO comment (user_id, comment, approved)
-VALUES
-    (LAST_INSERT_ID(), 'Diana Prince is commenting', true),
-    (LAST_INSERT_ID(), 'This is another comment.', false);
+    (LAST_INSERT_ID(), 'Great portfolio, I loved the unique choice of colors used !', true);
 
 INSERT INTO user (name, email, password, role) VALUES ('Ethan Clark', 'ethan.clark@example.com','ethanCode987', 'User');
 INSERT INTO comment (user_id, comment, approved)
 VALUES
-    (LAST_INSERT_ID(), 'Ethan Clark is commenting', true),
-    (LAST_INSERT_ID(), 'Ethan Clark is commenting', false);
+    (LAST_INSERT_ID(), 'The animations and smooth transitions make the site feel super polished. Great job!', true),
+    (LAST_INSERT_ID(), 'Really love the color scheme! It feels modern and clean.', true);
 
 INSERT INTO user (name, email, password, role) VALUES ('Fiona Adams', 'fiona.adams@example.com','fionaSuper321', 'User');
 INSERT INTO comment (user_id, comment, approved)
 VALUES
-    (LAST_INSERT_ID(), 'Fiona Adams is commenting', true),
-    (LAST_INSERT_ID(), 'Fiona Aasdasd', false);
+    (LAST_INSERT_ID(), 'Your attention to detail is amazing! Everything is so well-organized.', true),
+    (LAST_INSERT_ID(), 'The UI/UX design is so intuitive! It’s very easy to navigate.', true);
 
 INSERT INTO user (name, email, password, role) VALUES ('George Miller', 'george.miller@example.com','georgeTech654', 'User');
 INSERT INTO comment (user_id, comment, approved)
 VALUES
-    (LAST_INSERT_ID(), 'George Miller is commenting', true),
-    (LAST_INSERT_ID(), 'Georgeadasdasdsa', false);
+    (LAST_INSERT_ID(), 'This project is incredibly well-structured! You clearly put a lot of thought into it.', true),
+    (LAST_INSERT_ID(), 'I love how fast and responsive everything is. Keep up the great work!', true);
 
 INSERT INTO user (name, email, password, role) VALUES ('Hannah Lee', 'hannah.lee@example.com', 'hannahSecret789', 'User');
 INSERT INTO comment (user_id, comment, approved)
 VALUES
-    (LAST_INSERT_ID(), 'Hannah Lee is commenting', true),
-    (LAST_INSERT_ID(), 'Hannah Lee isadadsa', false);
-
+    (LAST_INSERT_ID(), 'The documentation is super clear and helpful. Everything is easy to understand.', true),
+    (LAST_INSERT_ID(), 'Fantastic work! The performance is excellent, and it runs so smoothly.', true);
 
 INSERT INTO project (name, description, cover_Image, reviews, type, github_Link, start_Date, end_Date, images, tech_Stack, features, knowledge, summary)
 VALUES (
