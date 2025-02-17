@@ -12,14 +12,15 @@
 }
 
 .modalContent {
-    background: beige;
+    background: white;
     padding: 20px;
     border-radius: 10px;
     width: 60%;
     text-align: center;
     position: relative;
-    border: 1px solid green;
-
+    border: 2px solid ghostwhite;
+    max-height: 80vh;
+    overflow-y: auto;
 }
 
 .closeButton {
@@ -40,20 +41,47 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
+    justify-content: space-around;
+    gap: 20px;
 }
 
 .modalInput{
     border-radius: 10px;
-    border: 2px solid burlywood;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    color: #302D2D;
     height: 5vh;
+    width: fit-content;
 }
 
 .modalButton{
-    background-color: burlywood;
-    color: white;
-    height: 5vh;
+    background-color: #b7f3b5;
+    color: #302D2D;
+    height: fit-content;
     width: 30%;
     cursor: pointer;
+    border: 2px solid #302D2D;
+    font-family: 'Lora', serif;
+    font-weight: bolder;
+    margin-top: 2%;
+}
+
+.modalButton:hover{
+    background-color: #ee6363;
+    color: #302D2D;
+}
+
+.modalTitle{
+    color: #302D2D;
+    font-family: 'Lora', serif;
+    font-size: 30px;
+    font-weight: bolder;
+    margin-bottom: 5%;
+}
+
+.modalLabel {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 5px;
+    color: #302D2D;
+    text-align: left;
+    font-family: 'Lora', serif;
 }
