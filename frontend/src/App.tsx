@@ -8,6 +8,7 @@ import AcademicJourney from "./academicJourney/AcademicJourney.tsx";
 import Comment from "./commentPage/Comment.tsx";
 import Sign from "./loginpage/Sign.tsx";
 import Dashboard from "./dashboard/Dashboard.tsx";
+import EmailPage from "./emailPage/EmailPage.tsx";
 
 const App: React.FC = () => {
     return (
@@ -21,6 +22,7 @@ const App: React.FC = () => {
                 <Route path="/comment" element={<Comment />} />
                 <Route path="/sign-up" element={<Sign />} />
                 <Route path="/adminDashboard" element={<Dashboard />} />
+                <Route path="/email" element={<EmailPage />} />
             </Routes>
         </Router>
     );

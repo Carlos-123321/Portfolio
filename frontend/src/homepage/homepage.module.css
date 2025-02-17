@@ -98,8 +98,8 @@
 
 .skillSection{
     width: 100%;
-    height: 100vh;
-    background: linear-gradient(135deg, #efea8e, #d6c29f);
+    height: 120vh;
+    background: linear-gradient(135deg, #b7f3b5, #faf2e5);
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -249,4 +249,87 @@
     height: 40vh;
     border-radius: 10px;
     overflow: hidden;
+}
+
+.skillsFirstRow{
+    border: 1px solid blue;
+    display: flex;
+    width: 100%;
+    height: 50%;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.skillsFirstRowLeft{
+    border:1px solid red;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.skillsFirstRowRight{
+    border:1px solid red;
+    width: 50%;
+    display: flex;
+   flex-direction: column;
+}
+
+.skillsTitle{
+    font-family: 'Lora', serif;
+    font-size: 25px;
+    margin-bottom: 50px;
+}
+
+.skillsLeftIcons{
+    border: 1px solid red;
+    display: flex;
+    height: 60%;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding-right: 150px;
+    padding-left: 150px;
+    gap: 20px;
+}
+
+.skillsTitleContainer{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.skillsSecondRow{
+    border: 1px solid blue;
+    display: flex;
+    width: 100%;
+    height: fit-content;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 4%;
+}
+
+.legendSection{
+    border: 1px solid red;
+    height: 25vh;
+    width: 100%;
+}
+
+.softSkillsContainer{
+    border: 1px solid yellow;
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    height: 100%;
+}
+
+.softSkillsTextStyle{
+    color: #007bff;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.legendContainer{
+    border: 1px solid yellow;
+    width: 20%;
+    height: 200px;
 }

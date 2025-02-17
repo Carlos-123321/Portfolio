@@ -91,9 +91,97 @@ const Homepage: React.FC = () => {
             </div>
 
             <div className={homepageStyles.skillSection}>
-            <p className={homepageStyles.reviewsTitle}>Skills 🧠</p>
-                <div className={homepageStyles.rightSide}>
-                    <p>{t("longText")}</p>
+                <p className={homepageStyles.reviewsTitle}>Skills 🧠</p>
+
+                <div className={homepageStyles.legendSection}>
+                    <div className={homepageStyles.legendContainer}>
+                        Lenge
+                    </div>
+                </div>
+
+                <div className={homepageStyles.skillsFirstRow}>
+
+
+                    <div className={homepageStyles.skillsFirstRowLeft}>
+                        <div className={homepageStyles.skillsTitleContainer}>
+                            <p className={homepageStyles.skillsTitle}>Frontend Technologies</p>
+                        </div>
+
+                        <div className={homepageStyles.skillsLeftIcons}>
+                            <img
+                                src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg"
+                                alt="html5" width="40" height="40"/>
+                            <img
+                                src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg"
+                                alt="css3" width="40" height="40"/>
+                            <img
+                                src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg"
+                                alt="javascript" width="40" height="40"/>
+                            <img
+                                src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg"
+                                alt="typescript" width="40" height="40"/>
+                            <img
+                                src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg"
+                                alt="react" width="40" height="40"/>
+                            <img
+                                src="https://raw.githubusercontent.com/devicons/devicon/master/icons/bootstrap/bootstrap-plain-wordmark.svg"
+                                alt="bootstrap" width="40" height="40"/>
+                            <img src="https://www.vectorlogo.zone/logos/figma/figma-icon.svg" alt="figma" width="40"
+                                 height="40"/>
+                            <img
+                                src="https://raw.githubusercontent.com/devicons/devicon/master/icons/photoshop/photoshop-line.svg"
+                                alt="photoshop" width="40" height="40"/>
+                        </div>
+                    </div>
+
+                    <div className={homepageStyles.skillsFirstRowRight}>
+                        <div className={homepageStyles.skillsTitleContainer}>
+                            <p className={homepageStyles.skillsTitle}>Backend Technologies</p>
+                        </div>
+
+                        <div className={homepageStyles.skillsLeftIcons}>
+                            <img
+                                src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg"
+                                alt="java" width="40" height="40"/>
+                            <img
+                                src="https://raw.githubusercontent.com/devicons/devicon/master/icons/csharp/csharp-original.svg"
+                                alt="csharp" width="40" height="40"/>
+                            <img
+                                src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg"
+                                alt="python" width="40" height="40"/>
+                            <img
+                                src="https://raw.githubusercontent.com/devicons/devicon/master/icons/dot-net/dot-net-original-wordmark.svg"
+                                alt=".NET" width="40" height="40"/>
+                            <img src="https://www.vectorlogo.zone/logos/springio/springio-icon.svg" alt="Spring Boot"
+                                 width="40" height="40"/>
+                            <img
+                                src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg"
+                                alt="MySQL" width="40" height="40"/>
+                            <img src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" alt="Postman"
+                                 width="40" height="40"/>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div className={homepageStyles.skillsSecondRow}>
+                    <div className={homepageStyles.skillsTitleContainer}>
+                        <p className={homepageStyles.skillsTitle}>Soft Skills</p>
+                    </div>
+
+                    <div className={homepageStyles.softSkillsContainer}>
+                        <p className={homepageStyles.softSkillsTextStyle}>• Communication to Detail</p>
+                        <p className={homepageStyles.softSkillsTextStyle}>• Problem-solving</p>
+                        <p className={homepageStyles.softSkillsTextStyle}>• Time Management</p>
+                        <p className={homepageStyles.softSkillsTextStyle}>• Adaptability</p>
+                        <p className={homepageStyles.softSkillsTextStyle}>• Collaboration</p>
+                        <p className={homepageStyles.softSkillsTextStyle}>• Attention to Detail</p>
+                        <p className={homepageStyles.softSkillsTextStyle}>• Leadership</p>
+                        <p className={homepageStyles.softSkillsTextStyle}>• Creative Thinking</p>
+                        <p className={homepageStyles.softSkillsTextStyle}>• Customer Focus</p>
+                    </div>
+
                 </div>
 
             </div>

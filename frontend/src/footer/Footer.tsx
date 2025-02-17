@@ -1,5 +1,7 @@
 import React from "react";
 import footerStyles from "./footer.module.css";
+import navbarStyles from "../navbar/navbar.module.css";
+import {Link} from "react-router-dom";
 
 const Footer: React.FC = () => {
     return (
@@ -21,11 +23,11 @@ const Footer: React.FC = () => {
 
                     <div className={footerStyles.contactSecondRow}>
                         <p className={footerStyles.textFooter}>
-                            Phone:
+                            Send Email:
                         </p>
-                        <a href="tel:+15142953947" className={footerStyles.contactLink}>
-                            +1 (514) 295-3947
-                        </a>
+                        <Link to="/email" className={navbarStyles.portfolioTextLink}>
+                            Click here to open email form
+                        </Link>
                     </div>
                 </div>
 
