@@ -10,7 +10,8 @@ import java.util.Optional;
 
 @CrossOrigin(origins = {
         "http://localhost:5173",
-        "https://carlos-portfolio-mrl4c8exp-carlos-projects-606b522d.vercel.app"
+        "https://carlos-portfolio-mrl4c8exp-carlos-projects-606b522d.vercel.app",
+        "https://carlos-portfolio-orcin.vercel.app"
 })
 @RestController
 @RequestMapping("/api/v1")
