@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import NavBar from "../navbar/NavBar.tsx";
 import portfolioBackground from "../../public/assets/portfoliobackground.png";
+import college from "../../public/assets/College.jpg";
 import homepageStyles from "./homepage.module.css";
 import Footer from "../footer/Footer.tsx";
 import { useTranslation } from "react-i18next";
@@ -70,15 +71,27 @@ const Homepage: React.FC = () => {
             </div>
 
             <div className={homepageStyles.aboutMeSection}>
-                <p className={homepageStyles.reviewsTitle}>About Me 🧠</p>
-                <div className={homepageStyles.rightSide}>
-                    <p>{t("longText")}</p>
+                <p className={homepageStyles.reviewsTitle}>About Me 📌</p>
+
+                <div className={homepageStyles.innerAboutSection}>
+
+                    <div className={homepageStyles.aboutMeSectionImageContainer}>
+                        <img
+                            src={college}
+                            alt="college"
+                            className={homepageStyles.heroImage}
+                        />
+                    </div>
+                    <div className={homepageStyles.rightSideAbout}>
+                        <p>{t("longText")}</p>
+                    </div>
                 </div>
+
 
             </div>
 
             <div className={homepageStyles.skillSection}>
-                <p className={homepageStyles.reviewsTitle}>Skills 🧠</p>
+            <p className={homepageStyles.reviewsTitle}>Skills 🧠</p>
                 <div className={homepageStyles.rightSide}>
                     <p>{t("longText")}</p>
                 </div>
