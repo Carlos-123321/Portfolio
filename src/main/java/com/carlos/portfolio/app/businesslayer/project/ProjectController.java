@@ -8,7 +8,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = {
+        "http://localhost:5173",
+        "https://carlos-portfolio-mrl4c8exp-carlos-projects-606b522d.vercel.app"
+})
 @RestController
 @RequestMapping("/api/v1")
 public class ProjectController {
