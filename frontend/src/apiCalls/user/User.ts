@@ -3,7 +3,7 @@ export default interface User{
     name: string;
     email: string;
     comments: {
-        id?: number;
+        id: number;
         comment: string;
         approved: boolean;
     }[];

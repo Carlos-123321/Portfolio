@@ -8,7 +8,7 @@ import { useTranslation } from "react-i18next";
 import { getProjects } from '../apiCalls/project/projectService.ts';
 import "./testing.css";
 import Project from "../apiCalls/project/Project.ts";
-import CreateProjectModal from "../project-card/projectModal/createProjectModal/createProjectModal.tsx"; // Import the correct modal
+import CreateProjectModal from "../project-card/projectModal/createProjectModal/createProjectModal.tsx";
 
 const Portfolio: React.FC = () => {
     const [projects, setProjects] = useState<Project[]>([]);
