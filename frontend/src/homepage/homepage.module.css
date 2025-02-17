@@ -85,7 +85,7 @@
 
 .hobbySection {
     width: 100%;
-    height: 100vh;
+    height: fit-content;
     background: linear-gradient(135deg, #efea8e, #d6c29f);
     box-sizing: border-box;
     display: flex;
@@ -108,7 +108,7 @@
 .aboutMeSection{
     width: 100%;
     height: fit-content;
-    background: linear-gradient(135deg, #ec4b64, #d6c29f);
+    background: linear-gradient(135deg, #385ae1, #d6c29f);
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -389,4 +389,69 @@
     display: flex;
     justify-content: space-evenly;
     margin-top: 5%;
+}
+
+.pastimesContainer{
+
+}
+
+.pastimeSubTitle {
+    font-size: 40px;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: #302D2D;
+    font-weight: bold;
+}
+
+.pastimeText{
+    color: #302D2D;
+    font-size: 30px;
+}
+
+.pastimeFirstRow{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 2%;
+    justify-content: space-evenly;
+    height: fit-content;
+}
+
+.pastimeLeftSection{
+    width: 48%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.pastimeRightSection{
+    width: 48%;
+    height: fit-content;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.imageContainer{
+    width: 100%;
+    height: 80%;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+.imageFit {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.pastimeSecondRowSection{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 3%;
+    height: 400px;
 }

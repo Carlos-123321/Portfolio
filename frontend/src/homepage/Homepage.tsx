@@ -7,6 +7,9 @@ import Footer from "../footer/Footer.tsx";
 import { useTranslation } from "react-i18next";
 import { getUsers } from "../apiCalls/user/userService.ts";
 import User from "../apiCalls/user/User.ts";
+import soccerImage from "../../public/assets/Soccer.jpg";
+import runningImage from "../../public/assets/Running.png";
+import gymImage from "../../public/assets/Gym.jpg";
 
 const Homepage: React.FC = () => {
     const { t } = useTranslation();
@@ -287,8 +290,54 @@ const Homepage: React.FC = () => {
 
             <div className={homepageStyles.hobbySection}>
                 <p className={homepageStyles.reviewsTitle}>Pastimes 🎭</p>
-                <div className={homepageStyles.rightSide}>
-                    <p>{t("longText")}</p>
+                <div className={homepageStyles.pastimesContainer}>
+                    <p className={homepageStyles.pastimeSubTitle}>I am someone who does a lot of exercise...</p>
+                </div>
+
+                <div className={homepageStyles.pastimeFirstRow}>
+
+                    <div className={homepageStyles.pastimeLeftSection}>
+                        <div className={homepageStyles.pastimeText}>
+                            I play Soccer at a competitive level ⚽
+                        </div>
+                        <div className={homepageStyles.imageContainer}>
+                            <img
+                                src={soccerImage}
+                                alt="running"
+                                className={homepageStyles.imageFit}
+                            />
+                        </div>
+                    </div>
+
+                    <div className={homepageStyles.pastimeRightSection}>
+                        <div className={homepageStyles.pastimeText}>
+                            I like running. I can run 5km in 18 minutes 🏃💨
+                        </div>
+                        <div className={homepageStyles.imageContainer}>
+                            <img
+                                src={runningImage}
+                                alt="running"
+                                className={homepageStyles.imageFit}
+                            />
+                        </div>
+                    </div>
+
+                </div>
+
+                <div className={homepageStyles.pastimeSecondRowSection}>
+                    <div className={homepageStyles.pastimeText}>
+                        I go the gym regularly 🏋️
+                        <div className={homepageStyles.imageContainer}>
+                            <img
+                                src={gymImage}
+                                alt="running"
+                                className={homepageStyles.imageFit}
+                            />
+                        </div>
+                    </div>
+                    <div>
+
+                    </div>
                 </div>
 
             </div>
