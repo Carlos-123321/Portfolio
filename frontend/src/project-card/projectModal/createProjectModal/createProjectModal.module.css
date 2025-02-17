@@ -15,10 +15,11 @@
     background: beige;
     padding: 20px;
     border-radius: 10px;
-    width: 400px;
+    width: 60%;
     text-align: center;
     position: relative;
     border: 1px solid green;
+
 }
 
 .closeButton {
@@ -37,8 +38,8 @@
 
 .modalForm{
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
 }
 
 .modalInput{

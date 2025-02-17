@@ -36,9 +36,17 @@ export const deleteProject = async (id: number) => {
 export const createProject = async (project: {
     name: string;
     description: string;
-    image: string;
+    coverImage: string;
     reviews: number;
     type: string;
+    githubLink: string;
+    startDate: string;
+    endDate: string;
+    images: string[];
+    techStack: string[];
+    features: string[];
+    knowledge: string[];
+    summary: string[];
 }) => {
     try {
         const response = await axios.post(API_BASE_URL + "/api/v1/projects", project);
@@ -51,10 +59,20 @@ export const createProject = async (project: {
 };
 
 export const updateProject = async (id: number, updatedProject: {
-    name: string; description:
-        string; image: string;
-        reviews: number;
-        type: string }) => {
+    name: string;
+    description: string;
+    coverImage: string;
+    reviews: number;
+    type: string;
+    githubLink: string;
+    startDate: string;
+    endDate: string;
+    images: string[];
+    techStack: string[];
+    features: string[];
+    knowledge: string[];
+    summary: string[];
+}) => {
     try {
         const response = await axios.put(`${API_BASE_URL}/api/v1/projects/${id}`, updatedProject);
         console.log("Project updated successfully:", response.data);

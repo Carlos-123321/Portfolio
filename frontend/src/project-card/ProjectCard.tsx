@@ -34,18 +34,20 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ id, name, description, coverI
         if (confirmDelete) {
             const result = await deleteProject(id);
             if (result) {
-                // Handle successful deletion (e.g., update the UI, redirect, etc.)
                 console.log(`Project with ID: ${id} deleted`);
             }
         }
     };
 
     const handleSave = (updatedName: string, updatedDescription: string, updatedImage: string, updatedReviews: number) => {
-        // Handle the save logic here, e.g., update the state or send the data to the backend
         console.log("Updated Project:", { updatedName, updatedDescription, updatedImage, updatedReviews });
     };
 
     const userRole = localStorage.getItem("userRole");
+
+    const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+        e.currentTarget.src = "../../assets/defaultImage.jpg";
+    };
 
     return (
         <>
@@ -57,6 +59,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ id, name, description, coverI
                             alt={name}
                             className={projectCardStyles.projectCardImageStyle}
                             onClick={handleNavigate}
+                            onError={handleImageError}
                         />
                     </div>
                 </div>

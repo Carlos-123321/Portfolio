@@ -39,6 +39,11 @@ public class ProjectService {
             existingProject.setCover_Image(updatedProject.getCover_Image());
             existingProject.setReviews(updatedProject.getReviews());
             existingProject.setType(updatedProject.getType());
+            existingProject.setImages(updatedProject.getImages());
+            existingProject.setTechStack(updatedProject.getTechStack());
+            existingProject.setFeatures(updatedProject.getFeatures());
+            existingProject.setKnowledge(updatedProject.getKnowledge());
+            existingProject.setSummary(updatedProject.getSummary());
 
             return projectRepository.save(existingProject);
         });

@@ -8,14 +8,13 @@
     top: 0;
     left: 0;
     z-index: 1000;
-    background-color: #B4D087;
+    background-color: #ffffff;
     backdrop-filter: blur(10px);
     border-bottom: 1px solid ghostwhite;
-
 }
 
 .middleLine{
-    border: 1px solid ghostwhite;
+    border: 1px solid black;
     height: 60%;
 }
 
@@ -23,13 +22,12 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
-    width: 40%;
+    width: 45%;
     height: 100%;
-    border: 1px solid red;
 }
 
 .homeTextLink{
-    color: ghostwhite;
+    color: black;
     font-family: 'Lora', serif;
     font-weight: 400;
     text-decoration: none;
@@ -44,12 +42,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 40%;
+    width: 45%;
     height: 100%;
 }
 
 .portfolioTextLink{
-    color: ghostwhite;
+    color: #302D2D;
     font-family: 'Lora', serif;
     font-weight: 400;
     text-decoration: none;
@@ -59,5 +57,26 @@
 
 .portfolioTextLink:hover {
     transform: scale(1.2);
+}
+
+.usernameDisplay{
+    display: flex;
+    margin-left: auto;
+    margin-right: 10%;
+    align-items: center;
+    gap: 20px;
+}
+
+.profileTextStyles{
+    color: #302D2D;
+    font-family: 'Lora', serif;
+    font-weight: 400;
+}
+
+.menuIcon{
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+
 }
 

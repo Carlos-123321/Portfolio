@@ -63,7 +63,6 @@
     align-items: center;
     justify-content: center;
     padding: 2rem;
-    box-sizing: border-box;
 }
 
 .rightSide{
@@ -75,10 +74,9 @@
 }
 
 .reviewSection {
-    border: 1px solid #8e7d5b;
     width: 100%;
     height: fit-content;
-    background: linear-gradient(135deg, #d6c29f, #8e7d5b);
+    background: linear-gradient(135deg, #b28eef, #d6c29f);
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -86,17 +84,54 @@
     padding: 2rem 2rem 10%;
 }
 
+.hobbySection {
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(135deg, #efea8e, #d6c29f);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 2rem 10%;
+}
+
+.skillSection{
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(135deg, #efea8e, #d6c29f);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 2rem 10%;
+    border: 1px solid red;
+}
+
+.aboutMeSection{
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(135deg, #efea8e, #d6c29f);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 2rem 10%;
+    border: 1px solid green;
+}
+
+
+
 .reviewsTitle {
-    font-size: 2rem;
+    font-size: 60px;
     margin-bottom: 1.5rem;
     text-align: center;
-    color: white;
+    color: #302D2D;
     font-weight: bold;
 }
 
 .carousel {
     position: relative;
-    width: 100%;
+    width: 65%;
     height: 300px;
     overflow: hidden;
 }
@@ -129,15 +164,14 @@
 }
 
 .reviewCard {
-    background-color: #f9f9f9;
+    background-color: white;
     border: 2px solid ghostwhite;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    height: 150px;
     transition: transform 0.3s ease;
     text-align: center;
+    position: relative;
 }
 
 .reviewsContainer {
@@ -161,4 +195,29 @@
 .reviewCardSubText{
     font-family: 'Lora', serif;
     font-size: 15px;
+}
+
+.small {
+    width: 200px;
+    height: 150px;
+}
+
+.medium {
+    width: 250px;
+    height: 200px;
+}
+
+.large {
+    width: 300px;
+    height: 250px;
+}
+
+.badgeContainer {
+    position: absolute;
+    top: -18px;
+    right: -10px;
+}
+
+.badgeStyles {
+    font-size: 2em;
 }

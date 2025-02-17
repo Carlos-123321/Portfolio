@@ -1,8 +1,8 @@
 .footerContainer {
     width: 100%;
-    background: linear-gradient(135deg, #3a3631, #bc8f68);
+    background: ghostwhite;
     color: #fff;
-    padding: 20px 0;
+    padding: 6% 0 20px;
     text-align: center;
 }
 
@@ -14,51 +14,78 @@
     font-family: 'Lora', serif;
 }
 
-.contactInfo,
-.socialMedia {
-    flex: 1;
-    min-width: 250px;
-    margin: 10px;
-}
-
-h3 {
-    font-size: 1.3rem;
-    margin-bottom: 10px;
-}
-
-p {
-    font-size: 1rem;
-    margin: 5px 0;
-}
-
-.socialIcons {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    font-size: 1.5rem;
-}
-
-.socialIcons a {
-    color: #fff;
-    transition: color 0.3s ease;
-}
-
-.socialIcons a:hover {
-    color: #007bff;
-}
-
 .footerBottom {
-    border-top: 1px solid #444;
     padding-top: 10px;
     font-size: 0.9rem;
 }
 
+.titleTextFooter{
+    font-family: 'Lora', serif;
+    color: #302D2D;
+    font-size: 40px;
+}
+
+.textFooter{
+    color: #302D2D;
+    font-family: 'Lora', serif;
+    font-size: 20px;
+}
+
+.contactInfo{
+    padding: 30px;
+    border-radius: 10px;
+    background-color: #f6a3a3;
+    border: 2px solid ghostwhite;
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+}
+
+.contactFirstRow{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 30px;
+    border-bottom: 3px solid #f38f67;
+}
+
+.contactSecondRow{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 3px solid #f38f67;
+}
+
 .contactLink {
-    color: #007bff;
+    color: #302D2D;
+    font-family: 'Lora', serif;
+    font-size: 20px;
+    cursor: pointer;
     text-decoration: none;
-    font-weight: bold;
+    margin-left: auto;
 }
 
 .contactLink:hover {
-    text-decoration: underline;
+    color: white;
+}
+
+.followFirstRow{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 30px;
+    border-bottom: 3px solid #f38f67;
+}
+
+.followLink {
+    color: #302D2D;
+    font-family: 'Lora', serif;
+    font-size: 20px;
+    cursor: pointer;
+    text-decoration: none;
+    margin-left: auto;
+}
+
+.followLink:hover {
+    color: white;
 }

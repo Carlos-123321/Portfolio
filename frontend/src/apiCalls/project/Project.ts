@@ -1,5 +1,5 @@
 export default interface Project {
-    id: number;
+    id: number | null;
     name: string;
     description: string;
     coverImage: string;
