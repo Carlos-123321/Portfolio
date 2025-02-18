@@ -1,17 +1,19 @@
 /* Button to Open Modal */
 .openCVButton {
     padding: 10px 15px;
-    background-color: #ab7844;
-    color: white;
+    background-color: #b7f3b5;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background 0.3s;
+    font-family: 'Lora', serif;
+    color: #302D2D;
+    margin-top: 20px;
 }
 
 .openCVButton:hover {
-    background-color: white;
-    color: #ab7844;
+    background-color: #302D2D;
+    color: white;
 }
 
 /* Modal Overlay (Hidden by Default) */

@@ -4,9 +4,16 @@
 .languageButton{
     border-radius: 10px;
     border: none;
-    height: 30px;
     width: fit-content;
+    height: fit-content;
     margin-right: 10px;
     font-family: 'Lora', serif;
     cursor: pointer;
+    background-color: #b7f3b5;
+    color: #302D2D;
+}
+
+.languageButton:hover{
+    background-color: #302D2D;
+    color: white;
 }
