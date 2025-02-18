@@ -74,7 +74,7 @@ const Homepage: React.FC = () => {
             </div>
 
             <div className={homepageStyles.aboutMeSection}>
-                <p className={homepageStyles.reviewsTitle}>About Me 📌</p>
+                <p className={homepageStyles.reviewsTitle}>{t("About Me")} 📌</p>
 
                 <div className={homepageStyles.innerAboutSection}>
 
@@ -94,21 +94,21 @@ const Homepage: React.FC = () => {
             </div>
 
             <div className={homepageStyles.skillSection}>
-                <p className={homepageStyles.reviewsTitle}>Skills 🧠</p>
+                <p className={homepageStyles.reviewsTitle}>{t("Skills")} 🧠</p>
 
                 <div className={homepageStyles.legendSection}>
                     <div className={homepageStyles.legendContainer}>
-                        <p className={homepageStyles.legendTitle}>Expertise Legend</p>
+                        <p className={homepageStyles.legendTitle}>{t("Expertise Legend")}</p>
                         <div className={homepageStyles.legendTitleFirstRow}>
                             <div className={homepageStyles.legendTitleBeginnerRow}>
-                                1 = Beginner 🤓
+                                1 = {t("Beginner")} 🤓
                             </div>
                             <div className={homepageStyles.legendTitleIntermediateRow}>
-                                5 = Intermediate 📈
+                                5 = {t("Intermediate")} 📈
                             </div>
                         </div>
                         <div className={homepageStyles.legendTitleExpertRow}>
-                            10 = Expert 🚀
+                            10 = {t("Expert")} 🚀
                         </div>
                     </div>
                 </div>
@@ -118,7 +118,7 @@ const Homepage: React.FC = () => {
 
                     <div className={homepageStyles.skillsFirstRowLeft}>
                         <div className={homepageStyles.skillsTitleContainer}>
-                            <p className={homepageStyles.skillsTitle}>Frontend Technologies</p>
+                            <p className={homepageStyles.skillsTitle}>{t("Frontend Technologies")}</p>
                         </div>
 
                         <div className={homepageStyles.skillsLeftIcons}>
@@ -199,7 +199,7 @@ const Homepage: React.FC = () => {
 
                     <div className={homepageStyles.skillsFirstRowRight}>
                         <div className={homepageStyles.skillsTitleContainer}>
-                            <p className={homepageStyles.skillsTitle}>Backend Technologies</p>
+                            <p className={homepageStyles.skillsTitle}>{t("Backend Technologies")}</p>
                         </div>
 
                         <div className={homepageStyles.skillsLeftIcons}>
@@ -269,19 +269,28 @@ const Homepage: React.FC = () => {
 
                 <div className={homepageStyles.skillsSecondRow}>
                     <div className={homepageStyles.skillsTitleContainer}>
-                        <p className={homepageStyles.skillsTitle}>Soft Skills</p>
+                        <p className={homepageStyles.skillsTitle}>{t("Soft Skills")}</p>
                     </div>
 
                     <div className={homepageStyles.softSkillsContainer}>
-                        <div className={homepageStyles.softSkillsTextStyleContainer}><p className={homepageStyles.softSkillsTextStyle}>• Communication</p></div>
-                        <div className={homepageStyles.softSkillsTextStyleContainer}><p className={homepageStyles.softSkillsTextStyle}>• Problem-solving</p></div>
-                        <div className={homepageStyles.softSkillsTextStyleContainer}><p className={homepageStyles.softSkillsTextStyle}>• Time Management</p></div>
-                        <div className={homepageStyles.softSkillsTextStyleContainer}><p className={homepageStyles.softSkillsTextStyle}>• Adaptability</p></div>
-                        <div className={homepageStyles.softSkillsTextStyleContainer}><p className={homepageStyles.softSkillsTextStyle}>• Collaboration</p></div>
-                        <div className={homepageStyles.softSkillsTextStyleContainer}><p className={homepageStyles.softSkillsTextStyle}>• Attention to Detail</p></div>
-                        <div className={homepageStyles.softSkillsTextStyleContainer}><p className={homepageStyles.softSkillsTextStyle}>• Leadership</p></div>
-                        <div className={homepageStyles.softSkillsTextStyleContainer}><p className={homepageStyles.softSkillsTextStyle}>• Creative Thinking</p></div>
-                        <div className={homepageStyles.softSkillsTextStyleContainer}><p className={homepageStyles.softSkillsTextStyle}>• Customer Focus</p></div>
+                        <div className={homepageStyles.softSkillsTextStyleContainer}><p
+                            className={homepageStyles.softSkillsTextStyle}>• {t("Communication")}</p></div>
+                        <div className={homepageStyles.softSkillsTextStyleContainer}><p
+                            className={homepageStyles.softSkillsTextStyle}>• {t("Problem-solving")}</p></div>
+                        <div className={homepageStyles.softSkillsTextStyleContainer}><p
+                            className={homepageStyles.softSkillsTextStyle}>• {t("Time Management")}</p></div>
+                        <div className={homepageStyles.softSkillsTextStyleContainer}><p
+                            className={homepageStyles.softSkillsTextStyle}>• {t("Adaptability")}</p></div>
+                        <div className={homepageStyles.softSkillsTextStyleContainer}><p
+                            className={homepageStyles.softSkillsTextStyle}>• {t("Collaboration")}</p></div>
+                        <div className={homepageStyles.softSkillsTextStyleContainer}><p
+                            className={homepageStyles.softSkillsTextStyle}>• {t("Attention to Detail")}</p></div>
+                        <div className={homepageStyles.softSkillsTextStyleContainer}><p
+                            className={homepageStyles.softSkillsTextStyle}>• {t("Leadership")}</p></div>
+                        <div className={homepageStyles.softSkillsTextStyleContainer}><p
+                            className={homepageStyles.softSkillsTextStyle}>• {t("Creative Thinking")}</p></div>
+                        <div className={homepageStyles.softSkillsTextStyleContainer}><p
+                            className={homepageStyles.softSkillsTextStyle}>• {t("Customer Focus")}</p></div>
                     </div>
 
                 </div>
@@ -289,16 +298,16 @@ const Homepage: React.FC = () => {
             </div>
 
             <div className={homepageStyles.hobbySection}>
-                <p className={homepageStyles.reviewsTitle}>Pastimes 🎭</p>
+                <p className={homepageStyles.reviewsTitle}>{t("Pastimes")} 🎭</p>
                 <div className={homepageStyles.pastimesContainer}>
-                    <p className={homepageStyles.pastimeSubTitle}>I am someone who does a lot of exercise...</p>
+                    <p className={homepageStyles.pastimeSubTitle}>{t("I am someone who does a lot of exercise...")}</p>
                 </div>
 
                 <div className={homepageStyles.pastimeFirstRow}>
 
                     <div className={homepageStyles.pastimeLeftSection}>
                         <div className={homepageStyles.pastimeText}>
-                            I play Soccer at a competitive level ⚽
+                            {t("I play Soccer at a competitive level")} ⚽
                         </div>
                         <div className={homepageStyles.imageContainer}>
                             <img
@@ -311,7 +320,7 @@ const Homepage: React.FC = () => {
 
                     <div className={homepageStyles.pastimeRightSection}>
                         <div className={homepageStyles.pastimeText}>
-                            I like running. I can run 5km in 18 minutes 🏃💨
+                            {t("I like running. I can run 5km in 18 minutes")} 🏃💨
                         </div>
                         <div className={homepageStyles.imageContainer}>
                             <img
@@ -326,7 +335,7 @@ const Homepage: React.FC = () => {
 
                 <div className={homepageStyles.pastimeSecondRowSection}>
                     <div className={homepageStyles.pastimeText}>
-                        I go the gym regularly 🏋️
+                        {t("gym")} 🏋️
                         <div className={homepageStyles.imageContainer}>
                             <img
                                 src={gymImage}
@@ -343,7 +352,7 @@ const Homepage: React.FC = () => {
             </div>
 
             <div className={homepageStyles.reviewSection}>
-                <p className={homepageStyles.reviewsTitle}>Reviews ✨</p>
+                <p className={homepageStyles.reviewsTitle}>{t("Reviews")} ✨</p>
 
                 <div className={homepageStyles.carousel}>
                     <div

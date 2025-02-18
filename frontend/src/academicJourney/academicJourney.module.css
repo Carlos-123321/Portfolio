@@ -2,7 +2,7 @@
     padding: 20px;
     margin: 100px auto;
     text-align: center;
-    background-color: #8B5E3C;
+    background-color: #b7f3b5;
     width: 100%;
     height: 100vh;
     display: flex;
@@ -13,7 +13,8 @@
 h1 {
     font-size: 2rem;
     margin-bottom: 20px;
-    color: white;
+    color: #302D2D;
+    font-family: 'Lora', serif;
 }
 
 .school {

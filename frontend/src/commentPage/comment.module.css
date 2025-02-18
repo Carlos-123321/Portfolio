@@ -1,8 +1,11 @@
 .commentPageContainer{
-    border: 1px solid red;
     width: 100%;
     height: 100vh;
     background-color: #b7f3b5;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .spaceDiv{
@@ -22,6 +25,7 @@
     border-radius: 5px;
     font-size: 16px;
     resize: vertical;
+    width: 80%;
 }
 
 .submitButton {

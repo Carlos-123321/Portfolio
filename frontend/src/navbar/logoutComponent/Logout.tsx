@@ -1,10 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import logoutButtonStyles from "./Logout.module.css";
+import {useTranslation} from "react-i18next";
 
 const Logout: React.FC = () => {
     const navigate = useNavigate();
     const isAuthenticated = localStorage.getItem("isAuthenticated");
+    const { t } = useTranslation();
 
     const handleLogout = () => {
         localStorage.removeItem("isAuthenticated");
@@ -23,7 +25,7 @@ const Logout: React.FC = () => {
 
     return (
         <div>
-            <button className={logoutButtonStyles.logoutButton} onClick={handleLogout}>Logout</button>
+            <button className={logoutButtonStyles.logoutButton} onClick={handleLogout}>{t("Logout")}</button>
         </div>
     );
 };

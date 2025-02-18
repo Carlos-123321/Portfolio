@@ -3,6 +3,7 @@ import modalStyles from "./createProjectModal.module.css";
 import { createProject } from "../../../apiCalls/project/projectService.ts";
 import Project from "../../../apiCalls/project/Project.ts";
 import CreateProject from "../../../apiCalls/project/CreateProject.ts";
+import {useTranslation} from "react-i18next";
 
 interface CreateProjectModalProps {
     onClose: () => void;
@@ -37,6 +38,8 @@ const CreateProjectModal: React.FC<CreateProjectModalProps> = ({ onClose }) => {
         }
     };
 
+    const { t } = useTranslation();
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
@@ -63,17 +66,17 @@ const CreateProjectModal: React.FC<CreateProjectModalProps> = ({ onClose }) => {
         <div className={modalStyles.modalOverlay} onClick={onClose}>
             <div className={modalStyles.modalContent} onClick={(e) => e.stopPropagation()}>
                 <span className={modalStyles.closeButton} onClick={onClose}>&times;</span>
-                <p className={modalStyles.modalTitle}>Create New Project</p>
+                <p className={modalStyles.modalTitle}>{t("Create New Project")}</p>
                 <form onSubmit={handleSubmit} className={modalStyles.modalForm}>
                     <div className={modalStyles.inputGroup}>
                         <label htmlFor="name" className={modalStyles.modalLabel}>
-                            Project Name
+                            {t("Project Name")}
                         </label>
                         <input
                             id="name"
                             type="text"
                             name="name"
-                            placeholder="Project Name"
+                            placeholder={t("Project Name")}
                             value={formData.name}
                             onChange={handleChange}
                             required
@@ -83,12 +86,12 @@ const CreateProjectModal: React.FC<CreateProjectModalProps> = ({ onClose }) => {
 
                     <div className={modalStyles.inputGroup}>
                         <label htmlFor="description" className={modalStyles.modalLabel}>
-                            Project Description
+                            {t("Project Description")}
                         </label>
                         <textarea
                             id="description"
                             name="description"
-                            placeholder="Project Description"
+                            placeholder={t("Project Description")}
                             value={formData.description}
                             onChange={handleChange}
                             required
@@ -98,13 +101,13 @@ const CreateProjectModal: React.FC<CreateProjectModalProps> = ({ onClose }) => {
 
                     <div className={modalStyles.inputGroup}>
                         <label htmlFor="coverImage" className={modalStyles.modalLabel}>
-                            Cover Image URL
+                            {t("Cover Image URL")}
                         </label>
                         <input
                             id="coverImage"
                             type="text"
                             name="coverImage"
-                            placeholder="Cover Image URL"
+                            placeholder={t("Cover Image URL")}
                             value={formData.coverImage}
                             onChange={handleChange}
                             required
@@ -114,13 +117,13 @@ const CreateProjectModal: React.FC<CreateProjectModalProps> = ({ onClose }) => {
 
                     <div className={modalStyles.inputGroup}>
                         <label htmlFor="reviews" className={modalStyles.modalLabel}>
-                            Reviews
+                            {t("Reviews")}
                         </label>
                         <input
                             id="reviews"
                             type="number"
                             name="reviews"
-                            placeholder="Reviews"
+                            placeholder={t("Reviews")}
                             value={formData.reviews}
                             onChange={handleChange}
                             required
@@ -130,13 +133,13 @@ const CreateProjectModal: React.FC<CreateProjectModalProps> = ({ onClose }) => {
 
                     <div className={modalStyles.inputGroup}>
                         <label htmlFor="type" className={modalStyles.modalLabel}>
-                            Project Type
+                            {t("Project Type")}
                         </label>
                         <input
                             id="type"
                             type="text"
                             name="type"
-                            placeholder="Project Type"
+                            placeholder={t("Project Type")}
                             value={formData.type}
                             onChange={handleChange}
                             required
@@ -146,13 +149,13 @@ const CreateProjectModal: React.FC<CreateProjectModalProps> = ({ onClose }) => {
 
                     <div className={modalStyles.inputGroup}>
                         <label htmlFor="githubLink" className={modalStyles.modalLabel}>
-                            GitHub Link
+                            {t("GitHub Link")}
                         </label>
                         <input
                             id="githubLink"
                             type="text"
                             name="githubLink"
-                            placeholder="GitHub Link"
+                            placeholder={t("GitHub Link")}
                             value={formData.githubLink}
                             onChange={handleChange}
                             className={modalStyles.modalInput}
@@ -161,13 +164,13 @@ const CreateProjectModal: React.FC<CreateProjectModalProps> = ({ onClose }) => {
 
                     <div className={modalStyles.inputGroup}>
                         <label htmlFor="startDate" className={modalStyles.modalLabel}>
-                            Start Date
+                            {t("Start Date")}
                         </label>
                         <input
                             id="startDate"
                             type="date"
                             name="startDate"
-                            placeholder="Start Date"
+                            placeholder={t("Start Date")}
                             value={formData.startDate}
                             onChange={handleChange}
                             className={modalStyles.modalInput}
@@ -176,13 +179,13 @@ const CreateProjectModal: React.FC<CreateProjectModalProps> = ({ onClose }) => {
 
                     <div className={modalStyles.inputGroup}>
                         <label htmlFor="endDate" className={modalStyles.modalLabel}>
-                            End Date
+                            {t("End Date")}
                         </label>
                         <input
                             id="endDate"
                             type="date"
                             name="endDate"
-                            placeholder="End Date"
+                            placeholder={t("End Date")}
                             value={formData.endDate}
                             onChange={handleChange}
                             className={modalStyles.modalInput}
@@ -191,13 +194,13 @@ const CreateProjectModal: React.FC<CreateProjectModalProps> = ({ onClose }) => {
 
                     <div className={modalStyles.inputGroup}>
                         <label htmlFor="images" className={modalStyles.modalLabel}>
-                            Add Image URL
+                            {t("Add Image URL")}
                         </label>
                         <input
                             id="images"
                             type="text"
                             name="images"
-                            placeholder="Add Image URL"
+                            placeholder={t("Add Image URL")}
                             onChange={(e) => handleArrayChange(e, "images")}
                             className={modalStyles.modalInput}
                         />
@@ -205,13 +208,13 @@ const CreateProjectModal: React.FC<CreateProjectModalProps> = ({ onClose }) => {
 
                     <div className={modalStyles.inputGroup}>
                         <label htmlFor="techStack" className={modalStyles.modalLabel}>
-                            Add Tech Stack
+                            {t("Add Tech Stack")}
                         </label>
                         <input
                             id="techStack"
                             type="text"
                             name="techStack"
-                            placeholder="Add Tech Stack"
+                            placeholder={t("Add Tech Stack")}
                             onChange={(e) => handleArrayChange(e, "techStack")}
                             className={modalStyles.modalInput}
                         />
@@ -219,13 +222,13 @@ const CreateProjectModal: React.FC<CreateProjectModalProps> = ({ onClose }) => {
 
                     <div className={modalStyles.inputGroup}>
                         <label htmlFor="features" className={modalStyles.modalLabel}>
-                            Add Features
+                            {t("Add Features")}
                         </label>
                         <input
                             id="features"
                             type="text"
                             name="features"
-                            placeholder="Add Features"
+                            placeholder={t("Add Features")}
                             onChange={(e) => handleArrayChange(e, "features")}
                             className={modalStyles.modalInput}
                         />
@@ -233,13 +236,13 @@ const CreateProjectModal: React.FC<CreateProjectModalProps> = ({ onClose }) => {
 
                     <div className={modalStyles.inputGroup}>
                         <label htmlFor="knowledge" className={modalStyles.modalLabel}>
-                            Add Knowledge
+                            {t("Add Knowledge")}
                         </label>
                         <input
                             id="knowledge"
                             type="text"
                             name="knowledge"
-                            placeholder="Add Knowledge"
+                            placeholder={t("Add Knowledge")}
                             onChange={(e) => handleArrayChange(e, "knowledge")}
                             className={modalStyles.modalInput}
                         />
@@ -247,22 +250,20 @@ const CreateProjectModal: React.FC<CreateProjectModalProps> = ({ onClose }) => {
 
                     <div className={modalStyles.inputGroup}>
                         <label htmlFor="summary" className={modalStyles.modalLabel}>
-                            Add Summary
+                            {t("Add Summary")}
                         </label>
                         <input
                             id="summary"
                             type="text"
                             name="summary"
-                            placeholder="Add Summary"
+                            placeholder={t("Add Summary")}
                             onChange={(e) => handleArrayChange(e, "summary")}
                             className={modalStyles.modalInput}
                         />
                     </div>
 
-                    <button type="submit" className={modalStyles.modalButton}>Create Project</button>
+                    <button type="submit" className={modalStyles.modalButton}>{t("Create Project")}</button>
                 </form>
-
-
             </div>
         </div>
     );

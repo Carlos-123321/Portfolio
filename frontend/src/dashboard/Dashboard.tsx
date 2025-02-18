@@ -7,10 +7,12 @@ import UserCard from "./UserCard";
 import commentStyles from "../commentPage/comment.module.css";
 import { updateUser } from "../apiCalls/user/userService.ts";
 import Footer from "../footer/Footer.tsx";
+import {useTranslation} from "react-i18next";
 
 const Dashboard: React.FC = () => {
     const username = localStorage.getItem("username");
     const [users, setUsers] = useState<User[]>([]);
+    const { t } = useTranslation();
 
     useEffect(() => {
         const fetchUsers = async () => {
@@ -115,11 +117,11 @@ const Dashboard: React.FC = () => {
             <div className={DashboardStyles.spaceDiv} />
 
             <div className={DashboardStyles.dashboardPageContainer}>
-                {username && <p className={DashboardStyles.myTitleText}>Welcome back, {username} 😁</p>}
-                {!username && <p className={DashboardStyles.myTitleText}>Username not found!</p>}
+                {username && <p className={DashboardStyles.myTitleText}>{t("Welcome back")}, {username} 😁</p>}
+                {!username && <p className={DashboardStyles.myTitleText}>{t("Username not found")}</p>}
 
                 <div className={commentStyles.projectList}>
-                    <p className={DashboardStyles.myTitleSubText}>Review Comments 💬</p>
+                    <p className={DashboardStyles.myTitleSubText}>{t("Review Comments")} 💬</p>
                     <div className={DashboardStyles.userCardsContainer}>
                         {users.map((user) => (
                             <UserCard

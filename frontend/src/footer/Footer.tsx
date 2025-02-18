@@ -2,13 +2,17 @@ import React from "react";
 import footerStyles from "./footer.module.css";
 import navbarStyles from "../navbar/navbar.module.css";
 import {Link} from "react-router-dom";
+import {useTranslation} from "react-i18next";
 
 const Footer: React.FC = () => {
+
+    const { t } = useTranslation();
+
     return (
         <footer className={footerStyles.footerContainer}>
             <div className={footerStyles.footerContent}>
                 <div className={footerStyles.contactInfo}>
-                    <h3 className={footerStyles.titleTextFooter}>Contact Me 📲</h3>
+                    <h3 className={footerStyles.titleTextFooter}>{t("Contact Me")} 📲</h3>
 
                     <div className={footerStyles.contactFirstRow}>
 
@@ -23,7 +27,7 @@ const Footer: React.FC = () => {
 
                     <div className={footerStyles.contactSecondRow}>
                         <p className={footerStyles.textFooter}>
-                            Send Email:
+                            {t("Send Email")}
                         </p>
                         <Link to="/email" className={navbarStyles.portfolioTextLink}>
                             Click here to open email form
@@ -32,7 +36,7 @@ const Footer: React.FC = () => {
                 </div>
 
                 <div className={footerStyles.contactInfo}>
-                    <h3 className={footerStyles.titleTextFooter}>Follow Me 🎯</h3>
+                    <h3 className={footerStyles.titleTextFooter}>{t("Follow Me")} 🎯</h3>
                     <div className={footerStyles.followFirstRow}>
                         <p className={footerStyles.textFooter}>
                             LinkedIn:

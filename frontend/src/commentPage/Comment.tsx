@@ -4,12 +4,13 @@ import NavBar from "../navbar/NavBar.tsx";
 import commentStyles from "./comment.module.css";
 import { getUserById, updateComment } from "../apiCalls/user/userService.ts";
 import CreateComment from "../apiCalls/user/CreateComment.ts";
+import {useTranslation} from "react-i18next";
 
 const Comment: React.FC = () => {
     const [comment, setComment] = useState("");
     const [userDetails, setUserDetails] = useState<CreateComment | null>(null);
     const navigate = useNavigate();
-
+    const { t } = useTranslation();
     useEffect(() => {
         const userId = localStorage.getItem("userId");
 
@@ -72,28 +73,28 @@ const Comment: React.FC = () => {
             <div className={commentStyles.spaceDiv} />
 
             <div className={commentStyles.commentPageContainer}>
-                <h2>Leave a Comment</h2>
+                <h2>{t("Leave a Comment")}</h2>
 
                 <form onSubmit={handleSubmit} className={commentStyles.commentForm}>
                     <textarea
                         className={commentStyles.commentTextArea}
                         value={comment}
                         onChange={(e) => setComment(e.target.value)}
-                        placeholder="Write your comment here..."
+                        placeholder={t("Write your comment here...")}
                         rows={4}
                     />
                     <button type="submit" className={commentStyles.submitButton}>
-                        Submit Comment
+                        {t("Submit Comment")}
                     </button>
                 </form>
 
                 {userDetails && (
                     <div className={commentStyles.userDetails}>
-                        <h3>User Details</h3>
-                        <p><strong>Name:</strong> {userDetails.name}</p>
-                        <p><strong>Email:</strong> {userDetails.email}</p>
-                        <p><strong>Role:</strong> {userDetails.role}</p>
-                        <p><strong>Comments:</strong></p>
+                        <h3>{t("User Details")}</h3>
+                        <p><strong>{t("Name")}</strong> {userDetails.name}</p>
+                        <p><strong>{t("Email1")}</strong> {userDetails.email}</p>
+                        <p><strong>{t("Role")}</strong> {userDetails.role}</p>
+                        <p><strong>{t("Comments")}</strong></p>
                         <ul>
                             {userDetails.comments?.map((com, index) => (
                                 <li key={index}>{com.comment}</li>
