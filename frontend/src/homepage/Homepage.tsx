@@ -11,6 +11,7 @@ import soccerImage from "../../public/assets/Soccer.jpg";
 import runningImage from "../../public/assets/Running.png";
 import gymImage from "../../public/assets/Gym.jpg";
 import { motion } from "framer-motion";
+import me from "../../public/assets/PhotoOfMe.jpg";
 
 const Homepage: React.FC = () => {
     const { t } = useTranslation();
@@ -72,7 +73,13 @@ const Homepage: React.FC = () => {
                     transition={{duration: 3}}
                 >
                     <div className={homepageStyles.profileSectionContainer}>
-                        <div className={homepageStyles.profile}></div>
+                        <div className={homepageStyles.profile}>
+                            <img
+                                src={me}
+                                alt="portfolio background"
+                                className={homepageStyles.heroImage}
+                            />
+                        </div>
                     </div>
                     <p className={homepageStyles.temp1title}>{t("introLine")}</p>
                     <p className={homepageStyles.temp2title}>{t("introSecondLine")}</p>
