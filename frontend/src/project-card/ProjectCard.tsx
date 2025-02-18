@@ -4,7 +4,7 @@ import navbarStyles from "../navbar/navbar.module.css";
 import { useNavigate } from "react-router-dom";
 import ProjectModal from "./projectModal/ProjectModal.tsx";
 import { deleteProject } from "../apiCalls/project/projectService.ts";
-// import UpdateProjectModal from "./UpdateProjectModal.tsx";
+import UpdateProjectModal from "./UpdateProjectModal.tsx";
 
 interface ProjectCardProps {
     id: number;
@@ -21,7 +21,7 @@ interface ProjectCardProps {
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ id, name, description, coverImage, reviews, githubLink }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
-    // const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
+    const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
     const navigate = useNavigate();
 
     const handleNavigate = () => {
@@ -39,9 +39,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ id, name, description, coverI
         }
     };
 
-    // const handleSave = (updatedName: string, updatedDescription: string, updatedImage: string, updatedReviews: number) => {
-    //     console.log("Updated Project:", { updatedName, updatedDescription, updatedImage, updatedReviews });
-    // };
+    const handleSave = (updatedName: string, updatedDescription: string, updatedImage: string, updatedReviews: number) => {
+        console.log("Updated Project:", { updatedName, updatedDescription, updatedImage, updatedReviews });
+    };
 
     const userRole = localStorage.getItem("userRole");
 
@@ -108,7 +108,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ id, name, description, coverI
 
                         {userRole === "Admin" && (
                         <svg onClick={() => {
-                            // setIsUpdateModalOpen(true);
+                            setIsUpdateModalOpen(true);
                         }} xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                              className={projectCardStyles.cardIcons} viewBox="0 0 16 16">
                             <path
@@ -131,16 +131,17 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ id, name, description, coverI
                 />
             )}
 
-            {/*{isUpdateModalOpen && (*/}
-            {/*    <UpdateProjectModal*/}
-            {/*        onClose={() => setIsUpdateModalOpen(false)}*/}
-            {/*        projectName={name}*/}
-            {/*        projectDescription={description}*/}
-            {/*        projectImage={coverImage}*/}
-            {/*        projectReviews={reviews}*/}
-            {/*        onSave={handleSave}*/}
-            {/*    />*/}
-            {/*)}*/}
+            {isUpdateModalOpen && (
+                <UpdateProjectModal
+                    onClose={() => setIsUpdateModalOpen(false)}
+                    projectName={name}
+                    projectDescription={description}
+                    projectImage={coverImage}
+                    projectReviews={reviews}
+                    onSave={handleSave}
+                />
+            )}
+
 
         </>
     );
