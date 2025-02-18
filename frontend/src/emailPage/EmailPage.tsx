@@ -1,7 +1,8 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import emailjs from "emailjs-com";
 import styles from './emailPage.module.css';
-import Navbar from "../navbar/NavBar.tsx"; // Import the CSS module
+import Navbar from "../navbar/NavBar.tsx";
+import {useTranslation} from "react-i18next"; // Import the CSS module
 
 interface FormData {
     name: string;
@@ -16,6 +17,7 @@ const ContactForm: React.FC = () => {
         message: ""
     });
     const [status, setStatus] = useState<string>("");
+    const { t } = useTranslation();
 
     const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
@@ -53,9 +55,9 @@ const ContactForm: React.FC = () => {
 
             <div className={styles.marginSpace}/>
         <div className={styles.formContainer}>
-            <h2>Send me an email</h2>
+            <h2>{t("Send me an email")}</h2>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="name">Name:</label>
+                <label htmlFor="name">{t("Name")}</label>
                 <input
                     type="text"
                     id="name"
@@ -65,7 +67,7 @@ const ContactForm: React.FC = () => {
                     required
                 />
 
-                <label htmlFor="email">Email:</label>
+                <label htmlFor="email">{t("Email")}</label>
                 <input
                     type="email"
                     id="email"
@@ -84,7 +86,7 @@ const ContactForm: React.FC = () => {
                     required
                 />
 
-                <button type="submit">Send Message</button>
+                <button type="submit">{t("Send Message")}</button>
             </form>
 
             {status && <p className={styles.statusMessage}>{status}</p>}
