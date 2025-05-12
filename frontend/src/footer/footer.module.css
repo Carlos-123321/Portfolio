@@ -4,6 +4,7 @@
     color: #fff;
     padding: 6% 0 20px;
     text-align: center;
+    height: fit-content;
 }
 
 .footerContent {
@@ -12,11 +13,13 @@
     flex-wrap: wrap;
     padding: 20px;
     font-family: 'Lora', serif;
+    gap: 40px;
 }
 
 .footerBottom {
     padding-top: 10px;
     font-size: 0.9rem;
+    color: black;
 }
 
 .titleTextFooter{
@@ -29,22 +32,36 @@
     color: #302D2D;
     font-family: 'Lora', serif;
     font-size: 20px;
+    margin-right: 10%;
 }
 
-.contactInfo{
+.contactInfoOne{
     padding: 30px;
     border-radius: 10px;
-    background-color: #f6a3a3;
-    border: 2px solid ghostwhite;
+    background-color: whitesmoke;
+    border: 2px solid #8c8c8f;
     display: flex;
     flex-direction: column;
-    width: 30%;
+    width: 400px;
+    overflow: hidden;
+}
+
+.contactInfoTwo{
+    padding: 30px;
+    border-radius: 10px;
+    background-color: whitesmoke;
+    border: 2px solid #8c8c8f;
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    overflow: hidden;
 }
 
 .contactFirstRow{
     display: flex;
     flex-direction: row;
     align-items: center;
+    flex-wrap: wrap;
     margin-bottom: 30px;
     border-bottom: 3px solid #f38f67;
 }
@@ -63,10 +80,14 @@
     cursor: pointer;
     text-decoration: none;
     margin-left: auto;
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-break: break-word;
 }
 
+
 .contactLink:hover {
-    color: white;
+    color: #d85ff3;
 }
 
 .followFirstRow{
@@ -87,5 +108,14 @@
 }
 
 .followLink:hover {
-    color: white;
+    color: #d85ff3;
+}
+
+.portfolioTextLink{
+    color: black;
+    margin-left: auto;
+}
+
+.portfolioTextLink:hover{
+    color: #d85ff3;
 }

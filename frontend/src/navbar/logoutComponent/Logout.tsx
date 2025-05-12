@@ -3,7 +3,11 @@ import { useNavigate } from "react-router-dom";
 import logoutButtonStyles from "./Logout.module.css";
 import {useTranslation} from "react-i18next";
 
-const Logout: React.FC = () => {
+type LogoutProps = {
+    onLogout?: () => void;
+};
+
+const Logout: React.FC<LogoutProps> = ({ onLogout }) => {
     const navigate = useNavigate();
     const isAuthenticated = localStorage.getItem("isAuthenticated");
     const { t } = useTranslation();
@@ -15,6 +19,10 @@ const Logout: React.FC = () => {
         localStorage.removeItem("i18nextLng");
         localStorage.removeItem("userEmail");
         localStorage.removeItem(("userId"));
+
+        if (onLogout) {
+            onLogout();
+        }
 
         navigate("/");
     };

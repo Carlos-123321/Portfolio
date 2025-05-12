@@ -61,7 +61,8 @@ const Comment: React.FC = () => {
 
         if (response) {
             setUserDetails(updatedUser);
-            setComment(""); // Clear input field after successful submission
+            setComment("");
+            alert("Thank you for taking the time to comment. Your comment has been sent to the Admin for review.");
         } else {
             alert("Failed to submit comment.");
         }
@@ -73,7 +74,7 @@ const Comment: React.FC = () => {
             <div className={commentStyles.spaceDiv} />
 
             <div className={commentStyles.commentPageContainer}>
-                <h2>{t("Leave a Comment")}</h2>
+                <h2 className={commentStyles.titleOfCommentPage}>{t("Leave a Comment")} 😇</h2>
 
                 <form onSubmit={handleSubmit} className={commentStyles.commentForm}>
                     <textarea

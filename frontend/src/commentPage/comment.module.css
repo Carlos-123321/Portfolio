@@ -30,7 +30,7 @@
 
 .submitButton {
     padding: 10px;
-    background-color: #4CAF50;
+    background-color: black;
     color: white;
     border: none;
     border-radius: 5px;
@@ -39,4 +39,9 @@
 
 .submitButton:hover {
     background-color: #45a049;
+}
+
+.titleOfCommentPage{
+    color: black ;
+    font-family: 'Lora', serif;
 }

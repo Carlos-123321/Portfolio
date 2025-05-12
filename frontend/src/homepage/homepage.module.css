@@ -103,6 +103,7 @@
     flex-direction: column;
     align-items: center;
     padding: 2rem 2rem 10%;
+    overflow: hidden;
 }
 
 .aboutMeSection{
