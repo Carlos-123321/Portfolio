@@ -4,7 +4,7 @@ import Homepage from "./homepage/Homepage.tsx";
 import Portfolio from "./portfolio/Portfolio.tsx";
 import ProjectPage from "./project-card/project-page/ProjectPage.tsx";
 import LoginPage from "./loginpage/LoginPage.tsx";
-import Journey from "./journey/Journey.tsx";
+import JourneySectionPage from "./journey/JourneySectionPage.tsx";
 import Comment from "./commentPage/Comment.tsx";
 import Sign from "./loginpage/Sign.tsx";
 import Dashboard from "./dashboard/Dashboard.tsx";
@@ -18,7 +18,7 @@ const App: React.FC = () => {
                 <Route path="/portfolio" element={<Portfolio />} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/project/:id" element={<ProjectPage />} />
-                <Route path="/Journey" element={<Journey />} />
+                <Route path="/JourneySectionPage" element={<JourneySectionPage />} />
                 <Route path="/comment" element={<Comment />} />
                 <Route path="/sign-up" element={<Sign />} />
                 <Route path="/adminDashboard" element={<Dashboard />} />

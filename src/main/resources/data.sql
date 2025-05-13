@@ -320,3 +320,26 @@ VALUES (123,
         'My Projects',
         'Welcome to my portfolio. Here you’ll find a selection of my work. Explore my projects to learn more about what I do.'
        );
+
+INSERT INTO hobby (id,title,below,hobbies)
+VALUES (123,
+        'Pastimes 🎭',
+        'I am someone who does a lot of exercise...',
+        '[
+          {
+            "id": 1,
+            "description": "I play Soccer at a competitive level ⚽",
+            "image": "https://www.sportscontact.ca/cdn/shop/collections/9_SOCCERWEB_a35f01c3-d170-47f6-b8f2-6e489a57af8d_1600x.jpg?v=1642526786"
+          },
+          {
+            "id": 2,
+            "description": "I like running. I can run 5km in 18 minutes 🏃💨",
+            "image": "https://media.licdn.com/dms/image/v2/D4D12AQGNiu9PurkDPg/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1706447614752?e=2147483647&v=beta&t=wlJaZM44NA9pklh0MHVACnEx41lbLxCcFbjvn54aad4"
+          },
+          {
+            "id": 3,
+            "description": "I go to the gym regularly 🏋️",
+            "image": "https://www.nautilusplus.com/wordpress/photo-gallery-uploads/photo-gallery/Long_3.JPG"
+          }
+        ]'
+       );

@@ -116,7 +116,7 @@ const Navbar: React.FC = () => {
                 <Link to="/portfolio" className={navbarStyles.portfolioTextLink}>
                     {t("Portfolio")}
                 </Link>
-                <Link to="/Journey" className={navbarStyles.portfolioTextLink}>
+                <Link to="/JourneySectionPage" className={navbarStyles.portfolioTextLink}>
                     {t("Journey")}
                 </Link>
                 {isAuthenticated === "true" ? (

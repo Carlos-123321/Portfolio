@@ -95,4 +95,14 @@ CREATE TABLE work (
 
 );
 
+DROP TABLE IF EXISTS hobby;
+
+CREATE TABLE hobby (
+                        id INT PRIMARY KEY,
+                        title text,
+                        below text,
+                        hobbies JSON
+
+);
+
 
