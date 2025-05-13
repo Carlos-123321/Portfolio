@@ -1,6 +1,7 @@
 DROP TABLE IF EXISTS comment;
 DROP TABLE IF EXISTS user;
 
+
 CREATE TABLE user (
                           id BIGINT AUTO_INCREMENT PRIMARY KEY,
                           name VARCHAR(255),
@@ -36,3 +37,24 @@ CREATE TABLE comment (
                       approved BOOLEAN,
                       FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE
 );
+
+DROP TABLE IF EXISTS aboutMe;
+
+CREATE TABLE aboutMe (
+                               id INT PRIMARY KEY,
+                               about_Me_Text text,
+                               title text
+
+);
+
+DROP TABLE IF EXISTS skills;
+
+CREATE TABLE skills (
+                         id INT PRIMARY KEY,
+                         title text,
+                         soft_Skills JSON,
+                         frontend_technologies JSON
+
+);
+
+

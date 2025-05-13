@@ -20,7 +20,7 @@
   "Download French CV": "Download French CV",
   "Close": "Close",
   "Open CV Form": "Open CV Form",
-  "longText": "As a motivated Computer Science and Technology student at Champlain, I’m passionate about software development and problem-solving. I've gained extensive knowledge in backend and frontend development through collaborative projects, enhancing both my technical skills and ability to work in teams. Always eager to learn, I’m ready to take on new challenges and contribute meaningfully to any project.",
+  "longTextAboutMe": "As a motivated Computer Science and Technology student at Champlain, I’m passionate about software development and problem-solving. I've gained extensive knowledge in backend and frontend development through collaborative projects, enhancing both my technical skills and ability to work in teams. Always eager to learn, I’m ready to take on new challenges and contribute meaningfully to any project.",
   "Journey": "Journey",
   "Leave a comment": "Leave a comment",
   "Dashboard": "Dashboard",
@@ -63,7 +63,7 @@
   "Focused on software development, networking, and cybersecurity.": "Focused on software development, networking, and cybersecurity.",
   "École secondaire Gerard-Filion": "École secondaire Gerard-Filion",
   "High School Diploma": "High School Diploma",
-  "About Me": "About Me",
+  "About Me \uD83D\uDCCC": "About Me \uD83D\uDCCC",
   "Skills": "Skills",
   "Expertise Legend": "Expertise Legend",
   "Beginner": "Beginner",
@@ -87,5 +87,7 @@
   "I like running. I can run 5km in 18 minutes": "I like running. I can run 5km in 18 minutes",
   "gym": "I go to the gym regularly",
   "Send me an email": "Send me an email",
-  "Send Message": "Send Message"
+  "Send Message": "Send Message",
+  "Loading...": "Loading...",
+  "defaultSoftSkills": "Communication, Problem-solving, Time Management, Adaptability, Collaboration, Attention to Detail, Leadership, Creative Thinking, Customer Focus"
 }

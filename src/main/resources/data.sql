@@ -186,3 +186,58 @@ VALUES (
           "Worked on implementing features like personalized dashboards and user management systems for admins."]',
         '["The External Client Project was a multi-semester project where I worked with a client to build a comprehensive web application. The application serves three distinct types of users: Admins, Employees, and Customers, each having personalized dashboards. I was responsible for ensuring that the application was efficient in managing users and resources, with a focus on Admin capabilities to manage projects, invoices, and employees. Throughout the project, I collaborated closely with the client to align the product with their business needs, ensuring a successful delivery."]'
 );
+
+
+INSERT INTO aboutMe (id,about_Me_Text, title)
+VALUES (123,
+           'longTextAboutMe',
+        'About Me 📌'
+       );
+
+INSERT INTO skills (id,title,soft_Skills,frontend_technologies)
+VALUES (123,
+        'Skills 🧠',
+        '["Communication", "Problem-solving", "Time Management", "Adaptability", "Collaboration", "Attention to Detail", "Leadership", "Creative Thinking", "Customer Focus"]',
+        '[
+            {
+                "id": 1,
+                "imageUrl": "https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg",
+                "proficiency": 9
+            },
+          {
+            "id": 2,
+            "imageUrl": "https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg",
+            "proficiency": 9
+          },
+          {
+            "id": 3,
+            "imageUrl": "https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg",
+            "proficiency": 8
+          },
+          {
+            "id": 4,
+            "imageUrl": "https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg",
+            "proficiency": 7
+          },
+          {
+            "id": 5,
+            "imageUrl": "https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg",
+            "proficiency": 8
+          },
+          {
+            "id": 6,
+            "imageUrl": "https://raw.githubusercontent.com/devicons/devicon/master/icons/bootstrap/bootstrap-plain-wordmark.svg",
+            "proficiency": 8
+          },
+          {
+            "id": 7,
+            "imageUrl": "https://www.vectorlogo.zone/logos/figma/figma-icon.svg",
+            "proficiency": 6
+          },
+          {
+            "id": 8,
+            "imageUrl": "https://raw.githubusercontent.com/devicons/devicon/master/icons/photoshop/photoshop-line.svg",
+            "proficiency": 5
+          }
+        ]'
+       );

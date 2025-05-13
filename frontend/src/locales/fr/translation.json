@@ -20,7 +20,7 @@
   "Download French CV": "Télécharger le CV en français",
   "Close": "Fermer",
   "Open CV Form": "Ouvrir le formulaire du CV",
-  "longText": "En tant qu'étudiant motivé en informatique et technologies à Champlain, je suis passionné par le développement logiciel et la résolution de problèmes. J'ai acquis une vaste expérience en développement backend et frontend à travers des projets collaboratifs, améliorant ainsi mes compétences techniques et ma capacité à travailler en équipe. Toujours désireux d'apprendre, je suis prêt à relever de nouveaux défis et à contribuer de manière significative à tout projet.",
+  "longTextAboutMe": "En tant qu'étudiant motivé en informatique et technologies à Champlain, je suis passionné par le développement logiciel et la résolution de problèmes. J'ai acquis une vaste expérience en développement backend et frontend à travers des projets collaboratifs, améliorant ainsi mes compétences techniques et ma capacité à travailler en équipe. Toujours désireux d'apprendre, je suis prêt à relever de nouveaux défis et à contribuer de manière significative à tout projet.",
   "Journey": "Parcours",
   "Leave a comment": "Laisser un commentaire",
   "Dashboard": "Tableau de bord",
@@ -63,7 +63,7 @@
   "Focused on software development, networking, and cybersecurity.": "Axé sur le développement de logiciels, les réseaux et la cybersécurité.",
   "École secondaire Gerard-Filion": "École secondaire Gerard-Filion",
   "High School Diploma": "Diplôme d'études secondaires",
-  "About Me": "À propos de moi",
+  "About Me \uD83D\uDCCC": "À propos de moi \uD83D\uDCCC",
   "Skills": "Compétences",
   "Expertise Legend": "Légende de l'expertise",
   "Beginner": "Débutant",
@@ -87,5 +87,7 @@
   "I like running. I can run 5km in 18 minutes": "J'aime courir. Je peux courir 5 km en 18 minutes",
   "gym": "Je vais à la salle de sport régulièrement",
   "Send me an email": "Envoyez-moi un email",
-  "Send Message": "Envoyer le message"
+  "Send Message": "Envoyer le message",
+  "Loading...": "Chargement...",
+  "defaultSoftSkills": "Communication, Résolution de problèmes, Gestion du temps, Adaptabilité, Collaboration, Souci du détail, Leadership, Pensée créative, Orientation client"
 }

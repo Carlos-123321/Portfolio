@@ -12,11 +12,67 @@ import runningImage from "../../public/assets/Running.png";
 import gymImage from "../../public/assets/Gym.jpg";
 import { motion } from "framer-motion";
 import me from "../../public/assets/PhotoOfMe.jpg";
+import {getAboutMeById, updateAboutMe} from "../apiCalls/aboutMe/aboutMeService.ts";
+import AboutMe from "../apiCalls/aboutMe/AboutMe.ts";
+import Skills from "../apiCalls/skills/Skills.ts";
+import {getSkillsById, updateSkills} from "../apiCalls/skills/SkillsService.ts";
+import {FrontendTechnology} from "../apiCalls/skills/FrontendTechnology.ts";
 
 const Homepage: React.FC = () => {
     const { t } = useTranslation();
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [aboutMe, setAboutMe] = useState<AboutMe | null>(null);
+    const [skills, setSkills] = useState<Skills | null>(null);
     const [reviews, setReviews] = useState<{ title: string; content: string }[]>([]);
+    const [showOverlay, setShowOverlay] = useState(false);
+    const [showSkillsOverlay, setShowSkillsOverlay] = useState(false);
+    const [aboutMeTitle, setAboutMeTitle] = useState("");
+    const [skillsTitle, setSkillsTitle] = useState("");
+    const [softSkillsInput, setSoftSkillsInput] = useState("");
+    const [aboutMeText, setAboutMeText] = useState("");
+    const [frontendTechnologies, setFrontendTechnologies] = useState<FrontendTechnology[]>([]);
+    const [editedTechnologies, setEditedTechnologies] = useState(frontendTechnologies);
+
+    useEffect(() => {
+        const fetchAboutMe = async () => {
+            console.log("id:");
+            const data = await getAboutMeById();
+            console.log("Fetched data:", data);
+
+            const translatedTitle = t(data?.title || "");
+            const translatedText = t(data?.aboutMeText || "");
+
+            setAboutMe(data);
+            setAboutMeTitle(translatedTitle);
+            setAboutMeText(translatedText);
+        };
+
+        fetchAboutMe();
+    }, [t]);
+
+    useEffect(() => {
+        const fetchSkills = async () => {
+            const data = await getSkillsById();
+            const translatedTitle = t(data?.title || "");
+            const fetchedSkills = await getSkillsById();
+
+            const translatedSoftSkills = Array.isArray(data?.softSkills)
+                ? data.softSkills.map((s: string) => t(s)).join(", ")
+                : "";
+
+            const frontendTechs = Array.isArray(data?.frontendTechnologies)
+                ? data.frontendTechnologies
+                : [];
+
+            setSkills(data);
+            setSkillsTitle(translatedTitle);
+            setSoftSkillsInput(translatedSoftSkills);
+            setEditedTechnologies(fetchedSkills.frontendTechnologies);
+            setFrontendTechnologies(frontendTechs);
+        };
+
+        fetchSkills();
+    }, [t]);
 
     useEffect(() => {
         const fetchReviews = async () => {
@@ -54,6 +110,41 @@ const Homepage: React.FC = () => {
         return sizes[Math.floor(Math.random() * sizes.length)];
     };
 
+    const handleSave = async () => {
+        try {
+            if (aboutMe) {
+                const updatedData = {
+                    aboutMeText: aboutMeText,
+                    title: aboutMeTitle,
+                };
+
+                await updateAboutMe(aboutMe.id, updatedData);
+                setAboutMe({ ...aboutMe, ...updatedData });
+                setShowOverlay(false);
+            }
+        } catch (error) {
+            console.error("Failed to update About Me:", error);
+        }
+    };
+
+    const handleSkillsSave = async () => {
+        try {
+            if (skills) {
+                const updatedData = {
+                    title: skillsTitle,
+                    softSkills: softSkillsInput.split(",").map(s => s.trim()).filter(s => s !== ""),
+                    frontendTechnologies: editedTechnologies
+                };
+
+                await updateSkills(skills.id, updatedData);
+                setSkills({ ...skills, ...updatedData });
+                setShowSkillsOverlay(false);
+            }
+        } catch (error) {
+            console.error("Failed to update About Me:", error);
+        }
+    };
+
 
     return (
         <>
@@ -89,7 +180,17 @@ const Homepage: React.FC = () => {
 
                 <div className={homepageStyles.aboutMeSection}>
 
-                    <p className={homepageStyles.reviewsTitle}>{t("About Me")} 📌</p>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                         className={homepageStyles.aboutMeSectionPencil} viewBox="0 0 16 16"
+                         onClick={() => setShowOverlay(true)}
+                         >
+                        <path
+                            d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                        <path fill-rule="evenodd"
+                              d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+                    </svg>
+
+                    <p className={homepageStyles.reviewsTitle}>{aboutMe ? t(aboutMe.title) : t("Loading...")}</p>
 
                     <div className={homepageStyles.innerAboutSection}>
 
@@ -101,317 +202,442 @@ const Homepage: React.FC = () => {
                             />
                         </div>
                         <div className={homepageStyles.rightSideAbout}>
-                            <p>{t("longText")}</p>
+                            <p>{aboutMe ? t(aboutMe.aboutMeText) : t("Loading...")}</p>
                         </div>
                     </div>
+                    {showOverlay && (
+                        <div className={homepageStyles.overlay} onClick={() => setShowOverlay(false)}>
+                            <div className={homepageStyles.overlayContent} onClick={(e) => e.stopPropagation()}>
+                                <h2>Edit About Me</h2>
 
+                                <label htmlFor="aboutMeTitle">Title:</label>
+                                <input
+                                    id="aboutMeTitle"
+                                    type="text"
+                                    value={aboutMeTitle}
+                                    onChange={(e) => {
+                                        const newTitle = e.target.value;
+                                        console.log("Input Title:", newTitle);  // Log the input value
+                                        setAboutMeTitle(newTitle);  // Update the state with the new value
+                                    }}
+                                    className={homepageStyles.input}
+                                />
+
+                                <label htmlFor="aboutMeTitle">Paragraph:</label>
+                                <textarea
+                                    value={aboutMeText}
+                                    onChange={(e) => {
+                                        const newText = e.target.value;
+                                        console.log("Input Paragraph:", newText);  // Log the input value
+                                        setAboutMeText(newText);  // Update the state with the new value
+                                    }}
+                                    className={homepageStyles.textarea}
+                                />
+
+                                <div className={homepageStyles.overlayContentButtonsRow}>
+                                    <button onClick={handleSave}>Save</button>
+                                    <button onClick={() => setShowOverlay(false)}>Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    )}
 
                 </div>
 
-                <div className={homepageStyles.skillSection}>
-                    <p className={homepageStyles.reviewsTitle}>{t("Skills")} 🧠</p>
+            <div className={homepageStyles.skillSection}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                     className={homepageStyles.aboutMeSectionPencil} viewBox="0 0 16 16" onClick={() => setShowSkillsOverlay(true)}>
+                    <path
+                        d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                    <path fill-rule="evenodd"
+                          d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+                </svg>
+                <p className={homepageStyles.reviewsTitle}>{skills ? t(skills.title) : t("Loading...")}</p>
 
-                    <div className={homepageStyles.legendSection}>
-                        <div className={homepageStyles.legendContainer}>
-                            <p className={homepageStyles.legendTitle}>{t("Expertise Legend")}</p>
-                            <div className={homepageStyles.legendTitleFirstRow}>
-                                <div className={homepageStyles.legendTitleBeginnerRow}>
-                                    1 = {t("Beginner")} 🤓
-                                </div>
-                                <div className={homepageStyles.legendTitleIntermediateRow}>
-                                    5 = {t("Intermediate")} 📈
-                                </div>
+                <div className={homepageStyles.legendSection}>
+                    <div className={homepageStyles.legendContainer}>
+                        <p className={homepageStyles.legendTitle}>{t("Expertise Legend")}</p>
+                        <div className={homepageStyles.legendTitleFirstRow}>
+                            <div className={homepageStyles.legendTitleBeginnerRow}>
+                                1 = {t("Beginner")} 🤓
                             </div>
-                            <div className={homepageStyles.legendTitleExpertRow}>
-                                10 = {t("Expert")} 🚀
+                            <div className={homepageStyles.legendTitleIntermediateRow}>
+                                5 = {t("Intermediate")} 📈
                             </div>
+                        </div>
+                        <div className={homepageStyles.legendTitleExpertRow}>
+                            10 = {t("Expert")} 🚀
                         </div>
                     </div>
+                </div>
 
-                    <div className={homepageStyles.skillsFirstRow}>
-
-
-                        <div className={homepageStyles.skillsFirstRowLeft}>
-                            <div className={homepageStyles.skillsTitleContainer}>
-                                <p className={homepageStyles.skillsTitle}>{t("Frontend Technologies")}</p>
-                            </div>
-
-                            <div className={homepageStyles.skillsLeftIcons}>
-
-                                <div className={homepageStyles.skillsLeftIconsContainer}>
-                                    <img
-                                        src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg"
-                                        alt="html5" width="40" height="40"/>
-                                    <div className={homepageStyles.skillsLeftIconsContainerNumericalValue}>
-                                        9
-                                    </div>
-                                </div>
-
-                                <div className={homepageStyles.skillsLeftIconsContainer}>
-                                    <img
-                                        src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg"
-                                        alt="css3" width="40" height="40"/>
-                                    <div className={homepageStyles.skillsLeftIconsContainerNumericalValue}>
-                                        9
-                                    </div>
-                                </div>
-
-                                <div className={homepageStyles.skillsLeftIconsContainer}>
-                                    <img
-                                        src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg"
-                                        alt="javascript" width="40" height="40"/>
-                                    <div className={homepageStyles.skillsLeftIconsContainerNumericalValue}>
-                                        8
-                                    </div>
-                                </div>
-
-                                <div className={homepageStyles.skillsLeftIconsContainer}>
-                                    <img
-                                        src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg"
-                                        alt="typescript" width="40" height="40"/>
-                                    <div className={homepageStyles.skillsLeftIconsContainerNumericalValue}>
-                                        7
-                                    </div>
-                                </div>
-
-                                <div className={homepageStyles.skillsLeftIconsContainer}>
-                                    <img
-                                        src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg"
-                                        alt="react" width="40" height="40"/>
-                                    <div className={homepageStyles.skillsLeftIconsContainerNumericalValue}>
-                                        8
-                                    </div>
-                                </div>
-
-                                <div className={homepageStyles.skillsLeftIconsContainer}>
-                                    <img
-                                        src="https://raw.githubusercontent.com/devicons/devicon/master/icons/bootstrap/bootstrap-plain-wordmark.svg"
-                                        alt="bootstrap" width="40" height="40"/>
-                                    <div className={homepageStyles.skillsLeftIconsContainerNumericalValue}>
-                                        8
-                                    </div>
-                                </div>
-
-                                <div className={homepageStyles.skillsLeftIconsContainer}>
-                                    <img src="https://www.vectorlogo.zone/logos/figma/figma-icon.svg" alt="figma"
-                                         width="40"
-                                         height="40"/>
-                                    <div className={homepageStyles.skillsLeftIconsContainerNumericalValue}>
-                                        6
-                                    </div>
-                                </div>
-
-                                <div className={homepageStyles.skillsLeftIconsContainer}>
-                                    <img
-                                        src="https://raw.githubusercontent.com/devicons/devicon/master/icons/photoshop/photoshop-line.svg"
-                                        alt="photoshop" width="40" height="40"/>
-                                    <div className={homepageStyles.skillsLeftIconsContainerNumericalValue}>
-                                        5
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div className={homepageStyles.skillsFirstRowRight}>
-                            <div className={homepageStyles.skillsTitleContainer}>
-                                <p className={homepageStyles.skillsTitle}>{t("Backend Technologies")}</p>
-                            </div>
-
-                            <div className={homepageStyles.skillsLeftIcons}>
-                                <div className={homepageStyles.skillsLeftIconsContainer}>
-                                    <img
-                                        src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg"
-                                        alt="java" width="40" height="40"/>
-                                    <div className={homepageStyles.skillsLeftIconsContainerNumericalValue}>
-                                        8
-                                    </div>
-                                </div>
-
-                                <div className={homepageStyles.skillsLeftIconsContainer}>
-                                    <img
-                                        src="https://raw.githubusercontent.com/devicons/devicon/master/icons/csharp/csharp-original.svg"
-                                        alt="csharp" width="40" height="40"/>
-                                    <div className={homepageStyles.skillsLeftIconsContainerNumericalValue}>
-                                        6
-                                    </div>
-                                </div>
-
-                                <div className={homepageStyles.skillsLeftIconsContainer}>
-                                    <img
-                                        src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg"
-                                        alt="python" width="40" height="40"/>
-                                    <div className={homepageStyles.skillsLeftIconsContainerNumericalValue}>
-                                        6
-                                    </div>
-                                </div>
-                                <div className={homepageStyles.skillsLeftIconsContainer}>
-                                    <img
-                                        src="https://raw.githubusercontent.com/devicons/devicon/master/icons/dot-net/dot-net-original-wordmark.svg"
-                                        alt=".NET" width="40" height="40"/>
-                                    <div className={homepageStyles.skillsLeftIconsContainerNumericalValue}>
-                                        8
-                                    </div>
-                                </div>
-                                <div className={homepageStyles.skillsLeftIconsContainer}>
-                                    <img src="https://www.vectorlogo.zone/logos/springio/springio-icon.svg"
-                                         alt="Spring Boot"
-                                         width="40" height="40"/>
-                                    <div className={homepageStyles.skillsLeftIconsContainerNumericalValue}>
-                                        8
-                                    </div>
-                                </div>
-                                <div className={homepageStyles.skillsLeftIconsContainer}>
-                                    <img
-                                        src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg"
-                                        alt="MySQL" width="40" height="40"/>
-                                    <div className={homepageStyles.skillsLeftIconsContainerNumericalValue}>
-                                        8
-                                    </div>
-                                </div>
-                                <div className={homepageStyles.skillsLeftIconsContainer}>
-                                    <img src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg"
-                                         alt="Postman"
-                                         width="40" height="40"/>
-                                    <div className={homepageStyles.skillsLeftIconsContainerNumericalValue}>
-                                        9
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                <div className={homepageStyles.skillsFirstRow}>
 
 
-                    </div>
-
-                    <div className={homepageStyles.skillsSecondRow}>
+                    <div className={homepageStyles.skillsFirstRowLeft}>
                         <div className={homepageStyles.skillsTitleContainer}>
-                            <p className={homepageStyles.skillsTitle}>{t("Soft Skills")}</p>
+                            <p className={homepageStyles.skillsTitle}>{t("Frontend Technologies")}</p>
                         </div>
 
-                        <div className={homepageStyles.softSkillsContainer}>
-                            <div className={homepageStyles.softSkillsTextStyleContainer}><p
-                                className={homepageStyles.softSkillsTextStyle}>• {t("Communication")}</p></div>
-                            <div className={homepageStyles.softSkillsTextStyleContainer}><p
-                                className={homepageStyles.softSkillsTextStyle}>• {t("Problem-solving")}</p></div>
-                            <div className={homepageStyles.softSkillsTextStyleContainer}><p
-                                className={homepageStyles.softSkillsTextStyle}>• {t("Time Management")}</p></div>
-                            <div className={homepageStyles.softSkillsTextStyleContainer}><p
-                                className={homepageStyles.softSkillsTextStyle}>• {t("Adaptability")}</p></div>
-                            <div className={homepageStyles.softSkillsTextStyleContainer}><p
-                                className={homepageStyles.softSkillsTextStyle}>• {t("Collaboration")}</p></div>
-                            <div className={homepageStyles.softSkillsTextStyleContainer}><p
-                                className={homepageStyles.softSkillsTextStyle}>• {t("Attention to Detail")}</p></div>
-                            <div className={homepageStyles.softSkillsTextStyleContainer}><p
-                                className={homepageStyles.softSkillsTextStyle}>• {t("Leadership")}</p></div>
-                            <div className={homepageStyles.softSkillsTextStyleContainer}><p
-                                className={homepageStyles.softSkillsTextStyle}>• {t("Creative Thinking")}</p></div>
-                            <div className={homepageStyles.softSkillsTextStyleContainer}><p
-                                className={homepageStyles.softSkillsTextStyle}>• {t("Customer Focus")}</p></div>
+                        <div className={homepageStyles.skillsLeftIcons}>
+                                {frontendTechnologies.map((tech) => (
+                                    <div key={tech.id} className={homepageStyles.skillsLeftIconsContainer}>
+                                        <img
+                                            src={tech.imageUrl}
+                                            width="40"
+                                            height="40"
+                                        />
+                                        <div className={homepageStyles.skillsLeftIconsContainerNumericalValue}>
+                                            {tech.proficiency}
+                                        </div>
+                                    </div>
+                                ))}
                         </div>
-
                     </div>
+
+                    <div className={homepageStyles.skillsFirstRowRight}>
+                        <div className={homepageStyles.skillsTitleContainer}>
+                            <p className={homepageStyles.skillsTitle}>{t("Backend Technologies")}</p>
+                        </div>
+
+                        <div className={homepageStyles.skillsLeftIcons}>
+                            <div className={homepageStyles.skillsLeftIconsContainer}>
+                                <img
+                                    src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg"
+                                    alt="java" width="40" height="40"/>
+                                <div className={homepageStyles.skillsLeftIconsContainerNumericalValue}>
+                                    8
+                                </div>
+                            </div>
+
+                            <div className={homepageStyles.skillsLeftIconsContainer}>
+                                <img
+                                    src="https://raw.githubusercontent.com/devicons/devicon/master/icons/csharp/csharp-original.svg"
+                                    alt="csharp" width="40" height="40"/>
+                                <div className={homepageStyles.skillsLeftIconsContainerNumericalValue}>
+                                    6
+                                </div>
+                            </div>
+
+                            <div className={homepageStyles.skillsLeftIconsContainer}>
+                                <img
+                                    src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg"
+                                    alt="python" width="40" height="40"/>
+                                <div className={homepageStyles.skillsLeftIconsContainerNumericalValue}>
+                                    6
+                                </div>
+                            </div>
+                            <div className={homepageStyles.skillsLeftIconsContainer}>
+                                <img
+                                    src="https://raw.githubusercontent.com/devicons/devicon/master/icons/dot-net/dot-net-original-wordmark.svg"
+                                    alt=".NET" width="40" height="40"/>
+                                <div className={homepageStyles.skillsLeftIconsContainerNumericalValue}>
+                                    8
+                                </div>
+                            </div>
+                            <div className={homepageStyles.skillsLeftIconsContainer}>
+                                <img src="https://www.vectorlogo.zone/logos/springio/springio-icon.svg"
+                                     alt="Spring Boot"
+                                     width="40" height="40"/>
+                                <div className={homepageStyles.skillsLeftIconsContainerNumericalValue}>
+                                    8
+                                </div>
+                            </div>
+                            <div className={homepageStyles.skillsLeftIconsContainer}>
+                                <img
+                                    src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg"
+                                    alt="MySQL" width="40" height="40"/>
+                                <div className={homepageStyles.skillsLeftIconsContainerNumericalValue}>
+                                    8
+                                </div>
+                            </div>
+                            <div className={homepageStyles.skillsLeftIconsContainer}>
+                                <img src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg"
+                                     alt="Postman"
+                                     width="40" height="40"/>
+                                <div className={homepageStyles.skillsLeftIconsContainerNumericalValue}>
+                                    9
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/*{showSkillsOverlay && (*/}
+                    {/*    <div className={homepageStyles.overlay} onClick={() => setShowSkillsOverlay(false)}>*/}
+                    {/*        <div className={homepageStyles.overlayContent} onClick={(e) => e.stopPropagation()}>*/}
+                    {/*            <h2>Edit or Add Skills</h2>*/}
+
+                    {/*            <label htmlFor="skillsTitle">Title:</label>*/}
+                    {/*            <input*/}
+                    {/*                id="skillsTitle"*/}
+                    {/*                type="text"*/}
+                    {/*                value={skillsTitle}*/}
+                    {/*                onChange={(e) => {*/}
+                    {/*                    const newTitle = e.target.value;*/}
+                    {/*                    console.log("Input Title:", newTitle);  // Log the input value*/}
+                    {/*                    setSkillsTitle(newTitle);  // Update the state with the new value*/}
+                    {/*                }}*/}
+                    {/*                className={homepageStyles.input}*/}
+                    {/*            />*/}
+
+                    {/*            <label htmlFor="softSkills">Soft Skills (comma-separated):</label>*/}
+                    {/*            <input*/}
+                    {/*                id="softSkills"*/}
+                    {/*                type="text"*/}
+                    {/*                value={softSkillsInput}*/}
+                    {/*                onChange={(e) => setSoftSkillsInput(e.target.value)}*/}
+                    {/*                className={homepageStyles.input}*/}
+                    {/*            />*/}
+
+                    {/*            /!* New inputs for adding/editing a frontend technology *!/*/}
+                    {/*            <label htmlFor="techImageUrl">Technology Image URL:</label>*/}
+                    {/*            <input*/}
+                    {/*                id="techImageUrl"*/}
+                    {/*                type="text"*/}
+                    {/*                value={newTechImageUrl}*/}
+                    {/*                onChange={(e) => setNewTechImageUrl(e.target.value)}*/}
+                    {/*                className={homepageStyles.input}*/}
+                    {/*            />*/}
+
+                    {/*            <label htmlFor="techProficiency">Proficiency (1–10):</label>*/}
+                    {/*            <input*/}
+                    {/*                id="techProficiency"*/}
+                    {/*                type="number"*/}
+                    {/*                min="1"*/}
+                    {/*                max="10"*/}
+                    {/*                value={newTechProficiency}*/}
+                    {/*                onChange={(e) => setNewTechProficiency(parseInt(e.target.value))}*/}
+                    {/*                className={homepageStyles.input}*/}
+                    {/*            />*/}
+
+
+                    {/*            <div className={homepageStyles.overlayContentButtonsRow}>*/}
+                    {/*                <button onClick={handleSkillsSave}>Save</button>*/}
+                    {/*                <button onClick={() => setShowSkillsOverlay(false)}>Cancel</button>*/}
+                    {/*            </div>*/}
+                    {/*        </div>*/}
+                    {/*    </div>*/}
+                    {/*)}*/}
+
+                    {showSkillsOverlay && (
+                        <div className={homepageStyles.overlay} onClick={() => setShowSkillsOverlay(false)}>
+                            <div className={homepageStyles.overlayContent} onClick={(e) => e.stopPropagation()}>
+                                <h2>Edit or Add Skills</h2>
+
+                                <label htmlFor="skillsTitle">Title:</label>
+                                <input
+                                    id="skillsTitle"
+                                    type="text"
+                                    value={skillsTitle}
+                                    onChange={(e) => setSkillsTitle(e.target.value)}
+                                    className={homepageStyles.input}
+                                />
+
+                                <label htmlFor="softSkills">Soft Skills (comma-separated):</label>
+                                <input
+                                    id="softSkills"
+                                    type="text"
+                                    value={softSkillsInput}
+                                    onChange={(e) => setSoftSkillsInput(e.target.value)}
+                                    className={homepageStyles.input}
+                                />
+
+                                {/* Editable skill list */}
+                                <h3>Edit Existing Skills</h3>
+                                {editedTechnologies.map((tech, index) => (
+                                    <div key={tech.id || index} className={homepageStyles.techEditContainer}>
+                                        <label>ID:</label>
+                                        <input
+                                            type="number"
+                                            value={tech.id}
+                                            onChange={(e) => {
+                                                const updated = [...editedTechnologies];
+                                                updated[index] = {...updated[index], id: parseInt(e.target.value) || 0};
+                                                setEditedTechnologies(updated);
+                                            }}
+                                            className={homepageStyles.input}
+                                        />
+
+                                        <label>Image URL:</label>
+                                        <input
+                                            type="text"
+                                            value={tech.imageUrl}
+                                            onChange={(e) => {
+                                                const updated = [...editedTechnologies];
+                                                updated[index] = { ...updated[index], imageUrl: e.target.value };
+                                                setEditedTechnologies(updated);
+                                            }}
+                                            className={homepageStyles.input}
+                                        />
+
+                                        <label>Proficiency:</label>
+                                        <input
+                                            type="number"
+                                            value={tech.proficiency}
+                                            onChange={(e) => {
+                                                const updated = [...editedTechnologies];
+                                                updated[index] = { ...updated[index], proficiency: parseInt(e.target.value) || 1 };
+                                                setEditedTechnologies(updated);
+                                            }}
+                                            className={homepageStyles.input}
+                                        />
+                                    </div>
+                                ))}
+
+                                <div className={homepageStyles.overlayContentButtonsRow}>
+                                    <button onClick={() => {
+                                        setEditedTechnologies([...editedTechnologies, {
+                                            id: 0,
+                                            imageUrl: '',
+                                            proficiency: 1
+                                        }]);
+                                    }}>+ Add Skill
+                                    </button>
+                                    <button onClick={handleSkillsSave}>Save</button>
+                                    <button onClick={() => setShowSkillsOverlay(false)}>Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+
 
                 </div>
 
-                <div className={homepageStyles.hobbySection}>
-                    <p className={homepageStyles.reviewsTitle}>{t("Pastimes")} 🎭</p>
-                    <div className={homepageStyles.pastimesContainer}>
-                        <p className={homepageStyles.pastimeSubTitle}>{t("I am someone who does a lot of exercise...")}</p>
+                <div className={homepageStyles.skillsSecondRow}>
+                    <div className={homepageStyles.skillsTitleContainer}>
+                        <p className={homepageStyles.skillsTitle}>{t("Soft Skills")}</p>
                     </div>
 
-                    <div className={homepageStyles.pastimeFirstRow}>
-
-                        <div className={homepageStyles.pastimeLeftSection}>
-                            <div className={homepageStyles.pastimeText}>
-                                {t("I play Soccer at a competitive level")} ⚽
-                            </div>
-                            <div className={homepageStyles.imageContainer}>
-                                <img
-                                    src={soccerImage}
-                                    alt="running"
-                                    className={homepageStyles.imageFit}
-                                />
-                            </div>
-                        </div>
-
-                        <div className={homepageStyles.pastimeRightSection}>
-                            <div className={homepageStyles.pastimeText}>
-                                {t("I like running. I can run 5km in 18 minutes")} 🏃💨
-                            </div>
-                            <div className={homepageStyles.imageContainer}>
-                                <img
-                                    src={runningImage}
-                                    alt="running"
-                                    className={homepageStyles.imageFit}
-                                />
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div className={homepageStyles.pastimeSecondRowSection}>
-                        <div className={homepageStyles.pastimeText}>
-                            {t("gym")} 🏋️
-                            <div className={homepageStyles.imageContainer}>
-                                <img
-                                    src={gymImage}
-                                    alt="running"
-                                    className={homepageStyles.imageFit}
-                                />
-                            </div>
-                        </div>
-                        <div>
-
-                        </div>
-                    </div>
-
-                </div>
-
-                <div className={homepageStyles.reviewSection}>
-                    <p className={homepageStyles.reviewsTitle}>{t("Reviews")} ✨</p>
-
-                    <div className={homepageStyles.carousel}>
-                        <div
-                            className={homepageStyles.carouselTrack}
-                            style={{transform: `translateX(-${currentIndex * 100}%)`}}
-                        >
-                            {reviews.length > 0 ? (
-                                reviews.map((review, index) => (
-                                    <div key={index} className={homepageStyles.reviewItem}>
-                                        <h3 className={homepageStyles.reviewCardTitle}>{review.title}</h3>
-                                        <p>{review.content}</p>
-                                    </div>
-                                ))
-                            ) : (
-                                <p>Loading reviews...</p>
-                            )}
-                        </div>
-                    </div>
-
-                    <div className={homepageStyles.reviewsContainer}>
-                        {reviews.length > 0 ? (
-                            reviews.map((review, index) => (
-                                <div
-                                    key={index}
-                                    className={`${homepageStyles.reviewCard} ${homepageStyles[getRandomSize()]}`}
-                                >
-                                    <div className={homepageStyles.badgeContainer}>
-                                        <p className={homepageStyles.badgeStyles}>📜</p>
-                                    </div>
-
-                                    <p className={homepageStyles.reviewCardTitle}>{review.title}</p>
-                                    <p className={homepageStyles.reviewCardSubText}>{review.content}</p>
+                    <div className={homepageStyles.softSkillsContainer}>
+                        {skills && skills.softSkills.length > 0 ? (
+                            skills.softSkills.map((skill, index) => (
+                                <div key={index} className={homepageStyles.softSkillsTextStyleContainer}>
+                                    <p className={homepageStyles.softSkillsTextStyle}>• {t(skill)}</p>
                                 </div>
                             ))
                         ) : (
-                            <p>No reviews yet.</p>
+                            <p>{t("Loading...")}</p>
+                        )}
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div className={homepageStyles.hobbySection}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                     className={homepageStyles.aboutMeSectionPencil} viewBox="0 0 16 16">
+                    <path
+                        d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                    <path fill-rule="evenodd"
+                          d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+                </svg>
+                <p className={homepageStyles.reviewsTitle}>{t("Pastimes")} 🎭</p>
+                <div className={homepageStyles.pastimesContainer}>
+                    <p className={homepageStyles.pastimeSubTitle}>{t("I am someone who does a lot of exercise...")}</p>
+                </div>
+
+                <div className={homepageStyles.pastimeFirstRow}>
+
+                    <div className={homepageStyles.pastimeLeftSection}>
+                        <div className={homepageStyles.pastimeText}>
+                            {t("I play Soccer at a competitive level")} ⚽
+                        </div>
+                        <div className={homepageStyles.imageContainer}>
+                            <img
+                                src={soccerImage}
+                                alt="running"
+                                className={homepageStyles.imageFit}
+                            />
+                        </div>
+                    </div>
+
+                    <div className={homepageStyles.pastimeRightSection}>
+                        <div className={homepageStyles.pastimeText}>
+                            {t("I like running. I can run 5km in 18 minutes")} 🏃💨
+                        </div>
+                        <div className={homepageStyles.imageContainer}>
+                            <img
+                                src={runningImage}
+                                alt="running"
+                                className={homepageStyles.imageFit}
+                            />
+                        </div>
+                    </div>
+
+                </div>
+
+                <div className={homepageStyles.pastimeSecondRowSection}>
+                    <div className={homepageStyles.pastimeText}>
+                        {t("gym")} 🏋️
+                        <div className={homepageStyles.imageContainer}>
+                            <img
+                                src={gymImage}
+                                alt="running"
+                                className={homepageStyles.imageFit}
+                            />
+                        </div>
+                    </div>
+                    <div>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div className={homepageStyles.reviewSection}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                     className={homepageStyles.aboutMeSectionPencil} viewBox="0 0 16 16">
+                    <path
+                        d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                    <path fill-rule="evenodd"
+                          d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+                </svg>
+                <p className={homepageStyles.reviewsTitle}>{t("Reviews")} ✨</p>
+
+                <div className={homepageStyles.carousel}>
+                    <div
+                        className={homepageStyles.carouselTrack}
+                        style={{transform: `translateX(-${currentIndex * 100}%)`}}
+                    >
+                        {reviews.length > 0 ? (
+                            reviews.map((review, index) => (
+                                <div key={index} className={homepageStyles.reviewItem}>
+                                    <h3 className={homepageStyles.reviewCardTitle}>{review.title}</h3>
+                                    <p>{review.content}</p>
+                                </div>
+                            ))
+                        ) : (
+                            <p>Loading reviews...</p>
                         )}
                     </div>
                 </div>
 
-                <Footer/>
-            </>
-            );
-            };
+                <div className={homepageStyles.reviewsContainer}>
+                    {reviews.length > 0 ? (
+                        reviews.map((review, index) => (
+                            <div
+                                key={index}
+                                className={`${homepageStyles.reviewCard} ${homepageStyles[getRandomSize()]}`}
+                            >
+                                <div className={homepageStyles.badgeContainer}>
+                                    <p className={homepageStyles.badgeStyles}>📜</p>
+                                </div>
 
-            export default Homepage;
+                                <p className={homepageStyles.reviewCardTitle}>{review.title}</p>
+                                <p className={homepageStyles.reviewCardSubText}>{review.content}</p>
+                            </div>
+                        ))
+                    ) : (
+                        <p>No reviews yet.</p>
+                    )}
+                </div>
+            </div>
+
+            <Footer/>
+        </>
+    );
+};
+
+export default Homepage;
