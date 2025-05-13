@@ -53,7 +53,45 @@ CREATE TABLE skills (
                          id INT PRIMARY KEY,
                          title text,
                          soft_Skills JSON,
-                         frontend_technologies JSON
+                         frontend_technologies JSON,
+                         backend_technologies JSON
+
+);
+
+DROP TABLE IF EXISTS reviews;
+
+CREATE TABLE reviews (
+                        id INT PRIMARY KEY,
+                        title text
+
+);
+
+DROP TABLE IF EXISTS intro;
+
+CREATE TABLE intro (
+                         id INT PRIMARY KEY,
+                         title text,
+                         second_Title text,
+                         third_Title text,
+                         image text
+
+);
+
+DROP TABLE IF EXISTS journey;
+
+CREATE TABLE journey (
+                       id INT PRIMARY KEY,
+                       title text,
+                       academic JSON
+
+);
+
+DROP TABLE IF EXISTS work;
+
+CREATE TABLE work (
+                         id INT PRIMARY KEY,
+                         title text,
+                         paragraph text
 
 );
 

@@ -17,6 +17,7 @@ import AboutMe from "../apiCalls/aboutMe/AboutMe.ts";
 import Skills from "../apiCalls/skills/Skills.ts";
 import {getSkillsById, updateSkills} from "../apiCalls/skills/SkillsService.ts";
 import {FrontendTechnology} from "../apiCalls/skills/FrontendTechnology.ts";
+import {BackendTechnology} from "../apiCalls/skills/BackendTechnology.ts";
 
 const Homepage: React.FC = () => {
     const { t } = useTranslation();
@@ -31,7 +32,9 @@ const Homepage: React.FC = () => {
     const [softSkillsInput, setSoftSkillsInput] = useState("");
     const [aboutMeText, setAboutMeText] = useState("");
     const [frontendTechnologies, setFrontendTechnologies] = useState<FrontendTechnology[]>([]);
+    const [backendTechnologies, setBackendTechnologies] = useState<BackendTechnology[]>([]);
     const [editedTechnologies, setEditedTechnologies] = useState(frontendTechnologies);
+    const [backendEditedTechnologies, setBackendEditedTechnologies] = useState(backendTechnologies);
 
     useEffect(() => {
         const fetchAboutMe = async () => {
@@ -64,11 +67,17 @@ const Homepage: React.FC = () => {
                 ? data.frontendTechnologies
                 : [];
 
+            const backendTechs = Array.isArray(data?.backendTechnologies)
+                ? data.backendTechnologies
+                : [];
+
             setSkills(data);
             setSkillsTitle(translatedTitle);
             setSoftSkillsInput(translatedSoftSkills);
             setEditedTechnologies(fetchedSkills.frontendTechnologies);
             setFrontendTechnologies(frontendTechs);
+            setBackendEditedTechnologies(fetchedSkills.backendTechnologies);
+            setBackendTechnologies(backendTechs);
         };
 
         fetchSkills();
@@ -133,7 +142,8 @@ const Homepage: React.FC = () => {
                 const updatedData = {
                     title: skillsTitle,
                     softSkills: softSkillsInput.split(",").map(s => s.trim()).filter(s => s !== ""),
-                    frontendTechnologies: editedTechnologies
+                    frontendTechnologies: editedTechnologies,
+                    backendTechnologies: backendEditedTechnologies
                 };
 
                 await updateSkills(skills.id, updatedData);
@@ -301,123 +311,20 @@ const Homepage: React.FC = () => {
                         </div>
 
                         <div className={homepageStyles.skillsLeftIcons}>
-                            <div className={homepageStyles.skillsLeftIconsContainer}>
-                                <img
-                                    src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg"
-                                    alt="java" width="40" height="40"/>
-                                <div className={homepageStyles.skillsLeftIconsContainerNumericalValue}>
-                                    8
+                            {backendTechnologies.map((tech) => (
+                                <div key={tech.id} className={homepageStyles.skillsLeftIconsContainer}>
+                                    <img
+                                        src={tech.imageUrl}
+                                        width="40"
+                                        height="40"
+                                    />
+                                    <div className={homepageStyles.skillsLeftIconsContainerNumericalValue}>
+                                        {tech.proficiency}
+                                    </div>
                                 </div>
-                            </div>
-
-                            <div className={homepageStyles.skillsLeftIconsContainer}>
-                                <img
-                                    src="https://raw.githubusercontent.com/devicons/devicon/master/icons/csharp/csharp-original.svg"
-                                    alt="csharp" width="40" height="40"/>
-                                <div className={homepageStyles.skillsLeftIconsContainerNumericalValue}>
-                                    6
-                                </div>
-                            </div>
-
-                            <div className={homepageStyles.skillsLeftIconsContainer}>
-                                <img
-                                    src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg"
-                                    alt="python" width="40" height="40"/>
-                                <div className={homepageStyles.skillsLeftIconsContainerNumericalValue}>
-                                    6
-                                </div>
-                            </div>
-                            <div className={homepageStyles.skillsLeftIconsContainer}>
-                                <img
-                                    src="https://raw.githubusercontent.com/devicons/devicon/master/icons/dot-net/dot-net-original-wordmark.svg"
-                                    alt=".NET" width="40" height="40"/>
-                                <div className={homepageStyles.skillsLeftIconsContainerNumericalValue}>
-                                    8
-                                </div>
-                            </div>
-                            <div className={homepageStyles.skillsLeftIconsContainer}>
-                                <img src="https://www.vectorlogo.zone/logos/springio/springio-icon.svg"
-                                     alt="Spring Boot"
-                                     width="40" height="40"/>
-                                <div className={homepageStyles.skillsLeftIconsContainerNumericalValue}>
-                                    8
-                                </div>
-                            </div>
-                            <div className={homepageStyles.skillsLeftIconsContainer}>
-                                <img
-                                    src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg"
-                                    alt="MySQL" width="40" height="40"/>
-                                <div className={homepageStyles.skillsLeftIconsContainerNumericalValue}>
-                                    8
-                                </div>
-                            </div>
-                            <div className={homepageStyles.skillsLeftIconsContainer}>
-                                <img src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg"
-                                     alt="Postman"
-                                     width="40" height="40"/>
-                                <div className={homepageStyles.skillsLeftIconsContainerNumericalValue}>
-                                    9
-                                </div>
-                            </div>
+                            ))}
                         </div>
                     </div>
-
-                    {/*{showSkillsOverlay && (*/}
-                    {/*    <div className={homepageStyles.overlay} onClick={() => setShowSkillsOverlay(false)}>*/}
-                    {/*        <div className={homepageStyles.overlayContent} onClick={(e) => e.stopPropagation()}>*/}
-                    {/*            <h2>Edit or Add Skills</h2>*/}
-
-                    {/*            <label htmlFor="skillsTitle">Title:</label>*/}
-                    {/*            <input*/}
-                    {/*                id="skillsTitle"*/}
-                    {/*                type="text"*/}
-                    {/*                value={skillsTitle}*/}
-                    {/*                onChange={(e) => {*/}
-                    {/*                    const newTitle = e.target.value;*/}
-                    {/*                    console.log("Input Title:", newTitle);  // Log the input value*/}
-                    {/*                    setSkillsTitle(newTitle);  // Update the state with the new value*/}
-                    {/*                }}*/}
-                    {/*                className={homepageStyles.input}*/}
-                    {/*            />*/}
-
-                    {/*            <label htmlFor="softSkills">Soft Skills (comma-separated):</label>*/}
-                    {/*            <input*/}
-                    {/*                id="softSkills"*/}
-                    {/*                type="text"*/}
-                    {/*                value={softSkillsInput}*/}
-                    {/*                onChange={(e) => setSoftSkillsInput(e.target.value)}*/}
-                    {/*                className={homepageStyles.input}*/}
-                    {/*            />*/}
-
-                    {/*            /!* New inputs for adding/editing a frontend technology *!/*/}
-                    {/*            <label htmlFor="techImageUrl">Technology Image URL:</label>*/}
-                    {/*            <input*/}
-                    {/*                id="techImageUrl"*/}
-                    {/*                type="text"*/}
-                    {/*                value={newTechImageUrl}*/}
-                    {/*                onChange={(e) => setNewTechImageUrl(e.target.value)}*/}
-                    {/*                className={homepageStyles.input}*/}
-                    {/*            />*/}
-
-                    {/*            <label htmlFor="techProficiency">Proficiency (1–10):</label>*/}
-                    {/*            <input*/}
-                    {/*                id="techProficiency"*/}
-                    {/*                type="number"*/}
-                    {/*                min="1"*/}
-                    {/*                max="10"*/}
-                    {/*                value={newTechProficiency}*/}
-                    {/*                onChange={(e) => setNewTechProficiency(parseInt(e.target.value))}*/}
-                    {/*                className={homepageStyles.input}*/}
-                    {/*            />*/}
-
-
-                    {/*            <div className={homepageStyles.overlayContentButtonsRow}>*/}
-                    {/*                <button onClick={handleSkillsSave}>Save</button>*/}
-                    {/*                <button onClick={() => setShowSkillsOverlay(false)}>Cancel</button>*/}
-                    {/*            </div>*/}
-                    {/*        </div>*/}
-                    {/*    </div>*/}
-                    {/*)}*/}
 
                     {showSkillsOverlay && (
                         <div className={homepageStyles.overlay} onClick={() => setShowSkillsOverlay(false)}>
@@ -442,8 +349,7 @@ const Homepage: React.FC = () => {
                                     className={homepageStyles.input}
                                 />
 
-                                {/* Editable skill list */}
-                                <h3>Edit Existing Skills</h3>
+                                <h3>Edit Frontend Skills</h3>
                                 {editedTechnologies.map((tech, index) => (
                                     <div key={tech.id || index} className={homepageStyles.techEditContainer}>
                                         <label>ID:</label>
@@ -484,6 +390,47 @@ const Homepage: React.FC = () => {
                                     </div>
                                 ))}
 
+                                <h3>Edit Backend Skills</h3>
+                                {backendEditedTechnologies.map((tech, index) => (
+                                    <div key={tech.id || index} className={homepageStyles.techEditContainer}>
+                                        <label>ID:</label>
+                                        <input
+                                            type="number"
+                                            value={tech.id}
+                                            onChange={(e) => {
+                                                const updated = [...backendEditedTechnologies];
+                                                updated[index] = {...updated[index], id: parseInt(e.target.value) || 0};
+                                                setBackendEditedTechnologies(updated);
+                                            }}
+                                            className={homepageStyles.input}
+                                        />
+
+                                        <label>Image URL:</label>
+                                        <input
+                                            type="text"
+                                            value={tech.imageUrl}
+                                            onChange={(e) => {
+                                                const updated = [...backendEditedTechnologies];
+                                                updated[index] = { ...updated[index], imageUrl: e.target.value };
+                                                setBackendEditedTechnologies(updated);
+                                            }}
+                                            className={homepageStyles.input}
+                                        />
+
+                                        <label>Proficiency:</label>
+                                        <input
+                                            type="number"
+                                            value={tech.proficiency}
+                                            onChange={(e) => {
+                                                const updated = [...backendEditedTechnologies];
+                                                updated[index] = { ...updated[index], proficiency: parseInt(e.target.value) || 1 };
+                                                setBackendEditedTechnologies(updated);
+                                            }}
+                                            className={homepageStyles.input}
+                                        />
+                                    </div>
+                                ))}
+
                                 <div className={homepageStyles.overlayContentButtonsRow}>
                                     <button onClick={() => {
                                         setEditedTechnologies([...editedTechnologies, {
@@ -491,7 +438,15 @@ const Homepage: React.FC = () => {
                                             imageUrl: '',
                                             proficiency: 1
                                         }]);
-                                    }}>+ Add Skill
+                                    }}>Add Frontend Skill
+                                    </button>
+                                    <button onClick={() => {
+                                        setBackendEditedTechnologies([...backendEditedTechnologies, {
+                                            id: 0,
+                                            imageUrl: '',
+                                            proficiency: 1
+                                        }]);
+                                    }}>Add Backend Skill
                                     </button>
                                     <button onClick={handleSkillsSave}>Save</button>
                                     <button onClick={() => setShowSkillsOverlay(false)}>Cancel</button>

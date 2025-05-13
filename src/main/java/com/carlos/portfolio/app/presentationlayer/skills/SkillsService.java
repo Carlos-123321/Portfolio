@@ -34,6 +34,7 @@ public class SkillsService {
             existingSkills.setTitle(updatedSkills.getTitle());
             existingSkills.setSoftSkills(updatedSkills.getSoftSkills());
             existingSkills.setFrontendTechnologies(updatedSkills.getFrontendTechnologies());
+            existingSkills.setBackendTechnologies(updatedSkills.getBackendTechnologies());
 
             return skillsRepository.save(existingSkills);
         });

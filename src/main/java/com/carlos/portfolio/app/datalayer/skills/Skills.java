@@ -27,4 +27,8 @@ public class Skills {
     @Convert(converter = com.carlos.portfolio.app.util.FrontendTechnologyListToJsonConverter.class)
     @Column(name = "frontend_technologies", columnDefinition = "json")
     private List<FrontendTechnology> frontendTechnologies;
+
+    @Convert(converter = com.carlos.portfolio.app.util.FrontendTechnologyListToJsonConverter.class)
+    @Column(name = "backend_technologies", columnDefinition = "json")
+    private List<BackendTechnology> backendTechnologies;
 }

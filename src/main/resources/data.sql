@@ -194,7 +194,7 @@ VALUES (123,
         'About Me 📌'
        );
 
-INSERT INTO skills (id,title,soft_Skills,frontend_technologies)
+INSERT INTO skills (id,title,soft_Skills,frontend_technologies, backend_technologies)
 VALUES (123,
         'Skills 🧠',
         '["Communication", "Problem-solving", "Time Management", "Adaptability", "Collaboration", "Attention to Detail", "Leadership", "Creative Thinking", "Customer Focus"]',
@@ -239,5 +239,84 @@ VALUES (123,
             "imageUrl": "https://raw.githubusercontent.com/devicons/devicon/master/icons/photoshop/photoshop-line.svg",
             "proficiency": 5
           }
+        ]',
+        '[
+            {
+                "id": 1,
+                "imageUrl": "https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg",
+                "proficiency": 8
+            },
+          {
+            "id": 2,
+            "imageUrl": "https://raw.githubusercontent.com/devicons/devicon/master/icons/csharp/csharp-original.svg",
+            "proficiency": 	6
+          },
+          {
+            "id": 3,
+            "imageUrl": "https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg",
+            "proficiency": 6
+          },
+          {
+            "id": 4,
+            "imageUrl": "https://raw.githubusercontent.com/devicons/devicon/master/icons/dot-net/dot-net-original-wordmark.svg",
+            "proficiency": 8
+          },
+          {
+            "id": 5,
+            "imageUrl": "https://www.vectorlogo.zone/logos/springio/springio-icon.svg",
+            "proficiency": 8
+          },
+          {
+            "id": 6,
+            "imageUrl": "https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg",
+            "proficiency": 8
+          },
+          {
+            "id": 7,
+            "imageUrl": "https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg",
+            "proficiency": 9
+          }
         ]'
+       );
+
+
+INSERT INTO reviews (id,title)
+VALUES (123,
+        'Reviews ✨'
+       );
+
+INSERT INTO intro (id,title, second_Title, third_Title, image)
+VALUES (123,
+        'Hi, I''m Carlos Alvarado',
+        'A passionate developer from Canada',
+        '"The journey of a thousand miles begins with a single step."',
+        'https://cdn.britannica.com/30/150930-120-D3D93F1E/lion-panthea-leo-Namibia.jpg'
+       );
+
+INSERT INTO journey (id,title, academic)
+VALUES (123,
+        'My Academic Journey',
+        '[
+          {
+            "id": 1,
+            "innerTitle": "Champlain College Saint-Lambert",
+            "degree": "Computer Science Technology",
+            "attendance": "2021 - 2025",
+            "description": "Focused on software development, networking, and cybersecurity."
+          },
+          {
+            "id": 2,
+            "innerTitle": "École secondaire Gerard-Filion",
+            "degree": "High School Diploma",
+            "attendance": "2016 - 2021",
+            "description": "Focused on completing high school"
+          }
+        ]'
+       );
+
+
+INSERT INTO work (id,title, paragraph)
+VALUES (123,
+        'My Projects',
+        'Welcome to my portfolio. Here you’ll find a selection of my work. Explore my projects to learn more about what I do.'
        );

@@ -25,7 +25,6 @@
 .overlayContentButtonsRow{
     display: flex;
     flex-direction: row;
-    gap: 30%;
 }
 
 

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import {FrontendTechnology} from "./FrontendTechnology.ts";
+import {BackendTechnology} from "./BackendTechnology.ts";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:8080";
 
@@ -20,6 +21,7 @@ export const updateSkills = async (id: number, updatedSkills: {
     title: string;
     softSkills: string[];
     frontendTechnologies: FrontendTechnology[];
+    backendTechnologies: BackendTechnology[];
 }) => {
     try {
         const response = await axios.put(`${API_BASE_URL}/api/v1/skills/${id}`, updatedSkills);
