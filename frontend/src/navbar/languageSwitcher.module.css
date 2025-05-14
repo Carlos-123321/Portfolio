@@ -6,11 +6,11 @@
     margin-right: 10px;
     font-family: 'Lora', serif;
     cursor: pointer;
-    background-color: #b7f3b5;
-    color: #302D2D;
+    background-color: #302D2D;
+    color: white;
 }
 
 .languageButton:hover{
-    background-color: #302D2D;
+    background-color: #6E6E6E;
     color: white;
 }

@@ -16,7 +16,6 @@
     padding: 2rem 3rem;
     border-radius: 1rem;
     font-size: 1.5rem;
-    border: 1px solid yellow;
     width: 30%;
     max-height: 70vh;
     overflow-y: auto;
@@ -147,7 +146,6 @@
     flex-direction: column;
     align-items: center;
     padding: 2rem 2rem 10%;
-    border: 1px solid red;
     overflow: hidden;
 }
 
@@ -292,6 +290,21 @@
     margin-right: 2%;
 }
 
+.aboutMeSectionPencilAboveHero{
+    position: absolute;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    padding: 10px;
+    background: linear-gradient(135deg, #8B5E3C, #F5F5DC);
+    border-radius: 8px;
+    right: 0;
+    margin-right: 2%;
+}
+
+.aboutMeSectionPencilAboveHero:hover{
+    transform: scale(1.2);
+}
+
 .aboutMeSectionPencil:hover{
     transform: scale(1.2);
 }
@@ -330,7 +343,6 @@
     padding-right: 150px;
     padding-left: 150px;
     gap: 20px;
-    border: 1px solid green;
 }
 
 .skillsTitleContainer{
@@ -407,7 +419,6 @@
     display: flex;
     flex-direction: row;
     position: relative;
-    border: 1px solid red;
 }
 
 .skillsLeftIconsContainerNumericalValue{

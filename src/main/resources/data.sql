@@ -287,15 +287,15 @@ VALUES (123,
 
 INSERT INTO intro (id,title, second_Title, third_Title, image)
 VALUES (123,
-        'Hi, I''m Carlos Alvarado',
-        'A passionate developer from Canada',
-        '"The journey of a thousand miles begins with a single step."',
+        'introLine',
+        'introSecondLine',
+        'introThirdLine',
         'https://cdn.britannica.com/30/150930-120-D3D93F1E/lion-panthea-leo-Namibia.jpg'
        );
 
 INSERT INTO journey (id,title, academic)
 VALUES (123,
-        'My Academic Journey',
+        'My Academic Journey 📚',
         '[
           {
             "id": 1,

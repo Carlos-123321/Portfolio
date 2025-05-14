@@ -20,6 +20,8 @@ import {getReviewsById, updateReviews} from "../apiCalls/reviews/reviewsService.
 import Reviews from "../apiCalls/reviews/Reviews.ts";
 import {getHobbyById, updateHobby} from "../apiCalls/hobby/HobbyService.ts";
 import {Hobbies} from "../apiCalls/hobby/Hobbies.ts";
+import {getIntroById, updateIntro} from "../apiCalls/intro/IntroService.ts";
+import Intro from "../apiCalls/intro/Intro.ts";
 
 const Homepage: React.FC = () => {
     const { t } = useTranslation();
@@ -33,6 +35,7 @@ const Homepage: React.FC = () => {
     const [showSkillsOverlay, setShowSkillsOverlay] = useState(false);
     const [showReviewsOverlay, setShowReviewsOverlay] = useState(false);
     const [showHobbyOverlay, setShowHobbyOverlay] = useState(false);
+    const [showIntroOverlay, setShowIntroOverlay] = useState(false);
     const [aboutMeTitle, setAboutMeTitle] = useState("");
     const [skillsTitle, setSkillsTitle] = useState("");
     const [softSkillsInput, setSoftSkillsInput] = useState("");
@@ -46,6 +49,14 @@ const Homepage: React.FC = () => {
     const [reviewsTitle, setReviewsTitle] = useState("");
     const [hobbyTitle, setHobbyTitle] = useState("");
     const [belowHobbyTitle, setBelowHobbyTitle] = useState("");
+    const [introTitle, setIntroTitle] = useState("");
+    const [introSecondTitle,  setIntroSecondTitle] = useState("");
+    const [introThirdTitle,  setIntroThirdTitle] = useState("");
+    const [introImage,  setIntroImage] = useState("");
+    const [intro, setIntro] = useState<Intro | null>(null);
+
+    const isAuthenticated = localStorage.getItem("isAuthenticated");
+    const userRole = localStorage.getItem("userRole");
 
 
     useEffect(() => {
@@ -63,6 +74,27 @@ const Homepage: React.FC = () => {
         };
 
         fetchAboutMe();
+    }, [t]);
+
+    useEffect(() => {
+        const fetchIntro = async () => {
+            console.log("id:");
+            const data = await getIntroById();
+            console.log("Fetched data:", data);
+
+            const translatedTitle = t(data?.title || "");
+            const translatedSecondTitle = t(data?.secondTitle || "");
+            const translatedThirdTitle = t(data?.thirdTitle || "");
+            const image = t(data?.image || "");
+
+            setIntro(data);
+            setIntroTitle(translatedTitle);
+            setIntroSecondTitle(translatedSecondTitle);
+            setIntroThirdTitle(translatedThirdTitle);
+            setIntroImage(image);
+        };
+
+        fetchIntro();
     }, [t]);
 
     useEffect(() => {
@@ -187,6 +219,25 @@ const Homepage: React.FC = () => {
         }
     };
 
+    const handleIntroSave = async () => {
+        try {
+            if (intro) {
+                const updatedData = {
+                    title: introTitle,
+                    secondTitle: introSecondTitle,
+                    thirdTitle: introThirdTitle,
+                    image: introImage,
+                };
+
+                await updateIntro(intro.id, updatedData);
+                setIntro({ ...intro, ...updatedData });
+                setShowIntroOverlay(false);
+            }
+        } catch (error) {
+            console.error("Failed to update About Me:", error);
+        }
+    };
+
     const handleSkillsSave = async () => {
         console.log("skills:", skills);
         try {
@@ -277,25 +328,82 @@ const Homepage: React.FC = () => {
                                 alt="portfolio background"
                                 className={homepageStyles.heroImage}
                             />
+
+
+
+                            {isAuthenticated === "true" && userRole === "Admin" && (
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                                     className={homepageStyles.aboutMeSectionPencilAboveHero} viewBox="0 0 16 16"
+                                     onClick={() => setShowIntroOverlay(true)}>
+                                    <path
+                                        d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                    <path fill-rule="evenodd"
+                                          d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+                                </svg>
+                            )}
                         </div>
                     </div>
-                    <p className={homepageStyles.temp1title}>{t("introLine")}</p>
-                    <p className={homepageStyles.temp2title}>{t("introSecondLine")}</p>
-                    <p className={homepageStyles.temp3title}>{t("introThirdLine")}</p>
+                    <p className={homepageStyles.temp1title}>{intro ? t(intro.title) : t("Loading...")}</p>
+                    <p className={homepageStyles.temp2title}>{intro ? t(intro.secondTitle) : t("Loading...")}</p>
+                    <p className={homepageStyles.temp3title}>{intro ? t(intro.thirdTitle) : t("Loading...")}</p>
                 </motion.div>
 
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
-                     className={homepageStyles.aboutMeSectionPencil} viewBox="0 0 16 16"
-                     onClick={() => setShowSkillsOverlay(true)}>
-                    <path
-                        d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                    <path fill-rule="evenodd"
-                          d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
-                </svg>
+                {showIntroOverlay && (
+                    <div className={homepageStyles.overlay} onClick={() => setShowIntroOverlay(false)}>
+                        <div className={homepageStyles.overlayContent} onClick={(e) => e.stopPropagation()}>
+                            <h2>Edit Intro Section</h2>
+
+                            <label htmlFor="introTitle">Title:</label>
+                            <input
+                                id="introTitle"
+                                type="text"
+                                value={introTitle}
+                                onChange={(e) => {
+                                    const newTitle = e.target.value;
+                                    console.log("Input Title:", newTitle);  // Log the input value
+                                    setIntroTitle(newTitle);  // Update the state with the new value
+                                }}
+                                className={homepageStyles.input}
+                            />
+
+                            <label htmlFor="introSecondTitle">Below Title:</label>
+                            <input
+                                id="introSecondTitle"
+                                type="text"
+                                value={introSecondTitle}
+                                onChange={(e) => {
+                                    const newTitle = e.target.value;
+                                    console.log("Input Title:", newTitle);  // Log the input value
+                                    setIntroSecondTitle(newTitle);  // Update the state with the new value
+                                }}
+                                className={homepageStyles.input}
+                            />
+
+                            <label htmlFor="introThirdTitle">Last Text:</label>
+                            <input
+                                id="introThirdTitle"
+                                type="text"
+                                value={introThirdTitle}
+                                onChange={(e) => {
+                                    const newTitle = e.target.value;
+                                    console.log("Input Title:", newTitle);  // Log the input value
+                                    setIntroThirdTitle(newTitle);  // Update the state with the new value
+                                }}
+                                className={homepageStyles.input}
+                            />
+
+
+                            <div className={homepageStyles.overlayContentButtonsRow}>
+                                <button onClick={handleIntroSave}>Save</button>
+                                <button onClick={() => setShowIntroOverlay(false)}>Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                )}
             </div>
 
             <div className={homepageStyles.aboutMeSection}>
-
+                {isAuthenticated === "true" && userRole === "Admin" && (
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
                      className={homepageStyles.aboutMeSectionPencil} viewBox="0 0 16 16"
                      onClick={() => setShowOverlay(true)}
@@ -305,6 +413,8 @@ const Homepage: React.FC = () => {
                     <path fill-rule="evenodd"
                           d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
                     </svg>
+
+                )}
 
                     <p className={homepageStyles.reviewsTitle}>{aboutMe ? t(aboutMe.title) : t("Loading...")}</p>
 
@@ -361,13 +471,17 @@ const Homepage: React.FC = () => {
                 </div>
 
             <div className={homepageStyles.skillSection}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
-                     className={homepageStyles.aboutMeSectionPencil} viewBox="0 0 16 16" onClick={() => setShowSkillsOverlay(true)}>
-                    <path
-                        d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                    <path fill-rule="evenodd"
-                          d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
-                </svg>
+                {isAuthenticated === "true" && userRole === "Admin" && (
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                         className={homepageStyles.aboutMeSectionPencil} viewBox="0 0 16 16"
+                         onClick={() => setShowSkillsOverlay(true)}>
+                        <path
+                            d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                        <path fill-rule="evenodd"
+                              d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+                    </svg>
+                )}
+
                 <p className={homepageStyles.reviewsTitle}>{skills ? t(skills.title) : t("Loading...")}</p>
 
                 <div className={homepageStyles.legendSection}>
@@ -586,13 +700,17 @@ const Homepage: React.FC = () => {
             </div>
 
             <div className={homepageStyles.hobbySection}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
-                     className={homepageStyles.aboutMeSectionPencil} viewBox="0 0 16 16" onClick={() => setShowHobbyOverlay(true)}>
-                    <path
-                        d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                    <path fill-rule="evenodd"
-                          d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
-                </svg>
+                {isAuthenticated === "true" && userRole === "Admin" && (
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                         className={homepageStyles.aboutMeSectionPencil} viewBox="0 0 16 16"
+                         onClick={() => setShowHobbyOverlay(true)}>
+                        <path
+                            d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                        <path fill-rule="evenodd"
+                              d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+                    </svg>
+                )}
+
                 <p className={homepageStyles.reviewsTitle}>{hobbyPage ? t(hobbyPage.title) : t("Loading...")}</p>
                 <div className={homepageStyles.pastimesContainer}>
                     <p className={homepageStyles.pastimeSubTitle}>{hobbyPage ? t(hobbyPage.below) : t("Loading...")}</p>
@@ -605,7 +723,7 @@ const Homepage: React.FC = () => {
                             {editedHobbies?.[0]?.description || "No description available"}
                         </div>
                         <div className={homepageStyles.imageContainer}>
-                            <img
+                        <img
                                 src={editedHobbies[0]?.image}
                                 alt="running"
                                 className={homepageStyles.imageFit}
@@ -729,14 +847,17 @@ const Homepage: React.FC = () => {
 
 
             <div className={homepageStyles.reviewSection}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
-                     className={homepageStyles.aboutMeSectionPencil} viewBox="0 0 16 16"
-                     onClick={() => setShowReviewsOverlay(true)}>
-                    <path
-                        d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                    <path fill-rule="evenodd"
-                          d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
-                </svg>
+                {isAuthenticated === "true" && userRole === "Admin" && (
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                         className={homepageStyles.aboutMeSectionPencil} viewBox="0 0 16 16"
+                         onClick={() => setShowReviewsOverlay(true)}>
+                        <path
+                            d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                        <path fill-rule="evenodd"
+                              d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+                    </svg>
+                )}
+
                 <p className={homepageStyles.reviewsTitle}>{reviewsPage ? t(reviewsPage.title) : t("Loading...")}</p>
 
                 <div className={homepageStyles.carousel}>
