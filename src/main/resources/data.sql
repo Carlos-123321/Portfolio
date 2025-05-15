@@ -188,7 +188,7 @@ VALUES (
 );
 
 
-INSERT INTO aboutMe (id,about_Me_Text, title)
+INSERT INTO about (id,about_Me_Text, title)
 VALUES (123,
            'longTextAboutMe',
         'About Me 📌'

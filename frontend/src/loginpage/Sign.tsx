@@ -92,7 +92,7 @@ const Sign: React.FC = () => {
                             type="password"
                             id="confirmPassword"
                             name="confirmPassword"
-                            placeholder={t("Confirm your password")}
+                            placeholder={t("Confirm Password")}
                             value={confirmPassword}
                             onChange={(e) => setConfirmPassword(e.target.value)}
                             required

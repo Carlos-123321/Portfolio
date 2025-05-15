@@ -7,20 +7,25 @@ import UserCard from "./UserCard";
 import commentStyles from "../commentPage/comment.module.css";
 import { updateUser } from "../apiCalls/user/userService.ts";
 import Footer from "../footer/Footer.tsx";
-import {useTranslation} from "react-i18next";
+import { useTranslation } from "react-i18next";
 
 const Dashboard: React.FC = () => {
     const username = localStorage.getItem("username");
     const [users, setUsers] = useState<User[]>([]);
     const { t } = useTranslation();
 
+    const isAuthenticated = localStorage.getItem("isAuthenticated") === "true";
+    const userRole = localStorage.getItem("userRole");
+
     useEffect(() => {
         const fetchUsers = async () => {
-            const data = await getUsers();
-            setUsers(data);
+            if (isAuthenticated && userRole === "Admin") {
+                const data = await getUsers();
+                setUsers(data);
+            }
         };
         fetchUsers();
-    }, []);
+    }, [isAuthenticated, userRole]);
 
     const deleteComment = async (userId: number, commentIndex: number) => {
         const updatedUsers = [...users];
@@ -120,23 +125,29 @@ const Dashboard: React.FC = () => {
                 {username && <p className={DashboardStyles.myTitleText}>{t("Welcome back")}, {username} 😁</p>}
                 {!username && <p className={DashboardStyles.myTitleText}>{t("Username not found")}</p>}
 
-                <div className={commentStyles.projectList}>
-                    <p className={DashboardStyles.myTitleSubText}>{t("Review Comments")} 💬</p>
-                    <div className={DashboardStyles.userCardsContainer}>
-                        {users.map((user) => (
-                            <UserCard
-                                key={user.id}
-                                id={user.id}
-                                name={user.name}
-                                email={user.email}
-                                comments={user.comments}
-                                deleteComment={deleteComment}
-                                approveComment={approveComment}
-                                disapproveComment={disapproveComment}
-                            />
-                        ))}
+                {isAuthenticated && userRole === "Admin" ? (
+                    <div className={commentStyles.projectList}>
+                        <p className={DashboardStyles.myTitleSubText}>{t("Review Comments")} 💬</p>
+                        <div className={DashboardStyles.userCardsContainer}>
+                            {users.map((user) => (
+                                <UserCard
+                                    key={user.id}
+                                    id={user.id}
+                                    name={user.name}
+                                    email={user.email}
+                                    comments={user.comments}
+                                    deleteComment={deleteComment}
+                                    approveComment={approveComment}
+                                    disapproveComment={disapproveComment}
+                                />
+                            ))}
+                        </div>
                     </div>
-                </div>
+                ) : (
+                    <p className={DashboardStyles.myTitleText}>
+                        {t("You are not authorized to view this content.")}
+                    </p>
+                )}
             </div>
 
             <Footer />

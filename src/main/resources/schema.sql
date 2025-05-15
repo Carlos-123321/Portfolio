@@ -38,9 +38,9 @@ CREATE TABLE comment (
                       FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE
 );
 
-DROP TABLE IF EXISTS aboutMe;
+DROP TABLE IF EXISTS about;
 
-CREATE TABLE aboutMe (
+CREATE TABLE about (
                                id INT PRIMARY KEY,
                                about_Me_Text text,
                                title text

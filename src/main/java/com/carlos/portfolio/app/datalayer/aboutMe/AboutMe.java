@@ -10,7 +10,7 @@ import lombok.Setter;
 @Data
 @Setter
 @Getter
-@Table(name = "aboutme")
+@Table(name = "about")
 public class AboutMe {
     @Id
     private Long id;

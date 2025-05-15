@@ -80,7 +80,7 @@ const LoginPage: React.FC = () => {
 
                 <Link to="/sign-up">
                     <div>
-                        <p>Don't have an account? Sign up!</p>
+                        <p>{t("Don't have an account? Sign up!")}</p>
                     </div>
                 </Link>
             </div>

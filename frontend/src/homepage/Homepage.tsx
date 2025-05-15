@@ -351,9 +351,9 @@ const Homepage: React.FC = () => {
                 {showIntroOverlay && (
                     <div className={homepageStyles.overlay} onClick={() => setShowIntroOverlay(false)}>
                         <div className={homepageStyles.overlayContent} onClick={(e) => e.stopPropagation()}>
-                            <h2>Edit Intro Section</h2>
+                            <h2>{t("Edit Intro Section")}</h2>
 
-                            <label htmlFor="introTitle">Title:</label>
+                            <label htmlFor="introTitle">{t("titleLabel")}</label>
                             <input
                                 id="introTitle"
                                 type="text"
@@ -366,7 +366,7 @@ const Homepage: React.FC = () => {
                                 className={homepageStyles.input}
                             />
 
-                            <label htmlFor="introSecondTitle">Below Title:</label>
+                            <label htmlFor="introSecondTitle">{t("Below Title")}</label>
                             <input
                                 id="introSecondTitle"
                                 type="text"
@@ -379,7 +379,7 @@ const Homepage: React.FC = () => {
                                 className={homepageStyles.input}
                             />
 
-                            <label htmlFor="introThirdTitle">Last Text:</label>
+                            <label htmlFor="introThirdTitle">{t("Last Text")}</label>
                             <input
                                 id="introThirdTitle"
                                 type="text"
@@ -394,8 +394,8 @@ const Homepage: React.FC = () => {
 
 
                             <div className={homepageStyles.overlayContentButtonsRow}>
-                                <button onClick={handleIntroSave}>Save</button>
-                                <button onClick={() => setShowIntroOverlay(false)}>Cancel</button>
+                                <button onClick={handleIntroSave}>{t("Save")}</button>
+                                <button onClick={() => setShowIntroOverlay(false)}>{t("Cancel")}</button>
                             </div>
                         </div>
                     </div>
@@ -434,9 +434,9 @@ const Homepage: React.FC = () => {
                     {showOverlay && (
                         <div className={homepageStyles.overlay} onClick={() => setShowOverlay(false)}>
                             <div className={homepageStyles.overlayContent} onClick={(e) => e.stopPropagation()}>
-                                <h2>Edit About Me</h2>
+                                <h2>{t("Edit About Me")}</h2>
 
-                                <label htmlFor="aboutMeTitle">Title:</label>
+                                <label htmlFor="aboutMeTitle">{t("titleLabel")}</label>
                                 <input
                                     id="aboutMeTitle"
                                     type="text"
@@ -449,7 +449,7 @@ const Homepage: React.FC = () => {
                                     className={homepageStyles.input}
                                 />
 
-                                <label htmlFor="aboutMeTitle">Paragraph:</label>
+                                <label htmlFor="aboutMeTitle">{t("paragraph")}</label>
                                 <textarea
                                     value={aboutMeText}
                                     onChange={(e) => {
@@ -461,8 +461,8 @@ const Homepage: React.FC = () => {
                                 />
 
                                 <div className={homepageStyles.overlayContentButtonsRow}>
-                                    <button onClick={handleSave}>Save</button>
-                                    <button onClick={() => setShowOverlay(false)}>Cancel</button>
+                                    <button onClick={handleSave}>{t("Save")}</button>
+                                    <button onClick={() => setShowOverlay(false)}>{t("Cancel")}</button>
                                 </div>
                             </div>
                         </div>
@@ -549,9 +549,9 @@ const Homepage: React.FC = () => {
                     {showSkillsOverlay && (
                         <div className={homepageStyles.overlay} onClick={() => setShowSkillsOverlay(false)}>
                             <div className={homepageStyles.overlayContent} onClick={(e) => e.stopPropagation()}>
-                                <h2>Edit or Add Skills</h2>
+                                <h2>{t("Edit or Add Skills")}</h2>
 
-                                <label htmlFor="skillsTitle">Title:</label>
+                                <label htmlFor="skillsTitle">{t("titleLabel")}</label>
                                 <input
                                     id="skillsTitle"
                                     type="text"
@@ -560,7 +560,7 @@ const Homepage: React.FC = () => {
                                     className={homepageStyles.input}
                                 />
 
-                                <label htmlFor="softSkills">Soft Skills (comma-separated):</label>
+                                <label htmlFor="softSkills">{t("Soft Skills (comma-separated)")}</label>
                                 <input
                                     id="softSkills"
                                     type="text"
@@ -569,7 +569,7 @@ const Homepage: React.FC = () => {
                                     className={homepageStyles.input}
                                 />
 
-                                <h3>Edit Frontend Skills</h3>
+                                <h3>{t("Edit Frontend Skills")}</h3>
                                 {editedTechnologies.map((tech, index) => (
                                     <div key={tech.id || index} className={homepageStyles.techEditContainer}>
                                         <label>ID:</label>
@@ -596,7 +596,7 @@ const Homepage: React.FC = () => {
                                             className={homepageStyles.input}
                                         />
 
-                                        <label>Proficiency:</label>
+                                        <label>{t("Proficiency")}</label>
                                         <input
                                             type="number"
                                             value={tech.proficiency}
@@ -610,7 +610,7 @@ const Homepage: React.FC = () => {
                                     </div>
                                 ))}
 
-                                <h3>Edit Backend Skills</h3>
+                                <h3>{t("Edit Backend Skills")}</h3>
                                 {backendEditedTechnologies.map((tech, index) => (
                                     <div key={tech.id || index} className={homepageStyles.techEditContainer}>
                                         <label>ID:</label>
@@ -637,7 +637,7 @@ const Homepage: React.FC = () => {
                                             className={homepageStyles.input}
                                         />
 
-                                        <label>Proficiency:</label>
+                                        <label>{t("Proficiency")}</label>
                                         <input
                                             type="number"
                                             value={tech.proficiency}
@@ -658,7 +658,7 @@ const Homepage: React.FC = () => {
                                             imageUrl: '',
                                             proficiency: 1
                                         }]);
-                                    }}>Add Frontend Skill
+                                    }}>{t("Add Frontend Skill")}
                                     </button>
                                     <button onClick={() => {
                                         setBackendEditedTechnologies([...backendEditedTechnologies, {
@@ -666,10 +666,10 @@ const Homepage: React.FC = () => {
                                             imageUrl: '',
                                             proficiency: 1
                                         }]);
-                                    }}>Add Backend Skill
+                                    }}>{t("Add Backend Skill")}
                                     </button>
-                                    <button onClick={handleSkillsSave}>Save</button>
-                                    <button onClick={() => setShowSkillsOverlay(false)}>Cancel</button>
+                                    <button onClick={handleSkillsSave}>{t("Save")}</button>
+                                    <button onClick={() => setShowSkillsOverlay(false)}>{t("Cancel")}</button>
                                 </div>
                             </div>
                         </div>
@@ -720,7 +720,7 @@ const Homepage: React.FC = () => {
 
                     <div className={homepageStyles.pastimeLeftSection}>
                         <div className={homepageStyles.pastimeText}>
-                            {editedHobbies?.[0]?.description || "No description available"}
+                            {t(editedHobbies?.[0]?.description || "No description available")}
                         </div>
                         <div className={homepageStyles.imageContainer}>
                         <img
@@ -733,7 +733,7 @@ const Homepage: React.FC = () => {
 
                     <div className={homepageStyles.pastimeRightSection}>
                         <div className={homepageStyles.pastimeText}>
-                            {editedHobbies?.[1]?.description || "No description available"}
+                            {t(editedHobbies?.[1]?.description || "No description available")}
                         </div>
                         <div className={homepageStyles.imageContainer}>
                             <img
@@ -748,7 +748,7 @@ const Homepage: React.FC = () => {
 
                 <div className={homepageStyles.pastimeSecondRowSection}>
                     <div className={homepageStyles.pastimeText}>
-                        {editedHobbies?.[2]?.description || "No description available"}
+                        {t(editedHobbies?.[2]?.description || "No description available")}
                         <div className={homepageStyles.imageContainer}>
                             <img
                                 src={editedHobbies[2]?.image}
@@ -765,9 +765,9 @@ const Homepage: React.FC = () => {
                 {showHobbyOverlay && (
                     <div className={homepageStyles.overlay} onClick={() => setShowHobbyOverlay(false)}>
                         <div className={homepageStyles.overlayContent} onClick={(e) => e.stopPropagation()}>
-                            <h2>Edit Pastime Section</h2>
+                            <h2>{t("Edit Pastime Section")}</h2>
 
-                            <label htmlFor="hobbyTitle">Title:</label>
+                            <label htmlFor="hobbyTitle">{t("titleLabel")}</label>
                             <input
                                 id="hobbyTitle"
                                 type="text"
@@ -780,7 +780,7 @@ const Homepage: React.FC = () => {
                                 className={homepageStyles.input}
                             />
 
-                            <label htmlFor="belowHobbyTitle">Below text:</label>
+                            <label htmlFor="belowHobbyTitle">{t("Below text")}</label>
                             <input
                                 id="belowHobbyTitle"
                                 type="text"
@@ -793,7 +793,7 @@ const Homepage: React.FC = () => {
                                 className={homepageStyles.input}
                             />
 
-                            <h3>Edit Pastimes</h3>
+                            <h3>{t("Edit Pastimes")}</h3>
                             {editedHobbies.map((hobby, index) => (
                                 <div key={hobby.id || index} className={homepageStyles.techEditContainer}>
                                     <label>ID:</label>
@@ -836,8 +836,8 @@ const Homepage: React.FC = () => {
 
 
                             <div className={homepageStyles.overlayContentButtonsRow}>
-                                <button onClick={handleSaveHobby}>Save</button>
-                                <button onClick={() => setShowHobbyOverlay(false)}>Cancel</button>
+                                <button onClick={handleSaveHobby}>{t("Save")}</button>
+                                <button onClick={() => setShowHobbyOverlay(false)}>{t("Cancel")}</button>
                             </div>
                         </div>
                     </div>
@@ -901,9 +901,9 @@ const Homepage: React.FC = () => {
                 {showReviewsOverlay && (
                     <div className={homepageStyles.overlay} onClick={() => setShowReviewsOverlay(false)}>
                         <div className={homepageStyles.overlayContent} onClick={(e) => e.stopPropagation()}>
-                            <h2>Edit Reviews Section</h2>
+                            <h2>{t("Edit Reviews Section")}</h2>
 
-                            <label htmlFor="reviewsTitle">Title:</label>
+                            <label htmlFor="reviewsTitle">{t("titleLabel")}</label>
                             <input
                                 id="reviewsTitle"
                                 type="text"
@@ -918,8 +918,8 @@ const Homepage: React.FC = () => {
 
 
                             <div className={homepageStyles.overlayContentButtonsRow}>
-                                <button onClick={handleSaveReviews}>Save</button>
-                                <button onClick={() => setShowReviewsOverlay(false)}>Cancel</button>
+                                <button onClick={handleSaveReviews}>{t("Save")}</button>
+                                <button onClick={() => setShowReviewsOverlay(false)}>{t("Cancel")}</button>
                             </div>
                         </div>
                     </div>
